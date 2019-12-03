@@ -191,7 +191,7 @@ echo "kobman_debug_mode=false" >> "$kobman_config_file"
 echo "kobman_colour_enable=true" >> "$kobman_config_file"
 
 echo "Download script archive..."
-curl --location --progress-bar "${KOBMAN_SERVICE}/broker/download/kobman/install/${KOBMAN_VERSION}/${KOBMAN_PLATFORM}" > "$kobman_zip_file"
+# curl --location --progress-bar "${KOBMAN_SERVICE}/broker/download/kobman/install/${KOBMAN_VERSION}/${KOBMAN_PLATFORM}" > "$kobman_zip_file"
 
 ARCHIVE_OK=$(unzip -qt "$kobman_zip_file" | grep 'No errors detected in compressed data')
 if [[ -z "$ARCHIVE_OK" ]]; then
