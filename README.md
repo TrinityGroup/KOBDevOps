@@ -1,4 +1,4 @@
-# KOBMAN! CLI
+# SDKMAN! CLI
 ### The Software Development Kit Manager Command Line Interface
 
 [![Build Status](https://travis-ci.org/sdkman/sdkman-cli.svg?branch=master)](https://travis-ci.org/sdkman/sdkman-cli)
@@ -15,7 +15,7 @@ See documentation on the [SDKMAN! website](https://sdkman.io).
 
 Open your favourite terminal and enter the following:
 
-    $ curl -L --location --progress-bar https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/KOBSetup.sh | bash
+    $ curl -s https://get.sdkman.io | bash
 
 If the environment needs tweaking for SDKMAN to be installed, the installer will prompt you accordingly and ask you to restart.
 
