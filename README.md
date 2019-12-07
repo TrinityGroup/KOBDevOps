@@ -1,5 +1,5 @@
-# SDKMAN! CLI
-### The Software Development Kit Manager Command Line Interface
+# KOBMAN! CLI
+### The KochiOrgBook Manager Command Line Interface
 
 [![Build Status](https://travis-ci.org/sdkman/sdkman-cli.svg?branch=master)](https://travis-ci.org/sdkman/sdkman-cli)
 [![Latest Version](https://api.bintray.com/packages/sdkman/generic/sdkman-cli/images/download.svg) ](https://bintray.com/sdkman/generic/sdkman-cli/_latestVersion)
@@ -7,9 +7,9 @@
 [![Sponsors on Open Collective](https://opencollective.com/sdkman/sponsors/badge.svg)](#sponsors)
 [![Slack](https://slack.sdkman.io/badge.svg)](https://slack.sdkman.io)
 
-SDKMAN is a tool for managing parallel Versions of multiple Software Development Kits on any Unix based system. It provides a convenient command line interface for installing, switching, removing and listing Candidates.
+KOBMAN is a tool for managing parallel Versions of multiple KochiOrgBook on any Unix based system. It provides a convenient command line interface for installing, switching, removing and listing Candidates.
 
-See documentation on the [SDKMAN! website](https://sdkman.io).
+See documentation on the [KOBMAN! website](https://sdkman.io).
 
 ## Installation
 
@@ -17,11 +17,11 @@ Open your favourite terminal and enter the following:
 
     $ curl -s https://get.sdkman.io | bash
 
-If the environment needs tweaking for SDKMAN to be installed, the installer will prompt you accordingly and ask you to restart.
+If the environment needs tweaking for KOBMAN to be installed, the installer will prompt you accordingly and ask you to restart.
 
 ## Running the Cucumber Features
 
-All SDKMAN's BDD tests describing the CLI behaviour are written in Cucumber and can be found under `src/test/cucumber/sdkman`. These can be run with Gradle by running the following command:
+All KOBMAN's BDD tests describing the CLI behaviour are written in Cucumber and can be found under `src/test/cucumber/sdkman`. These can be run with Gradle by running the following command:
 
     $ ./gradlew test
 
