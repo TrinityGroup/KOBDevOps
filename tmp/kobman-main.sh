@@ -205,12 +205,15 @@ then
 	if [ "$QUALIFIER" = "tobvon" ]
 	then
 		echo "uninstalling tobvon"	
+		__kobman_tobvon_uninstall
 	elif [ "$QUALIFIER" = "tob" ]
 	then
 		echo "uninstalling tob"	
+		__kobman_tob_uninstall
 	elif [ "$QUALIFIER" = "greenlight" ]
 	then
 		echo "uninstalling greenlight"	
+		__kobman_greenlight_uninstall
 	else
 		echo "check uninstall environment"
 	fi
