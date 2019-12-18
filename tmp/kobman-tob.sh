@@ -37,7 +37,7 @@ function __kobman_tob_start
 
 function __kobman_tob_uninstall
 {
-	sudo chmod a+x ${KOBMAN_CANDIDATES_DIR}
+	sudo chmod 777 ${KOBMAN_CANDIDATES_DIR}
 	figlet Removing TheOrgBook
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo TheOrgBook/docker/manage rm
