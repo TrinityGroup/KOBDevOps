@@ -85,7 +85,7 @@ function kob {
 	fi
 
 	# Check if it is a sourced function
-	CMD_TARGET="${KOBMAN_DIR}/ext/kobman-${COMMAND}.sh"
+	CMD_TARGET="${KOBMAN_DIR}/env/kobman-${COMMAND}.sh"
 	if [[ -f "$CMD_TARGET" ]]; then
 		CMD_FOUND="$CMD_TARGET"
 	fi 

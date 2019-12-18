@@ -69,15 +69,15 @@ else
 	bash_shell=true
 fi
 
-# Source kobman module scripts and extension files.
+# Source kobman module scripts and environment files.
 #
-# Extension files are prefixed with 'kobman-' and found in the ext/ folder.
-# Use this if extensions are written with the functional approach and want
+# Extension files are prefixed with 'kobman-' and found in the env/ folder.
+# Use this if environments are written with the functional approach and want
 # to use functions in the main kobman script. For more details, refer to
 # <https://github.com/kobman/kobman-extensions>.
 OLD_IFS="$IFS"
 IFS=$'\n'
-scripts=($(find "${KOBMAN_DIR}/src" "${KOBMAN_DIR}/ext" -type f -name 'kobman-*'))
+scripts=($(find "${KOBMAN_DIR}/src" "${KOBMAN_DIR}/env" -type f -name 'kobman-*'))
 for f in "${scripts[@]}"; do
 	source "$f"
 done
