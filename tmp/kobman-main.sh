@@ -96,7 +96,8 @@ function kob {
 	fi
 
 
-if [[ "$COMMAND" = "install" ]]; then
+if [ "$COMMAND" = "install" ]
+then
 	case $QUALIFIER in
 		--dev)
 			if [[ "$THREE" = "all" ]]; then
@@ -188,7 +189,8 @@ if [[ "$COMMAND" = "install" ]]; then
 
 	esac
 			
-elif [[ "$COMMAND" = "uninstall" ]]; then	
+elif [ "$COMMAND" = "uninstall" ]
+then	
 
 	if [[ "$QUALIFIER" = "tobvon" ]]; then
 		echo "uninstalling tobvon"	
