@@ -188,24 +188,22 @@ if [[ "$COMMAND" = "install" ]]; then
 
 	esac
 			
-elif [[ "$COMMAND" = "uninstall"  ]]; then
-	case $QUALIFIER in
-		tobvon)
-			__kobman_tobvon_uninstall
-		;;
-		tob)
-			__kobman_tob_uninstall
-		;;
-		greenlight)
-			__kobman_greenlight_uninstall
-		;;
-		*)
-			echo "check uninstall command"	
-		;;
-else
-	echo "check command"
+elif [[ "$COMMAND" = "uninstall" ]]; then	
 
-fi
+	if [[ "$QUALIFIER" = "tobvon" ]]; then
+		echo "uninstalling tobvon"	
+	elif [[ "$QUALIFIER" = "tob" ]];then
+		echo "uninstalling tob"	
+	elif [[ "$QUALIFIER" = "greenlight" ]]; then
+		echo "uninstalling greenlight"	
+	fi
+
+else
+	echo "verifiy your command and try again"
+fi		
+
+
+
 	#	# Check whether the candidate exists
 #	local kobman_valid_candidate=$(echo ${KOBMAN_CANDIDATES[@]} | grep -w "$QUALIFIER")
 #	if [[ -n "$QUALIFIER" && "$COMMAND" != "offline" && "$COMMAND" != "flush" && "$COMMAND" != "selfupdate" && -z "$kobman_valid_candidate" ]]; then
