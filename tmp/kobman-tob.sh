@@ -1,6 +1,7 @@
 #!/bin/bash 
                                                               
                                                               
+sudo chmod a+x ${KOBMAN_CANDIDATES_DIR}
 
 
 function __kobman_tob_build
