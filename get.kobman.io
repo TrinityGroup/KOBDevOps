@@ -252,5 +252,4 @@ echo ""
 echo "    kob help"
 echo ""
 
-source "/home/blockchain/.kobman/bin/kobman-init.sh"
 echo "Enjoy!!!"
