@@ -17,7 +17,7 @@ function __kobman_tobvon_build
 		
 		kobman_namespace="$1"	
 		figlet Building Von Network
-		figlet from $kmbman_namespace
+		figlet from ${kobman_namespace}
 		cd ${KOBMAN_CANDIDATES_DIR}
 		sudo echo "Build TOB-Von instance in your system"
                 sudo git clone https://github.com/${kobman_namespace}/von-network.git

@@ -5,12 +5,11 @@
 
 function __kobman_tob_build
 {
-           
-
-		figlet Building TheOrgBook
-		cd ${KOBMAN_CANDIDATES_DIR}
-         	sudo echo "Setting-up TOB instance in your system?"
-                sudo git clone https://github.com/bcgov/TheOrgBook.git
+	        kobman_namespace="$1"
+                figlet Building TheOrgBook
+                figlet from ${kobman_namespace}
+                cd ${KOBMAN_CANDIDATES_DIR}
+                sudo git clone https://github.com/${kobman_namespace}/TheOrgBook.git
                 sudo wget --no-proxy https://github.com/openshift/source-to-image/releases/download/v1.1.14/source-to-image-v1.1.14-874754de-linux-amd64.tar.gz
                 sudo tar -xvzf source-to-image-v1.1.14-874754de-linux-amd64.tar.gz
                 sudo mv s2i sti /usr/local/bin/

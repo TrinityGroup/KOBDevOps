@@ -128,7 +128,7 @@ then
     			__kobman_python_install
  			__kobman_docker_install
 	     		__kobman_npm_install
-			__kobman_tobvon_build
+			__kobman_tobvon_build "$NAME_SPACE"
 			elif [ "$THREE" = "tob" ]
 			then	
 				echo "Building tob..."	
@@ -138,7 +138,8 @@ then
     			__kobman_python_install
  			__kobman_docker_install
 	     		__kobman_npm_install
-			__kobman_tob_build
+			__kobman_tob_build "$NAME_SPACE"
+
 			elif [ "$THREE" = "greenlight" ]
 			then	
 				echo "Building greenlight ..."	
