@@ -1,7 +1,6 @@
 #!/bin/bash 
 
 
-sudo chmod a+x ${KOBMAN_CANDIDATES_DIR}
 
 function __kobman_greenlight_build
 {
@@ -42,6 +41,7 @@ function __kobman_greenlight_start
 function __kobman_greenlight_uninstall
 {
 	
+	sudo chmod a+x ${KOBMAN_CANDIDATES_DIR}
 	figlet Removing greenlight
  	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo greenlight/docker/manage rm
