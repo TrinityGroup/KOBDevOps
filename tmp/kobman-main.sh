@@ -196,12 +196,13 @@ elif [[ "$COMMAND" = "uninstall" ]]; then
 		echo "uninstalling tob"	
 	elif [[ "$QUALIFIER" = "greenlight" ]]; then
 		echo "uninstalling greenlight"	
+	else
+		echo "check uninstall environment"
 	fi
 
 else
 	echo "verifiy your command and try again"
 fi		
-
 
 
 	#	# Check whether the candidate exists
