@@ -14,10 +14,13 @@ echo " |___/\____/_/ |_/     /_/  \____/_____/  "
 function __kobman_tobvon_build
 {
 
-		figlet Building the Von Network
+		
+		kobman_namespace="$1"	
+		figlet Building Von Network
+		figlet from $kmbman_namespace
 		cd ${KOBMAN_CANDIDATES_DIR}
 		sudo echo "Build TOB-Von instance in your system"
-                sudo git clone https://github.com/hyperledgerkochi/von-network.git
+                sudo git clone https://github.com/${kobman_namespace}/von-network.git
                 sudo von-network/manage rm
                 sudo von-network/manage build
 

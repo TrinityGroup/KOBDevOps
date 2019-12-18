@@ -22,6 +22,7 @@ function kob {
 	QUALIFIER="$2"
 	THREE="$3"
 	FOUR= "$4"	
+	NAME_SPACE=${5:-EtricKombat}
 	case "$COMMAND" in
 		l)
 			COMMAND="list";;
@@ -147,7 +148,7 @@ then
     			__kobman_python_install
  			__kobman_docker_install
 	     		__kobman_npm_install
-			__kobman_greenlight_build
+			__kobman_greenlight_build "$NAME_SPACE"
 			else
 				echo "verifiy your command and try again"
 			fi		
