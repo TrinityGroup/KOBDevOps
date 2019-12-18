@@ -41,6 +41,7 @@ function __kobman_tob_uninstall
 	figlet Removing TheOrgBook
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo TheOrgBook/docker/manage rm
+	sudo rm source-*
 	sudo rm -rf TheOrgBook/ 	
 	sudo rm -rf /usr/local/bin/s2i /usr/local/bin/sti TheOrgBook/	
 }	

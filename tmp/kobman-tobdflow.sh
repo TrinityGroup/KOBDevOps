@@ -46,5 +46,6 @@ function __kobman_greenlight_uninstall
  	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo greenlight/docker/manage rm
 	sudo rm -rf greenlight/
+	sudo rm source-*
 	sudo rm -rf greenlight/ /usr/local/bin/sti /usr/local/bin/s2i source-to-image-v1.1.14-874754de-linux-amd64.tar.gz	
 }
