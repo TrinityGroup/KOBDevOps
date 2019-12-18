@@ -5,12 +5,6 @@
 function __kobman_greenlight_build
 {
 
-echo "     ____        _ __    ___                   "
-echo "    / __ )__  __(_) /___/ (_)___  ____ _       "
-echo "   / __  / / / / / / __  / / __ \/ __  /       "
-echo "  / /_/ / /_/ / / / /_/ / / / / / /_/ /  _ _ _ "
-echo " /_____/\__,_/_/_/\__,_/_/_/ /_/\__, /  (_|_|_) "
-echo "                               /____/           "
 
 		figlet Building greenlight
  		cd ${KOBMAN_CANDIDATES_DIR}
@@ -46,6 +40,6 @@ function __kobman_greenlight_uninstall
  	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo greenlight/docker/manage rm
 	sudo rm -rf greenlight/
-	sudo rm source-*
+	sudo rm ${KOBMAN_CANDIDATES_DIR}/source-*
 	sudo rm -rf greenlight/ /usr/local/bin/sti /usr/local/bin/s2i source-to-image-v1.1.14-874754de-linux-amd64.tar.gz	
 }
