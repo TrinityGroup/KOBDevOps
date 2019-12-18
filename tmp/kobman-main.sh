@@ -51,11 +51,11 @@ function kob {
 	# Various sanity checks and default settings
 	#
 
-	# Check version and candidates cache
-	if [[ "$COMMAND" != "update" ]]; then
-		___kobman_check_candidates_cache "$KOBMAN_CANDIDATES_CACHE" || return 1
-		___kobman_check_version_cache
-	fi
+#	# Check version and candidates cache
+#	if [[ "$COMMAND" != "update" ]]; then
+#		___kobman_check_candidates_cache "$KOBMAN_CANDIDATES_CACHE" || return 1
+#		___kobman_check_version_cache
+#	fi
 #
 #	# Always presume internet availability
 #	KOBMAN_AVAILABLE="true"
@@ -100,19 +100,26 @@ if [ "$COMMAND" = "install" ]
 then
 	case $QUALIFIER in
 		--dev)
-			if [[ "$THREE" = "all" ]]; then
+			if [ "$THREE" = "all" ]
+			then
 				echo "working all parameter"
-			elif [[ "$THREE" = "kobvon" ]]; then	
+			elif [ "$THREE" = "kobvon" ]
+			then	
 				echo "Building kobvon..."	
-			elif [[ "$THREE" = "kob" ]]; then	
+			elif [ "$THREE" = "kob" ]
+			then	
 				echo "Building kob..."	
-			elif [[ "$THREE" = "kobdflow" ]]; then	
+			elif [ "$THREE" = "kobdflow" ]
+			then	
 				echo "Building kobdflow..."	
-			elif [[ "$THREE" = "kobconnect" ]]; then	
+			elif [ "$THREE" = "kobconnect" ]
+			then	
 				echo "Building kobconnect..."	
-			elif [[ "$THREE" = "kobregistory" ]]; then	
+			elif [ "$THREE" = "kobregistory" ]
+			then	
 				echo "Building kobregistory..."	
-			elif [[ "$THREE" = "tobvon" ]]; then	
+			elif [ "$THREE" = "tobvon" ]
+			then	
 				echo "Building tobvon..."	
 			__kobman_check_proxy
 			__kobman_ubuntu_update_upgrade
@@ -121,7 +128,8 @@ then
  			__kobman_docker_install
 	     		__kobman_npm_install
 			__kobman_tobvon_build
-			elif [[ "$THREE" = "tob" ]]; then	
+			elif [ "$THREE" = "tob" ]
+			then	
 				echo "Building tob..."	
 			__kobman_check_proxy
 			__kobman_ubuntu_update_upgrade
@@ -130,7 +138,8 @@ then
  			__kobman_docker_install
 	     		__kobman_npm_install
 			__kobman_tob_build
-			elif [[ "$THREE" = "greenlight" ]]; then	
+			elif [ "$THREE" = "greenlight" ]
+			then	
 				echo "Building greenlight ..."	
 			__kobman_check_proxy
 			__kobman_ubuntu_update_upgrade
@@ -182,7 +191,8 @@ then
 				__kobman_greenlight_start
 		;;
 		*)
-			if [[ -z $QUALIFIER ]]; then
+			if [ -z $QUALIFIER ]
+			then
 				echo "Default Projects are tobvon,tob,greenlight"	
 			fi			
 		;;
@@ -192,11 +202,14 @@ then
 elif [ "$COMMAND" = "uninstall" ]
 then	
 
-	if [[ "$QUALIFIER" = "tobvon" ]]; then
+	if [ "$QUALIFIER" = "tobvon" ]
+	then
 		echo "uninstalling tobvon"	
-	elif [[ "$QUALIFIER" = "tob" ]];then
+	elif [ "$QUALIFIER" = "tob" ]
+	then
 		echo "uninstalling tob"	
-	elif [[ "$QUALIFIER" = "greenlight" ]]; then
+	elif [ "$QUALIFIER" = "greenlight" ]
+	then
 		echo "uninstalling greenlight"	
 	else
 		echo "check uninstall environment"
@@ -242,4 +255,5 @@ fi
 #		__kobman_auto_update "$KOBMAN_REMOTE_VERSION" "$KOBMAN_VERSION"
 #	fi
 #	return $final_rc
+
 }
