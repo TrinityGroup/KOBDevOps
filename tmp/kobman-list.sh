@@ -27,7 +27,7 @@ function __kob_list {
 }
 
 function __kobman_list_candidates {
- 	sudo less ${KOBMAN_DIR}/src/backup
+ 	sudo less ${KOBMAN_DIR}/tmp/kobman-env-list
 
 #	if [[ "$KOBMAN_AVAILABLE" == "false" ]]; then
 #		__kobman_echo_red "This command is not available while offline."
@@ -96,4 +96,4 @@ function __kobman_list_candidates {
 #	__kobman_echo_no_colour "* - installed                                                                   "
 #	__kobman_echo_no_colour "> - currently in use                                                            "
 #	__kobman_echo_no_colour "--------------------------------------------------------------------------------"
-}
+#}
