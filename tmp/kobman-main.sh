@@ -218,7 +218,9 @@ then
 	else
 		echo "check uninstall environment"
 	fi
-
+elif [ "$COMMAND" = "list" ]
+then
+	sudo less ${KOBMAN_DIR}/src/kobman-list.sh
 else
 	echo "verifiy your command and try again"
 fi		
