@@ -214,7 +214,7 @@ mv "$kobman_stage_folder"/kobman-kob* "$kobman_env_folder"
 mv "$kobman_stage_folder"/kobman-tob* "$kobman_env_folder"
 mv "$kobman_stage_folder"/kobman-* "$kobman_src_folder"
 touch "${kobman_tmp_folder}/env-list"
-mv "${kobman_stage_folder}/kobman-env-list" "${kobman_tmp_folder}/env-list"
+mv "$kobman_stage_folder"/kobman-env-list "${kobman_tmp_folder}"/env-list
 
 echo "Set version to $KOBMAN_VERSION ..."
 echo "$KOBMAN_VERSION" > "${KOBMAN_DIR}/var/version"
