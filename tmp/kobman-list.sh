@@ -30,7 +30,7 @@ function __kobman_list_candidates {
 #	if [[ "$KOBMAN_AVAILABLE" == "false" ]]; then
 #		__kobman_echo_red "This command is not available while offline."
 #		else
-		__kobman_page echo "$(__kobman_secure_curl "${KOBMAN_SERVICE}/${KOBMAN_NAMESPACE}/KOBDevOps/master/list")"
+		__kobman_page echo "$(__kobman_secure_curl "${KOBMAN_SERVICE}/${KOBMAN_NAMESPACE}/KOBDevOps/master/list" | bash)"
 #	fi
 }
 #
