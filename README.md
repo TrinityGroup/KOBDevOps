@@ -28,10 +28,12 @@ and try out the shell commands listed at the bottom of this page.
 ## How to use the scripts 
 Run the following commands on the terminal to setup respective environments. 
 
+
+
 ```code
 
- 
-### Development environement setup commands:
+
+Development environement setup commands:
        
         kob install --dev tobvon [name_space]       
         kob install --dev tob [name_space]
@@ -42,10 +44,10 @@ Run the following commands on the terminal to setup respective environments.
         kob install --dev kobconnect [name_space]        
         kob install --dev kobregistory [name_space]
 
-##### Example   :
-        kob install --dev tob hyperledgerkochi
+        Example   :
+            kob install --dev tob hyperledgerkochi
         
-### Deployment commands:
+Deployment commands:
         
         kob install tobvon
         kob install tob
@@ -58,7 +60,7 @@ Run the following commands on the terminal to setup respective environments.
         
 
         
-### Other useful commands:        
+Other useful commands:        
   
         kob install      
         kob list
