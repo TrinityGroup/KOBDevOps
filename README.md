@@ -16,7 +16,7 @@ Once Ubuntu 18.04 is hosted on VirtualBox, <a href="https://github.com/EtricKomb
 * **Step 4:**
 Clone this repo :
         
-        curl -L https://raw.githubusercontent.com/EtricKombat/KOBDevOps/master/get.kobman.io | bash
+        curl -L https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/get.kobman.io | bash
         
 and try out the shell commands listed at the bottom of this page.
 
@@ -30,19 +30,7 @@ Run the following commands on the terminal.
 
 ```code
 
- ./KOB install              // install default projects i.e KOBVON, KOBDflow,KOBConnect, KOBRegistry, TheKochOrgBook
- ./KOB install KOBVON       // Deploy KOBVON for testing
- ./KOB install --dev All    // install all the dev environment to do development
- ./KOB install --dev KOBVON // to install just the KOBVON project for development
  
-
- ./KOB install --dev KOB      
- ./KOB install --dev TOB –namespace http://github/hyperledgerkochi
-```
-
-
-
-
 ### Development environement setup commands:
 
         KOB install --dev KOBVON
