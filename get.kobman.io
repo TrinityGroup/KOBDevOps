@@ -61,7 +61,7 @@ esac
 sudo apt install figlet -y
 
 figlet KOB-Setup ...
-
+figlet TrinityGroup repo 
 
 # Sanity checks
 
@@ -185,7 +185,7 @@ echo "kobman_colour_enable=true" >> "$kobman_config_file"
 
 echo "Download script archive..."
 
-curl --location --progress-bar "${KOBMAN_SERVICE}/EtricKombat/KOBDevOps/master/kobman_zip_file.zip" > "$kobman_zip_file"
+curl --location --progress-bar "${KOBMAN_SERVICE}/TrinityGroup/KOBDevOps/master/kobman_zip_file.zip" > "$kobman_zip_file"
 
 ARCHIVE_OK=$(unzip -qt "$kobman_zip_file" | grep 'No errors detected in compressed data')
 if [[ -z "$ARCHIVE_OK" ]]; then
