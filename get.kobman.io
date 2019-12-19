@@ -246,7 +246,7 @@ echo -e "\n\n\nAll done!\n\n"
 
 echo "Please open a new terminal, or run the following in the existing one:"
 echo ""
-echo "    source \"${KOBMAN_DIR}/bin/kobman-init.sh\""
+echo "    source \"${KOBMAN_DIR}/bin/kobman-init.sh"
 echo ""
 echo "Then issue the following command:"
 echo ""
