@@ -20,14 +20,14 @@ function __kob_list {
 	local candidate="$1"
 
 	if [[ -z "$candidate" ]]; then
-		__kobman_list_candidates
+ 	sudo less ${KOBMAN_DIR}/tmp/env-list
+#	__kobman_list_candidates
 #	else
 #		__kobman_list_versions "$candidate"
 	fi
 }
 
-function __kobman_list_candidates {
- 	sudo less ${KOBMAN_DIR}/tmp/env-list
+# function __kobman_list_candidates {
 
 #	if [[ "$KOBMAN_AVAILABLE" == "false" ]]; then
 #		__kobman_echo_red "This command is not available while offline."
