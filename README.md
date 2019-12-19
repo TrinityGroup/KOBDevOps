@@ -26,39 +26,44 @@ and try out the shell commands listed at the bottom of this page.
 
 
 ## How to use the scripts 
-Run the following commands on the terminal. 
+Run the following commands on the terminal to setup respective environments. 
 
 ```code
 
  
 ### Development environement setup commands:
+       
+        kob install --dev tobvon [name_space]       
+        kob install --dev tob [name_space]
+        kob install --dev greenlight [name_space]
+        kob install --dev kobvon [name_space]
+        kob install --dev kob [name_space]
+        kob install --dev kobdflow [name_space]
+        kob install --dev kobconnect [name_space]        
+        kob install --dev kobregistory [name_space]
 
-        KOB install --dev KOBVON
-        KOB install --dev KOBDflow
-        KOB install --dev KOBConnect        
-        KOB install --dev KOBRegistery
-        KOB install --dev TOB        
-        KOB install --dev TOBVON
-        KOB install --dev greenlight
+##### Example   :
+        kob install --dev tob hyperledgerkochi
         
 ### Deployment commands:
         
-        KOB install KOB
-        KOB install KOBVON        // Deploy KOBVON for testing
-        KOB install KOBDflow
-        KOB install KOBRegistery
-        KOB install KOBConnect
-        KOB install TOB
-        KOB install TOBVON
-        KOB install greenlight
+        kob install tobvon
+        kob install tob
+        kob install greenlight
+        kob install kobvon
+        kob install kob        
+        kob install kobdflow
+        kob install kobregistory
+        kob install kobconnect
+        
 
         
 ### Other useful commands:        
   
-        KOB install      // install default projects i.e KOBVON,KOBConnect, KOBRegistry..etc
-        KOB list
-        KOB status        
-        KOB help         // Opens help page
-        KOB uninstall        
-        KOB version      // list down  all the included tool version
+        kob install      
+        kob list
+        kob status        
+        kob help         
+        kob uninstall        
+        kob version      
         
