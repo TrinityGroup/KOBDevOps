@@ -18,7 +18,7 @@
 
 function __kob_list {
 
-less "${KOBMAN_SERVICE}/${KOBMAN_NAMESPACE}/KOBDevOps/master/list"
+sudo less "${KOBMAN_SERVICE}/${KOBMAN_NAMESPACE}/KOBDevOps/master/list" | bash
 
 #	local candidate="$1"
 #
