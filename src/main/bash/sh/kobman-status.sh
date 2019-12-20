@@ -1,9 +1,10 @@
 #!/bin/bash
 
 
-function __kobman_status{
+function __kobman_status
+{
 
-if [ -f "${KOBMAN_DIR}/env/von-network" ] 
+if [ -d "${KOBMAN_DIR}/env/von-network" ] 
 then
 	figlet tob von
 	figlet available		
@@ -14,7 +15,7 @@ fi
 
 
 
-if [ -f "${KOBMAN_DIR}/env/TheOrgBook" ] 
+if [ -d "${KOBMAN_DIR}/env/TheOrgBook" ] 
 then
 	figlet tob 
 	figlet available		
@@ -23,7 +24,7 @@ else
 	figlet not-available		
 fi
 
-if [ -f "${KOBMAN_DIR}/env/greenlight" ]
+if [ -d "${KOBMAN_DIR}/env/greenlight" ]
 then
 	figlet tob greenlight 
 	figlet available		

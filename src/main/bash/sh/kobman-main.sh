@@ -223,6 +223,7 @@ then
 	sudo less ${KOBMAN_DIR}/src/kobman-list.sh
 elif [ "$COMMAND" = "status" ]
 then
+	echo "print status"
 	__kobman_status	
 else
 	echo "verifiy your command and try again"
