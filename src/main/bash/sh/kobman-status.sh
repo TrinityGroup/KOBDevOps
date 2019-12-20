@@ -3,15 +3,33 @@
 
 function __kobman_status{
 
-if [ -f "${KOBMAN_DIR}/env/von-network" ]; then
+if [ -f "${KOBMAN_DIR}/env/von-network" ] 
+then
 	figlet tob von
 	figlet available		
-elif [ -f "${KOBMAN_DIR}/env/TheOrgBook" ]; then
+else
+	figlet tob von
+	figlet not-available		
+fi
+
+
+
+if [ -f "${KOBMAN_DIR}/env/TheOrgBook" ] 
+then
 	figlet tob 
 	figlet available		
-elif [ -f "${KOBMAN_DIR}/env/greenlight" ]; then
+else
+	figlet tob 
+	figlet not-available		
+fi
+
+if [ -f "${KOBMAN_DIR}/env/greenlight" ]
+then
 	figlet tob greenlight 
 	figlet available		
+else
+	figlet greenlight  
+	figlet not-available		
 fi
 
 }
