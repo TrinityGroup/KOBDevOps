@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-function __kob_status
-{
+function __kob_status {
+
 figlet memory upload of 
 figlet kobman-status.sh
 

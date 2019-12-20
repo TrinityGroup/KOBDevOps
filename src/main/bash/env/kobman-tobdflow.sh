@@ -1,5 +1,6 @@
 #!/bin/bash 
 
+figlet greenlight
 
 
 function __kobman_greenlight_build

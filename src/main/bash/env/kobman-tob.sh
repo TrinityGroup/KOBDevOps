@@ -1,7 +1,7 @@
 #!/bin/bash 
                                                               
                                                               
-
+figlet TheOrgbook
 
 function __kobman_tob_build
 {
