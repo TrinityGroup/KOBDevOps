@@ -221,6 +221,9 @@ then
 elif [ "$COMMAND" = "list" ]
 then
 	sudo less ${KOBMAN_DIR}/src/kobman-list.sh
+elif [ "$COMMAND" = "status" ]
+then
+	__kobman_status	
 else
 	echo "verifiy your command and try again"
 fi		
