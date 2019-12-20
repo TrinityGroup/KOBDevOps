@@ -3,6 +3,8 @@
 
 function __kobman_status
 {
+figlet memory upload of 
+figlet kobman-status.sh
 
 if [ -d "${KOBMAN_DIR}/env/von-network" ] 
 then
