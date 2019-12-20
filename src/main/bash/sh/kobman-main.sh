@@ -224,7 +224,7 @@ then
 elif [ "$COMMAND" = "status" ]
 then
 	echo "print status"
-	__kobman_status	
+	__kob_status	
 else
 	echo "verifiy your command and try again"
 fi		
