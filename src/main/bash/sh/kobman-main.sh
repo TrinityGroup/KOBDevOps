@@ -45,6 +45,8 @@ function kob {
 			COMMAND="default";;
 		b)
 			COMMAND="broadcast";;
+		s)
+			COMMAND="status";;
 	esac
 
 	#
@@ -121,38 +123,90 @@ then
 			elif [ "$THREE" = "tobvon" ]
 			then	
 				echo "Building tobvon..."	
-			__kobman_check_proxy
-			__kobman_ubuntu_update_upgrade
-			__kobman_git_install
-    			__kobman_python_install
- 			__kobman_docker_install
-	     		__kobman_npm_install
-			__kobman_tobvon_build "$NAME_SPACE"
+				__kobman_check_proxy
+				__kobman_ubuntu_update_upgrade
+				__kobman_git_install
+    				__kobman_python_install
+ 				__kobman_docker_install
+	     			__kobman_npm_install
+				__kobman_tobvon_build "$NAME_SPACE"
 			elif [ "$THREE" = "tob" ]
 			then	
 				echo "Building tob..."	
-			__kobman_check_proxy
-			__kobman_ubuntu_update_upgrade
-			__kobman_git_install
-    			__kobman_python_install
- 			__kobman_docker_install
-	     		__kobman_npm_install
-			__kobman_tob_build "$NAME_SPACE"
-
+				__kobman_check_proxy
+				__kobman_ubuntu_update_upgrade
+				__kobman_git_install
+    				__kobman_python_install
+ 				__kobman_docker_install
+	     			__kobman_npm_install
+				__kobman_tob_build "$NAME_SPACE"
 			elif [ "$THREE" = "greenlight" ]
 			then	
 				echo "Building greenlight ..."	
-			__kobman_check_proxy
-			__kobman_ubuntu_update_upgrade
-			__kobman_git_install
-    			__kobman_python_install
- 			__kobman_docker_install
-	     		__kobman_npm_install
-			__kobman_greenlight_build "$NAME_SPACE"
+				__kobman_check_proxy
+				__kobman_ubuntu_update_upgrade
+				__kobman_git_install
+    				__kobman_python_install
+ 				__kobman_docker_install
+	     			__kobman_npm_install
+				__kobman_greenlight_build "$NAME_SPACE"
 			else
 				echo "verifiy your command and try again"
 			fi		
 		;;
+		--deploy)
+                        if [ "$THREE" = "kobvon" ]
+                        then
+                                echo "Starting kobvon..."
+			elif [ "$THREE" = "kob" ]
+                        then
+                                echo "starting kob..."
+                        elif [ "$THREE" = "kobdflow" ]
+                        then
+                                echo "Starting kobdflow..."
+                        elif [ "$THREE" = "kobconnect" ]
+                        then
+                                echo "Starting kobconnect..."
+                        elif [ "$THREE" = "kobregistory" ]
+                        then
+                                echo "Starting kobregistory..."
+                        elif [ "$THREE" = "tobvon" ]
+                        then
+                                echo "Starting tobvon..."
+	                        __kobman_check_proxy
+	                        __kobman_ubuntu_update_upgrade
+		                __kobman_git_install
+	                        __kobman_python_install
+	                        __kobman_docker_install
+	                        __kobman_npm_install
+       		               	__kobman_tobvon_build "$NAME_SPACE"
+				__kobman_tobvon_start
+                        elif [ "$THREE" = "tob" ]
+                      	then
+                               echo "Starting tob..."
+                    		__kobman_check_proxy
+                        	__kobman_ubuntu_update_upgrade
+                         	__kobman_git_install
+                         	__kobman_python_install
+                         	__kobman_docker_install
+                         	__kobman_npm_install
+                         	__kobman_tob_build "$NAME_SPACE"
+				__kobman_tob_start
+                         elif [ "$THREE" = "greenlight" ]
+                         then
+                                 echo "Building greenlight ..."
+                         	 __kobman_check_proxy
+                                 __kobman_ubuntu_update_upgrade
+                        	 __kobman_git_install
+                        	 __kobman_python_install
+                        	 __kobman_docker_install
+                        	 __kobman_npm_install
+                         	 __kobman_greenlight_build "$NAME_SPACE"
+		  		 __kobman_greenlight_start
+                         else
+                                 echo "verifiy your command and try again"
+                         fi
+                 ;;
 
 		kobvon)
 				echo "starting kobvon..."	
