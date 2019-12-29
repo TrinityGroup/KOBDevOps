@@ -14,7 +14,7 @@ Download & use 64 bit <a href="https://ubuntu.com/download/desktop/thank-you?ver
 Once Ubuntu 18.04 is hosted on VirtualBox, <a href="https://github.com/EtricKombat/KOBDevOps/blob/master/docs/AutomatedScript.md">install git </a>  in your system
 
 * **Step 4:**
-Clone this repo :
+Execute the below listed clone command into your repo:
         
         curl -L https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/get.kobman.io | bash
         
@@ -49,14 +49,14 @@ Development environement setup commands:
         
 Deployment commands:
         
-        kob install tobvon
-        kob install tob
-        kob install greenlight
-        kob install kobvon
-        kob install kob        
-        kob install kobdflow
-        kob install kobregistory
-        kob install kobconnect
+        kob install --deploy tobvon [name_space]       
+        kob install --deploy tob [name_space]
+        kob install --deploy greenlight [name_space]
+        kob install --deploy kobvon [name_space]
+        kob install --deploy kob [name_space]
+        kob install --deploy kobdflow [name_space]
+        kob install --deploy kobconnect [name_space]        
+        kob install --deploy kobregistory [name_space]
         
 
         
