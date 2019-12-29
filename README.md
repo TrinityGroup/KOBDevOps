@@ -36,13 +36,13 @@ Run the following commands on the terminal to setup respective environments.
 
 Development environement setup commands:
        
-        kob install --dev tobvon [name_space]       
-        kob install --dev tob [name_space]
-        kob install --dev greenlight [name_space]
-        kob install --dev kobvon [name_space]
-        kob install --dev kob [name_space]
-        kob install --dev kobdflow [name_space]
-        kob install --dev kobconnect [name_space]        
+        kob install --dev tobvon       [name_space]       
+        kob install --dev tob          [name_space]
+        kob install --dev greenlight   [name_space]
+        kob install --dev kobvon       [name_space]
+        kob install --dev kob          [name_space]
+        kob install --dev kobdflow     [name_space]
+        kob install --dev kobconnect   [name_space]        
         kob install --dev kobregistory [name_space]
 
         Example   :
