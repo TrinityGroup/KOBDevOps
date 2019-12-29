@@ -18,9 +18,8 @@
 
 function __kob_list {
 	local candidate="$1"
-
 	if [[ -z "$candidate" ]]; then
- 	sudo less ${KOBMAN_DIR}/tmp/env-list
+	curl -L https://raw.githubusercontent.com/EtricKombat/KOBDevOps/master/list | less
 #	__kobman_list_candidates
 #	else
 #		__kobman_list_versions "$candidate"
