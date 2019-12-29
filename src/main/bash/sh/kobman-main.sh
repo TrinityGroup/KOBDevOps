@@ -274,7 +274,7 @@ then
 	fi
 elif [ "$COMMAND" = "list" ]
 then
-	sudo less ${KOBMAN_DIR}/src/kobman-list.sh
+	__kob_list $COMMAND
 elif [ "$COMMAND" = "status" ]
 then
 	echo "print status"

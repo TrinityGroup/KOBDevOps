@@ -17,12 +17,9 @@
 #
 
 function __kob_list {
-	local candidate="$1"
-	if [[ -z "$candidate" ]]; then
-	curl -L https://raw.githubusercontent.com/EtricKombat/KOBDevOps/master/list | less
-#	__kobman_list_candidates
-#	else
-#		__kobman_list_versions "$candidate"
+	local command="$1"
+	if [[ "$command" -eq "list" ]]; then
+		curl -L https://raw.githubusercontent.com/EtricKombat/KOBDevOps/master/list | less
 	fi
 }
 
@@ -33,7 +30,7 @@ function __kob_list {
 #		else
 #		__kobman_page echo "$(__kobman_secure_curl "${KOBMAN_SERVICE}/${KOBMAN_NAMESPACE}/KOBDevOps/master/list" | bash)"
 #	fi
-}
+#}
 #
 #function __kobman_list_versions {
 #	local candidate versions_csv
