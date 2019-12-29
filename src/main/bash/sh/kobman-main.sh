@@ -184,23 +184,11 @@ then
                         elif [ "$THREE" = "tob" ]
                       	then
                                echo "Starting tob..."
-                    		__kobman_check_proxy
-                        	__kobman_ubuntu_update_upgrade
-                         	__kobman_git_install
-                         	__kobman_python_install
-                         	__kobman_docker_install
-                         	__kobman_npm_install
                          	__kobman_tob_build "$NAME_SPACE"
 				__kobman_tob_start
                          elif [ "$THREE" = "greenlight" ]
                          then
                                  echo "Building greenlight ..."
-                         	 __kobman_check_proxy
-                                 __kobman_ubuntu_update_upgrade
-                        	 __kobman_git_install
-                        	 __kobman_python_install
-                        	 __kobman_docker_install
-                        	 __kobman_npm_install
                          	 __kobman_greenlight_build "$NAME_SPACE"
 		  		 __kobman_greenlight_start
                          else
