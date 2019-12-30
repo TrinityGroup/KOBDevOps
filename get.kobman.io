@@ -241,7 +241,7 @@ if [[ -z $(grep 'kobman-init.sh' "$kobman_zshrc") ]]; then
     echo "Updated existing ${kobman_zshrc}"
 fi
 
-chmod u+xr,go-rwx /home/blockchain/.kobman/candidates
+sudo chmod u+xr,go-rwx /home/blockchain/.kobman/candidates
 echo -e "\n\n\nAll done!\n\n"
 
 echo "Please open a new terminal, or run the following in the existing one:"
