@@ -34,6 +34,8 @@ function __kob_help {
 	__kobman_echo_no_colour "                 use list command for comprehensive list of environments"
 	__kobman_echo_no_colour "                 eg: \$ kob list"
 	__kobman_echo_no_colour "   --dev        :for setting up development environment"
+
+	__kobman_echo_no_colour "   --deploy     :for deploying specific environment"
 	__kobman_echo_no_colour "                 eg: \$ kob --dev install tobvon"
 	__kobman_echo_no_colour "   namespace    :  you can use this for setup dev env from you forked version"
 	__kobman_echo_no_colour "                 eg: \$ kob install --dev tobvon hyperledgerkochi"
