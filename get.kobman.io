@@ -213,7 +213,6 @@ mv "${kobman_stage_folder}/kobman-init.sh" "$kobman_bin_folder"
 mv "$kobman_stage_folder"/kobman-kob* "$kobman_env_folder"
 mv "$kobman_stage_folder"/kobman-tob* "$kobman_env_folder"
 mv "$kobman_stage_folder"/kobman-* "$kobman_src_folder"
-mv "${kobman_stage_folder}/env-list" "$kobman_tmp_folder"
 
 echo "Set version to $KOBMAN_VERSION ..."
 echo "$KOBMAN_VERSION" > "${KOBMAN_DIR}/var/version"
@@ -242,6 +241,7 @@ if [[ -z $(grep 'kobman-init.sh' "$kobman_zshrc") ]]; then
     echo "Updated existing ${kobman_zshrc}"
 fi
 
+chmod u+xr,go-rwx /home/blockchain/.kobman/candidates
 echo -e "\n\n\nAll done!\n\n"
 
 echo "Please open a new terminal, or run the following in the existing one:"
