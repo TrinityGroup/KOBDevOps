@@ -4,6 +4,13 @@
 function __kob_status {
 
 echo "print out the status from candidate folder"
+
+echo "Tree Structure"
+tree .kobman/candidates/
+
+echo "env variable print"
+tree ${KOBMAN_CANDIDATES_DIR}
+
 #	figlet memory upload of 
 #	figlet kobman-status.sh
 #
