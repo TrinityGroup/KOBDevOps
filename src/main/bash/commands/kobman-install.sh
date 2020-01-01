@@ -191,7 +191,8 @@ function __kobman_validate_zip {
 
 function __kobman_vim_fix {
 
-	figlet 'Fixing VIM' -f small
+	sudo figlet Configuring -f small
+	sudo figlet VIM -f small
 	sudo cd
         sudo echo "set nocompatible" > /root/.vimrc
 
@@ -199,7 +200,9 @@ function __kobman_vim_fix {
 
 function __kobman_ubuntu_update_upgrade {
 
-	figlet 'Update/Upgrade' -f small
+	sudo figlet Ubuntu -f small
+	sudo figlet Updation -f small
+	sudo figlet Upgrading -f small
 	sudo apt-get update -y
         sudo apt-get dist-upgrade -y
 	sudo apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev -y
@@ -207,7 +210,8 @@ function __kobman_ubuntu_update_upgrade {
 
 function __kobman_proxy_environment {
 
-	figlet 'unsetting proxy' -f small
+	sudo figlet Unsetting -f small
+	sudo figlet proxy -f small
 	unset http_proxy
         unset ftp_proxy
         unset https_proxy
@@ -279,13 +283,15 @@ fi
 
 function __kobman_git_install {
 
-sudo figlet 'Git Installing' -f small
+sudo figlet Git -f small
+sudo figlet Installing -f small
 sudo apt install git -y
 
 }
 
 function __kobman_python_install {
-	sudo figlet 'Python installing' -f small
+	sudo figlet Python -f small
+	sudo figlet Installing -f small
 	sudo apt install software-properties-common -y
         sudo apt install Python3.7 -y
         sudo apt install python-pip -y
@@ -296,29 +302,31 @@ function __kobman_docker_install {
 
         sudo apt-get remove docker docker-engine docker-ce docker-ce-cli docker.io -y
 	
-	sudo figlet 'Docker Installing' -f small
+	sudo figlet Docker  -f small
+	sudo figlet Installing -f small
 	sudo apt-get update -y
         sudo apt install docker.io -y
-	sudo figlet package permission : -f small
+	sudo figlet Package permission : -f small
 	sudo figlet  allowing apt to use -f small
 	sudo figlet repository over HTTPS -f small
 
 
         sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
 
-       	sudo figlet Adding Docker -f small
+       	sudo figlet Docker -f small
 	sudo figlet official -f small
 	sudo figlet GPG key -f small
 
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
         sudo figlet Verifitying -f small 
-        sudo figlet apt key fingerprint -f small 
+        sudo figlet apt key/fingerprint -f small 
 	sudo apt-key fingerprint 0EBFCD88
 
 
-        sudo figlet docker-stable -f small  
-        sudo figlet repository setting up -f small 
+        sudo figlet Setting up -f small  
+        sudo figlet Docker-stable -f small  
+        sudo figlet Repository -f small 
 	lsb_release -cs
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
 
