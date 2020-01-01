@@ -23,39 +23,39 @@ function __kob_install {
 	version="$2"
 	folder="$3"
 
-	__kobman_check_candidate_present "$candidate" || return 1
-	__kobman_determine_version "$candidate" "$version" "$folder" || return 1
-
-	if [[ -d "${KOBMAN_CANDIDATES_DIR}/${candidate}/${VERSION}" || -h "${KOBMAN_CANDIDATES_DIR}/${candidate}/${VERSION}" ]]; then
-		echo ""
-		__kobman_echo_red "Stop! ${candidate} ${VERSION} is already installed."
-		return 1
-	fi
-
-	if [[ ${VERSION_VALID} == 'valid' ]]; then
-		__kobman_determine_current_version "$candidate"
-		__kobman_install_candidate_version "$candidate" "$VERSION" || return 1
-
-		if [[ "$kobman_auto_answer" != 'true' && "$auto_answer_upgrade" != 'true' && -n "$CURRENT" ]]; then
-			__kobman_echo_confirm "Do you want ${candidate} ${VERSION} to be set as default? (Y/n): "
-			read USE
-		fi
-		if [[ -z "$USE" || "$USE" == "y" || "$USE" == "Y" ]]; then
-			echo ""
-			__kobman_echo_green "Setting ${candidate} ${VERSION} as default."
-			__kobman_link_candidate_version "$candidate" "$VERSION"
-			__kobman_add_to_path "$candidate"
-		fi
-		return 0
-
-	elif [[ "$VERSION_VALID" == 'invalid' && -n "$folder" ]]; then
-		__kobman_install_local_version "$candidate" "$VERSION" "$folder" || return 1
-
-	else
-		echo ""
-		__kobman_echo_red "Stop! $1 is not a valid ${candidate} version."
-		return 1
-	fi
+# 	__kobman_check_candidate_present "$candidate" || return 1
+# 	__kobman_determine_version "$candidate" "$version" "$folder" || return 1
+# 
+# 	if [[ -d "${KOBMAN_CANDIDATES_DIR}/${candidate}/${VERSION}" || -h "${KOBMAN_CANDIDATES_DIR}/${candidate}/${VERSION}" ]]; then
+# 		echo ""
+# 		__kobman_echo_red "Stop! ${candidate} ${VERSION} is already installed."
+# 		return 1
+# 	fi
+# 
+# 	if [[ ${VERSION_VALID} == 'valid' ]]; then
+# 		__kobman_determine_current_version "$candidate"
+# 		__kobman_install_candidate_version "$candidate" "$VERSION" || return 1
+# 
+# 		if [[ "$kobman_auto_answer" != 'true' && "$auto_answer_upgrade" != 'true' && -n "$CURRENT" ]]; then
+# 			__kobman_echo_confirm "Do you want ${candidate} ${VERSION} to be set as default? (Y/n): "
+# 			read USE
+# 		fi
+# 		if [[ -z "$USE" || "$USE" == "y" || "$USE" == "Y" ]]; then
+# 			echo ""
+# 			__kobman_echo_green "Setting ${candidate} ${VERSION} as default."
+# 			__kobman_link_candidate_version "$candidate" "$VERSION"
+# 			__kobman_add_to_path "$candidate"
+# 		fi
+# 		return 0
+# 
+# 	elif [[ "$VERSION_VALID" == 'invalid' && -n "$folder" ]]; then
+# 		__kobman_install_local_version "$candidate" "$VERSION" "$folder" || return 1
+# 
+# 	else
+# 		echo ""
+# 		__kobman_echo_red "Stop! $1 is not a valid ${candidate} version."
+# 		return 1
+# 	fi
 }
 
 function __kobman_install_candidate_version {
@@ -366,8 +366,7 @@ function __kobman_npm_install {
         npm config rm registry
         npm cache clean
 
-        sudo sudo apt-get remove nodejs nodejs-dev node-gyp libssl1.0-dev npm
-        sudo echo "Ignore!! these errors"
+        sudo sudo apt-get remove nodejs nodejs-dev node-gyp libssl1.0-dev npm -y
  
 	sudo figlet 'NPM ' -f small
 	sudo figlet Installing.. -f small
