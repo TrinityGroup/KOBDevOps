@@ -295,7 +295,7 @@ function __kobman_python_install {
 	sudo apt install software-properties-common -y
         sudo apt install Python3.7 -y
         sudo apt install python-pip -y
-
+	pip install --upgrade pip
 }
 
 function __kobman_docker_install {
