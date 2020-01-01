@@ -29,10 +29,7 @@ To install KOBMAN locally running against your local server, run the following c
 	
 	$ source ~/.kobman/bin/kobman-init.sh
 
-Or run install locally with Production configuration:
 
-	$ ./gradlew -Penv=production install
-	$ source ~/.sdkman/bin/sdkman-init.sh
 
 ### Local Environment Installation
 
