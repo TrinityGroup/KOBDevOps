@@ -4,6 +4,7 @@
 function __kob_status {
 
 echo "Kobman Environment Tree Structure"
+
 tree .kobman/candidates/
 
 # echo "env variable print"

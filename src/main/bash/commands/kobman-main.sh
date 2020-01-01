@@ -265,7 +265,6 @@ then
 	__kob_list $COMMAND
 elif [ "$COMMAND" = "status" ]
 then
-	echo "print status"
 	__kob_status	
 else
 	echo "verifiy your command and try again"
