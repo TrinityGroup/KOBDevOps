@@ -70,6 +70,13 @@ Other useful commands:
         kob help         
         kob uninstall        
         kob version   
+
+## Adding new features
+
+For new features creation , you have to edit (add file 'kobman-*' ) extention script in the below listed directory,test it & publish
+
+        ./kobman/env/
+
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
