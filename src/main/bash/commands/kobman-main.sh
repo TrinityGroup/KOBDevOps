@@ -129,6 +129,7 @@ then
     				__kobman_python_install
  				__kobman_docker_install
 	     			__kobman_npm_install
+				__kobman_visual_studio_install
 				__kobman_tobvon_build "$NAME_SPACE"
 			elif [ "$THREE" = "tob" ]
 			then	
@@ -139,6 +140,7 @@ then
     				__kobman_python_install
  				__kobman_docker_install
 	     			__kobman_npm_install
+				__kobman_visual_studio_install
 				__kobman_tob_build "$NAME_SPACE"
 			elif [ "$THREE" = "greenlight" ]
 			then	
@@ -149,6 +151,7 @@ then
     				__kobman_python_install
  				__kobman_docker_install
 	     			__kobman_npm_install
+				__kobman_visual_studio_install
 				__kobman_greenlight_build "$NAME_SPACE"
 			else
 				echo "verifiy your command and try again"
@@ -179,7 +182,8 @@ then
 	                        __kobman_python_install
 	                        __kobman_docker_install
 	                        __kobman_npm_install
-       		               	__kobman_tobvon_build "$NAME_SPACE"
+       		       		__kobman_visual_studio_install        
+				__kobman_tobvon_build "$NAME_SPACE"
 				__kobman_tobvon_start
                         elif [ "$THREE" = "tob" ]
                       	then
