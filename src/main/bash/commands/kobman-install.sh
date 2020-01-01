@@ -191,6 +191,7 @@ function __kobman_validate_zip {
 
 function __kobman_vim_fix {
 
+	figlet 'Fixing VIM' -f small
 	sudo cd
         sudo echo "set nocompatible" > /root/.vimrc
 
@@ -198,6 +199,7 @@ function __kobman_vim_fix {
 
 function __kobman_ubuntu_update_upgrade {
 
+	figlet 'Update/Upgrade' -f small
 	sudo apt-get update -y
         sudo apt-get dist-upgrade -y
 	sudo apt-get -y install build-essential nghttp2 libnghttp2-dev libssl-dev -y
@@ -205,6 +207,7 @@ function __kobman_ubuntu_update_upgrade {
 
 function __kobman_proxy_environment {
 
+	figlet 'unsetting proxy' -f small
 	unset http_proxy
         unset ftp_proxy
         unset https_proxy
@@ -281,7 +284,7 @@ sudo apt install git -y
 }
 
 function __kobman_python_install {
-
+	sudo figlet '' -f small
 	sudo apt install software-properties-common -y
         sudo apt install Python3.7 -y
         sudo apt install python-pip -y
@@ -291,7 +294,8 @@ function __kobman_python_install {
 function __kobman_docker_install {
 
         sudo apt-get remove docker docker-engine docker-ce docker-ce-cli docker.io -y
-	sudo figlet Installing Docker ..
+	
+	sudo figlet 'Docker Installing' -f small
 	sudo apt-get update -y
         sudo apt install docker.io -y
 	sudo figlet package permission - allowing apt to use a repository over HTTPS
@@ -310,13 +314,12 @@ function __kobman_docker_install {
 	lsb_release -cs
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
 
-        sudo figlet Docker engine installation ... 
+	sudo figlet 'Docker-Engin Installing ' -f small
 	sudo apt-get update -y
         sudo apt-get install docker-ce docker-ce-cli containerd.io -y
         sudo docker run hello-world
 
-
-        sudo figlet Docker-Compose Installation
+	sudo figlet 'Docker-Compose Installing ' -f small
 	sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
         sudo chmod +x /usr/local/bin/docker-compose
@@ -327,7 +330,7 @@ function __kobman_docker_install {
         sudo systemctl enable docker
         sudo docker --version
         sudo docker-compose --version
-        sudo figlet Docker Login 
+	sudo figlet 'Docker Login' -f small
 	sudo rm -rf /root/.docker/
         sudo docker login
 
@@ -341,8 +344,7 @@ function __kobman_docker_install {
 
 function __kobman_npm_install {
 
-        sudo figlet Purging already existing NPM Components... 
-	
+	sudo figlet 'Purging existing NPM components' -f small
 	npm config rm proxy
         npm config rm proxy --global
 
@@ -354,8 +356,8 @@ function __kobman_npm_install {
 
         sudo sudo apt-get remove nodejs nodejs-dev node-gyp libssl1.0-dev npm
         sudo echo "Ignore!! these errors"
-
-	sudo figlet NPM installation
+ 
+	sudo figlet 'NPM installing' -f small
         sudo sudo apt-get install nodejs nodejs-dev node-gyp libssl1.0-dev npm -y
 
         npm config set https-proxy http://${uname}:${pword}@${prox}:${port}--global
@@ -373,7 +375,8 @@ function __kobman_npm_install {
 
 function __kobman_visual_studio_install {
 
-	figlet Visual Studio Installation...
+	
+	sudo figlet 'Visual-Studio Installing..' -f small
 	sudo apt update
 	sudo apt install software-properties-common apt-transport-https wget
 	wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
