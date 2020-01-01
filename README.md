@@ -34,6 +34,45 @@ Or run install locally with Production configuration:
 	$ ./gradlew -Penv=production install
 	$ source ~/.sdkman/bin/sdkman-init.sh
 
+### Local Environment Installation
+
+Run the following commands on the terminal to setup respective environments.
+	
+	Development environement setup commands:
+       
+        kob install --dev tobvon       [name_space]       
+        kob install --dev tob          [name_space]
+        kob install --dev greenlight   [name_space]
+        kob install --dev kobvon       [name_space]
+        kob install --dev kob          [name_space]
+        kob install --dev kobdflow     [name_space]
+        kob install --dev kobconnect   [name_space]        
+        kob install --dev kobregistory [name_space]
+
+        Example   :
+            kob install --dev tob hyperledgerkochi
+        
+Deployment commands:
+        
+        kob install tobvon
+        kob install tob
+        kob install greenlight
+        kob install kobvon
+        kob install kob        
+        kob install kobdflow
+        kob install kobregistory
+        kob install kobconnect
+        
+
+        
+Other useful commands:        
+  
+        kob install      
+        kob list
+        kob status        
+        kob help         
+        kob uninstall        
+        kob version   
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
