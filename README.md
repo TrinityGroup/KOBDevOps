@@ -1,47 +1,49 @@
-# KOBDevOps
-
-Repository for all KOB DevOps Tools and Scripts
-
-## Steps to setup developmet environment for KochiOrgBook Projects
-
-### QuickStart Guide:
-* **Step 1:**
-Download & use <a href="https://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-Win.exe">Oracle's VirtualBox </a> as Hypervisor
-
-* **Step 2:**
-Download & use 64 bit <a href="https://ubuntu.com/download/desktop/thank-you?version=18.04.3&architecture=amd64">Ubuntu 18.04 ISO</a> Distribution
-* **Step 3:**
-Once Ubuntu 18.04 is hosted on VirtualBox, <a href="https://github.com/EtricKombat/KOBDevOps/blob/master/docs/AutomatedScript.md">install git </a>  in your system
-
-* **Step 4:**
-Execute the below listed clone command into your repo:
-        
-        curl -L https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/get.kobman.io | bash
-        
-and try out the shell commands listed at the bottom of this page.
-
-* **Step 5:**
-  Docker hub <a href="https://hub.docker.com/signup">signing up</a> necessary [requires to <a href="https://id.docker.com/login/?next=%2Fid%2Foauth%2Fauthorize%2F%3Fclient_id%3D43f17c5f-9ba4-4f13-853d-9d0074e349a7%26nonce%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI0M2YxN2M1Zi05YmE0LTRmMTMtODUzZC05ZDAwNzRlMzQ5YTciLCJleHAiOjE1NzM1NDEzNTAsImlhdCI6MTU3MzU0MTA1MCwicmZwIjoiQ1B0Q1VVLUNUUmsxNnhWSlN0TFlqUT09IiwidGFyZ2V0X2xpbmtfdXJpIjoiaHR0cHM6Ly9odWIuZG9ja2VyLmNvbSJ9.v07IZvFlmimZkanC1VgC-FN2K0paxjFvAMqyXEiirtk%26redirect_uri%3Dhttps%253A%252F%252Fhub.docker.com%252Fsso%252Fcallback%26response_type%3Dcode%26scope%3Dopenid%26state%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiI0M2YxN2M1Zi05YmE0LTRmMTMtODUzZC05ZDAwNzRlMzQ5YTciLCJleHAiOjE1NzM1NDEzNTAsImlhdCI6MTU3MzU0MTA1MCwicmZwIjoiQ1B0Q1VVLUNUUmsxNnhWSlN0TFlqUT09IiwidGFyZ2V0X2xpbmtfdXJpIjoiaHR0cHM6Ly9odWIuZG9ja2VyLmNvbSJ9.v07IZvFlmimZkanC1VgC-FN2K0paxjFvAMqyXEiirtk">sign in</a> as an docker user ]
 
 
+# KOBMAN! CLI
+### The KochiOrgBook Manager Command Line Interface
 
-## How to use the scripts 
-Run the following commands on the terminal to setup respective environments. 
+[![Build Status](https://travis-ci.org/sdkman/sdkman-cli.svg?branch=master)](https://travis-ci.org/sdkman/sdkman-cli)
+[![Latest Version](https://api.bintray.com/packages/sdkman/generic/sdkman-cli/images/download.svg) ](https://bintray.com/sdkman/generic/sdkman-cli/_latestVersion)
+[![Backers on Open Collective](https://opencollective.com/sdkman/backers/badge.svg)](#backers) 
+[![Sponsors on Open Collective](https://opencollective.com/sdkman/sponsors/badge.svg)](#sponsors)
+[![Slack](https://slack.sdkman.io/badge.svg)](https://slack.sdkman.io)
+
+KOBMAN is a tool for managing parallel Versions of multiple KochiOrgBook projects on any Unix based system. It provides a convenient command line interface for installing, removing and listing Environments.
+
+See documentation on the [KOBMAN! website](https://sdkman.io).
+
+## Installation
+
+Open your favourite terminal and enter the following:
+
+    $ curl -L https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/get.kobman.io | bash
+
+If the environment needs tweaking for KOBMAN to be installed, the installer will prompt you accordingly and ask you to restart.
+
+
+### Local Installation
+
+To install KOBMAN locally running against your local server, run the following commands:
+
+	
+	$ source ~/.kobman/bin/kobman-init.sh
 
 
 
-```code
+### Local Environment Installation
 
-
-Development environement setup commands:
+Run the following commands on the terminal to setup respective environments.
+	
+	Development environement setup commands:
        
-        kob install --dev tobvon [name_space]       
-        kob install --dev tob [name_space]
-        kob install --dev greenlight [name_space]
-        kob install --dev kobvon [name_space]
-        kob install --dev kob [name_space]
-        kob install --dev kobdflow [name_space]
-        kob install --dev kobconnect [name_space]        
+        kob install --dev tobvon       [name_space]       
+        kob install --dev tob          [name_space]
+        kob install --dev greenlight   [name_space]
+        kob install --dev kobvon       [name_space]
+        kob install --dev kob          [name_space]
+        kob install --dev kobdflow     [name_space]
+        kob install --dev kobconnect   [name_space]        
         kob install --dev kobregistory [name_space]
 
         Example   :
@@ -49,14 +51,14 @@ Development environement setup commands:
         
 Deployment commands:
         
-        kob install --deploy tobvon [name_space]       
-        kob install --deploy tob [name_space]
-        kob install --deploy greenlight [name_space]
-        kob install --deploy kobvon [name_space]
-        kob install --deploy kob [name_space]
-        kob install --deploy kobdflow [name_space]
-        kob install --deploy kobconnect [name_space]        
-        kob install --deploy kobregistory [name_space]
+        kob install tobvon
+        kob install tob
+        kob install greenlight
+        kob install kobvon
+        kob install kob        
+        kob install kobdflow
+        kob install kobregistory
+        kob install kobconnect
         
 
         
@@ -67,5 +69,40 @@ Other useful commands:
         kob status        
         kob help         
         kob uninstall        
-        kob version      
-        
+        kob version   
+
+## Adding new features
+
+For new features creation , you have to edit (add file 'kobman-*' ) extention script in the below listed directory,test it & publish
+
+        ./kobman/env/
+
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/sdkman/sdkman-cli/graphs/contributors"><img src="https://opencollective.com/sdkman/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! [[Become a backer](https://opencollective.com/sdkman#backer)]
+
+<a href="https://opencollective.com/sdkman#backers" target="_blank"><img src="https://opencollective.com/sdkman/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/sdkman#sponsor)]
+
+<a href="https://opencollective.com/sdkman/sponsor/0/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/1/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/2/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/3/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/4/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/5/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/6/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/7/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/8/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/sdkman/sponsor/9/website" target="_blank"><img src="https://opencollective.com/sdkman/sponsor/9/avatar.svg"></a>
+
+
