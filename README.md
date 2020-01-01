@@ -9,7 +9,7 @@
 [![Sponsors on Open Collective](https://opencollective.com/sdkman/sponsors/badge.svg)](#sponsors)
 [![Slack](https://slack.sdkman.io/badge.svg)](https://slack.sdkman.io)
 
-KOBMAN is a tool for managing parallel Versions of multiple KochiOrgBook projects on any Unix based system. It provides a convenient command line interface for installing, switching, removing and listing Candidates.
+KOBMAN is a tool for managing parallel Versions of multiple KochiOrgBook projects on any Unix based system. It provides a convenient command line interface for installing, removing and listing Environments.
 
 See documentation on the [KOBMAN! website](https://sdkman.io).
 
