@@ -3,9 +3,9 @@
 
 function __kob_status {
 
-echo "Kobman Environment Tree Structure"
+sudo figlet status -f small
+sudo tree -d -I ${KOBMAN_CANDIDATES_DIR}
 
-sudo tree -d .kobman/candidates/
 
 # echo "env variable print"
 # tree ${KOBMAN_CANDIDATES_DIR}
