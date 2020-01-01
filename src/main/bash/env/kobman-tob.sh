@@ -1,13 +1,16 @@
 #!/bin/bash 
                                                               
                                                               
-figlet TheOrgbook
+# sudo figlet TOB-TheOrgBook -f small
+# sudo figlet Memory upload -f small
+
 
 function __kobman_tob_build
 {
 	        kobman_namespace="$1"
-                figlet Building TheOrgBook
-                figlet from ${kobman_namespace}
+		sudo figlet TOB-TheOrgBook -f small
+		sudo figlet Building -f small
+		sudo figlet ${kobman_namespace} -f small 
                 cd ${KOBMAN_CANDIDATES_DIR}
                 sudo git clone https://github.com/${kobman_namespace}/TheOrgBook.git
                 sudo wget --no-proxy https://github.com/openshift/source-to-image/releases/download/v1.1.14/source-to-image-v1.1.14-874754de-linux-amd64.tar.gz
@@ -24,8 +27,8 @@ function __kobman_tob_start
 {
 
 
-
-	figlet starting TheOrgBook
+	sudo figlet TOB-TheOrgBook -f small
+	sudo figlet Starting -f small
 	sudo chmod u+xr,go-rwx ${KOBMAN_CANDIDATES_DIR}
 	sudo chmod go+x /
 	sudo chmod go+x /root
@@ -40,7 +43,8 @@ function __kobman_tob_start
 function __kobman_tob_uninstall
 {
 	sudo chmod 777 ${KOBMAN_CANDIDATES_DIR}
-	figlet Removing TheOrgBook
+	sudo figlet TOB-TheOrgBook -f small
+	sudo figlet Removing -f small
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo TheOrgBook/docker/manage rm
 	sudo rm ${KOBMAN_CANDIDATES_DIR}/source-*

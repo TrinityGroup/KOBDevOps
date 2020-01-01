@@ -1,28 +1,20 @@
 #!/bin/bash 
 
-                                                                                                                      
-echo "  _    ______  _   __      __ ______  ____ "
-echo " | |  / / __ \/ | / /     / //_/ __ \/ __ )"
-echo " | | / / / / /  |/ /_____/ ,< / / / / __ | "
-echo " | |/ / /_/ / /|  /_____/ /| / /_/ / /_/ / "
-echo " |___/\____/_/ |_/     /_/ |_\____/_____/  "
-
+# sudo figlet KOB-VON -f small
+# sudo figlet Memory upload -f small
 
 
 
 Function_VonBuild()
 {
-echo "     ____        _ __    ___                   "
-echo "    / __ )__  __(_) /___/ (_)___  ____ _       "
-echo "   / __  / / / / / / __  / / __ \/ __  /       "
-echo "  / /_/ / /_/ / / / /_/ / / / / / /_/ /  _ _ _ "
-echo " /_____/\__,_/_/_/\__,_/_/_/ /_/\__, /  (_|_|_) "
-echo "                               /____/           "
 
-
-		cd $KOB_env_Dir
-                sudo echo "Build KOB-Von instance in your system"
-                sudo git clone https://github.com/hyperledgerkochi/von-network.git
+		kobman_namespace="$1"
+ 	
+		sudo figlet KOB-VON -f small
+		sudo figlet Building -f small
+		sudo figlet ${kobman_namespace} -f small  
+		cd ${KOBMAN_CANDIDATES_DIR}
+                sudo git clone https://github.com/${kobman_namespace}/von-network.git
                 sudo von-network/manage rm
                 sudo von-network/manage build
 
@@ -30,21 +22,19 @@ echo "                               /____/           "
 
 Function_VonStart()
 {
-echo "    _____ __             __  _                  "
-echo "   / ___// /_____ ______/ /_(_)___  ____ _      "
-echo "   \__ \/ __/ __  / ___/ __/ / __ \/ __  /       "
-echo "  ___/ / /_/ /_/ / /  / /_/ / / / / /_/ /  _ _ _"
-echo " /____/\__/\__,_/_/   \__/_/_/ /_/\__, /  (_|_|_) "
-echo "                                 /____/           "
 
 
-	cd $KOB_env_Dir
+ 	sudo figlet KOB-VON -f small
+	sudo figlet Starting -f small
+	cd ${KOBMAN_CANDIDATES_DIR}
         sudo von-network/manage start
 }
 
 fun_uninstall_KOBVON()
 {
-	cd $KOB_env_Dir
+ 	sudo figlet KOB-VON -f small
+	sudo figlet Removing -f small
+	cd ${KOBMAN_CANDIDATES_DIR}
         sudo von-network/manage start
 	sudo von-network/manage rm
 	sudo rm -rf von-network/

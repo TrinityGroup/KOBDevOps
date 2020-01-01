@@ -5,7 +5,7 @@ function __kob_status {
 
 echo "Kobman Environment Tree Structure"
 
-sudo tree .kobman/candidates/
+sudo tree -d .kobman/candidates/
 
 # echo "env variable print"
 # tree ${KOBMAN_CANDIDATES_DIR}

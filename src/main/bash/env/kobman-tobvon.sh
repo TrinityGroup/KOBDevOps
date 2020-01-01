@@ -1,25 +1,17 @@
 #!/bin/bash
-
-
-
                                                                                                                                    
-
-echo "  _    ______  _   __    __________  ____ "
-echo " | |  / / __ \/ | / /   /_  __/ __ \/ __ )"
-echo " | | / / / / /  |/ /_____/ / / / / / __  |"
-echo " | |/ / /_/ / /|  /_____/ / / /_/ / /_/ / "
-echo " |___/\____/_/ |_/     /_/  \____/_____/  "
-
+# sudo figlet TOB-VON -f small
+# sudo figlet Memory upload -f small
 
 function __kobman_tobvon_build
 {
 
 		
 		kobman_namespace="$1"	
-		figlet Building Von Network
-		figlet from ${kobman_namespace}
+		sudo figlet TOB-VON -f small
+		sudo figlet Building -f small
+		sudo figlet ${kobman_namespace} -f small 
 		cd ${KOBMAN_CANDIDATES_DIR}
-		sudo echo "Build TOB-Von instance in your system"
                 sudo git clone https://github.com/${kobman_namespace}/von-network.git
                 sudo von-network/manage rm
                 sudo von-network/manage build
@@ -30,7 +22,8 @@ function __kobman_tobvon_start
 {
 
 
-	figlet tobvon starting-up 
+	sudo figlet TOB-VON -f small
+	sudo figlet Starting -f small
 	cd ${KOBMAN_CANDIDATES_DIR}
         sudo von-network/manage start
 }
@@ -38,7 +31,8 @@ function __kobman_tobvon_start
 
 function __kobman_tobvon_uninstall
 {
-	figlet tobvon removing
+	sudo figlet TOB-VON -f small
+	sudo figlet Removing -f small
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo rm -rf von-network/	
 }

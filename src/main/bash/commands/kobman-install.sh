@@ -279,12 +279,13 @@ fi
 
 function __kobman_git_install {
 
+sudo figlet 'Git Installing' -f small
 sudo apt install git -y
 
 }
 
 function __kobman_python_install {
-	sudo figlet '' -f small
+	sudo figlet 'Python installing' -f small
 	sudo apt install software-properties-common -y
         sudo apt install Python3.7 -y
         sudo apt install python-pip -y
@@ -298,28 +299,37 @@ function __kobman_docker_install {
 	sudo figlet 'Docker Installing' -f small
 	sudo apt-get update -y
         sudo apt install docker.io -y
-	sudo figlet package permission - allowing apt to use a repository over HTTPS
+	sudo figlet package permission : -f small
+	sudo figlet  allowing apt to use -f small
+	sudo figlet repository over HTTPS -f small
 
 
         sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
 
-       	sudo figlet Adding Docker official GPG key 
+       	sudo figlet Adding Docker -f small
+	sudo figlet official -f small
+	sudo figlet GPG key -f small
+
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-        sudo figlet Verifitying apt key fingerprint 
+        sudo figlet Verifitying -f small 
+        sudo figlet apt key fingerprint -f small 
 	sudo apt-key fingerprint 0EBFCD88
 
 
-        sudo figlet docker-stable repository setting up 
+        sudo figlet docker-stable -f small  
+        sudo figlet repository setting up -f small 
 	lsb_release -cs
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
 
-	sudo figlet 'Docker-Engin Installing ' -f small
+	sudo figlet Docker-Engine -f small
+	sudo figlet Installing -f small
 	sudo apt-get update -y
         sudo apt-get install docker-ce docker-ce-cli containerd.io -y
         sudo docker run hello-world
 
-	sudo figlet 'Docker-Compose Installing ' -f small
+	sudo figlet Docker-Compose -f small
+	sudo figlet Installing -f small
 	sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
         sudo chmod +x /usr/local/bin/docker-compose
@@ -330,7 +340,8 @@ function __kobman_docker_install {
         sudo systemctl enable docker
         sudo docker --version
         sudo docker-compose --version
-	sudo figlet 'Docker Login' -f small
+	sudo figlet Docker  -f small
+	sudo figlet Login -f small
 	sudo rm -rf /root/.docker/
         sudo docker login
 
@@ -344,7 +355,8 @@ function __kobman_docker_install {
 
 function __kobman_npm_install {
 
-	sudo figlet 'Purging existing NPM components' -f small
+	sudo figlet Purging existing -f small
+	sudo figlet NPM components -f small
 	npm config rm proxy
         npm config rm proxy --global
 
@@ -357,7 +369,8 @@ function __kobman_npm_install {
         sudo sudo apt-get remove nodejs nodejs-dev node-gyp libssl1.0-dev npm
         sudo echo "Ignore!! these errors"
  
-	sudo figlet 'NPM installing' -f small
+	sudo figlet 'NPM ' -f small
+	sudo figlet Installing.. -f small
         sudo sudo apt-get install nodejs nodejs-dev node-gyp libssl1.0-dev npm -y
 
         npm config set https-proxy http://${uname}:${pword}@${prox}:${port}--global
@@ -376,7 +389,8 @@ function __kobman_npm_install {
 function __kobman_visual_studio_install {
 
 	
-	sudo figlet 'Visual-Studio Installing..' -f small
+	sudo figlet Visual-Studio -f small
+	sudo figlet Installing.. -f small
 	sudo apt update
 	sudo apt install software-properties-common apt-transport-https wget
 	wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
