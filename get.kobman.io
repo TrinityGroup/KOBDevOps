@@ -241,7 +241,8 @@ if [[ -z $(grep 'kobman-init.sh' "$kobman_zshrc") ]]; then
     echo "Updated existing ${kobman_zshrc}"
 fi
 
-sudo chmod u+xr,go-rwx /home/blockchain/.kobman/candidates
+sudo chmod a+rwx .
+sudo chmod u+xr /home/blockchain/.kobman/candidates
 sudo chmod go+x /
 sudo chmod go+x /root
 echo -e "\n\n\nAll done!\n\n"
