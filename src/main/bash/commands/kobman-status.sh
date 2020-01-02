@@ -4,7 +4,7 @@
 function __kob_status {
 
 sudo figlet status -f small
-sudo tree -d -I ${KOBMAN_CANDIDATES_DIR}
+sudo tree -d ${KOBMAN_CANDIDATES_DIR}
 
 
 # echo "env variable print"

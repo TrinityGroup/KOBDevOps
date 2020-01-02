@@ -267,9 +267,9 @@ then
 elif [ "$COMMAND" = "list" ]
 then
 	__kob_list $COMMAND
-elif [ "$COMMAND" = "status" ]
-then
-	__kob_status	
+#elif [ "$COMMAND" = "status" ]
+#then
+#	__kob_status	
 else
 	echo "verifiy your command and try again"
 fi		
