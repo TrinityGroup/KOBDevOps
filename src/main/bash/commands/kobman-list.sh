@@ -1,6 +1,9 @@
 #!/bin/bash
 
 function __kob_list {
-https://raw.githubusercontent.com/EtricKombat/KOBDevOps/master/list | less
+
+echo printout list
+
+# https://raw.githubusercontent.com/TrinityGroup/KOBDevOps/master/list | less
 
 }
