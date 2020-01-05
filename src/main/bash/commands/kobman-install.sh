@@ -18,6 +18,7 @@
 
 function __kob_install {
 
+figlet kob install Triggered
 	COMMAND="$1"
         QUALIFIER="$2"
         THREE="$3"
@@ -48,10 +49,22 @@ function __kob_install {
                         elif [ "$THREE" = "tobvon" ]
                         then
                                 echo "Building tobvon..."
-                                if [[ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]]; then
+                                __kobman_check_proxy
+                                __kobman_ubuntu_update_upgrade
+                                __kobman_git_install
+                                __kobman_python_install
+                                __kobman_docker_install
+                                __kobman_npm_install
+                                __kobman_visual_studio_install
+                                __kobman_tobvon_build "$NAME_SPACE"
+ 			elif [ "$THREE" = "tob" ]
+                        then
+                                echo "Building tob..."
+                                if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
+				then
                                          figlet avoid 
                                          figlet repetitive 
-                                         figlet steps
+                                         figlet Dependancy(npm,git..etc) 
                                          __kobman_check_proxy
                                          __kobman_ubuntu_update_upgrade
                                          __kobman_git_install
@@ -60,17 +73,6 @@ function __kob_install {
                                          __kobman_npm_install
                                          __kobman_visual_studio_install
                                 fi
-                                __kobman_tobvon_build "$NAME_SPACE"
- 			elif [ "$THREE" = "tob" ]
-                        then
-                                echo "Building tob..."
-                                __kobman_check_proxy
-                                __kobman_ubuntu_update_upgrade
-                                __kobman_git_install
-                                __kobman_python_install
-                                __kobman_docker_install
-                                __kobman_npm_install
-                                __kobman_visual_studio_install
                                 __kobman_tob_build "$NAME_SPACE"
                         elif [ "$THREE" = "greenlight" ]
                         then
@@ -174,9 +176,9 @@ function __kob_install {
                         fi
                 ;;
 
-        esac
+       		 esac
 
-fi
+	fi
 
 
 # 	__kobman_check_candidate_present "$candidate" || return 1
