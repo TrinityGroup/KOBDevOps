@@ -5,7 +5,7 @@ function __kob_status {
 
 sudo figlet status -f small
 sudo ls ${KOBMAN_CANDIDATES_DIR}
-sudo rm *.zip 2> /dev/null
+sudo rm *.tar.gz 2> /dev/null
 
 # echo "env variable print"
 # tree ${KOBMAN_CANDIDATES_DIR}
