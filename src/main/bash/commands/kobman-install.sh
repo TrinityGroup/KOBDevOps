@@ -19,6 +19,7 @@
 function __kob_install {
 
 figlet kob install Triggered
+local COMMAND,QUALIFIER,THREE,NAME_SPACE
 	COMMAND="$1"
         QUALIFIER="$2"
         THREE="$3"
