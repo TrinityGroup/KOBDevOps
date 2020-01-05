@@ -18,36 +18,42 @@
 
 function __kob_install {
 
-figlet kob install Triggered
-local COMMAND,QUALIFIER,THREE,NAME_SPACE
-	COMMAND="$1"
-        QUALIFIER="$2"
-        THREE="$3"
-        NAME_SPACE=${4:-EtricKombat}
+	figlet $COMMAND
+	figlet $QUALIFIER
+	figlet $THREE
+	figlet $NAME_SPACE 
+	figlet kob install Triggered
+   	figlet kob install Local variable created 	
+	local command,qualifier,three,name_space 
+
+	command=$COMMAND
+	qualifier=$QUALIFIER
+	three=$THREE
+	name_space=$NAME_SPACE 
 	
-	if [ "$COMMAND" = "install" ]
+	if [ "$command" = "install" ]
 	then
-        	case $QUALIFIER in
+        	case $qualifier in
                 --dev)
-                        if [ "$THREE" = "all" ]
+                        if [ "$three" = "all" ]
                         then
                                 echo "working all parameter"
-                        elif [ "$THREE" = "kobvon" ]
+                        elif [ "$three" = "kobvon" ]
                         then
                                 echo "Building kobvon..."
-                        elif [ "$THREE" = "kob" ]
+                        elif [ "$three" = "kob" ]
                         then
                                 echo "Building kob..."
-                        elif [ "$THREE" = "kobdflow" ]
+                        elif [ "$three" = "kobdflow" ]
                         then
                                 echo "Building kobdflow..."
-                        elif [ "$THREE" = "kobconnect" ]
+                        elif [ "$three" = "kobconnect" ]
                         then
                                 echo "Building kobconnect..."
-                        elif [ "$THREE" = "kobregistory" ]
+                        elif [ "$three" = "kobregistory" ]
                         then
                                 echo "Building kobregistory..."
-                        elif [ "$THREE" = "tobvon" ]
+                        elif [ "$three" = "tobvon" ]
                         then
                                 echo "Building tobvon..."
                                 __kobman_check_proxy
@@ -58,7 +64,7 @@ local COMMAND,QUALIFIER,THREE,NAME_SPACE
                                 __kobman_npm_install
                                 __kobman_visual_studio_install
                                 __kobman_tobvon_build "$NAME_SPACE"
- 			elif [ "$THREE" = "tob" ]
+ 			elif [ "$three" = "tob" ]
                         then
                                 echo "Building tob..."
                                 if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
@@ -76,7 +82,7 @@ local COMMAND,QUALIFIER,THREE,NAME_SPACE
                                          __kobman_visual_studio_install
                                 fi
                                 __kobman_tob_build "$NAME_SPACE"
-                        elif [ "$THREE" = "greenlight" ]
+                        elif [ "$three" = "greenlight" ]
                         then
                                 echo "Building greenlight ..."
                                 __kobman_check_proxy
@@ -92,22 +98,22 @@ local COMMAND,QUALIFIER,THREE,NAME_SPACE
                         fi
                 ;;
                 --deploy)
-                        if [ "$THREE" = "kobvon" ]
+                        if [ "$three" = "kobvon" ]
                         then
                                 echo "Starting kobvon..."
-                        elif [ "$THREE" = "kob" ]
+                        elif [ "$three" = "kob" ]
                         then
                                 echo "starting kob..."
-                        elif [ "$THREE" = "kobdflow" ]
+                        elif [ "$three" = "kobdflow" ]
                         then
                                 echo "Starting kobdflow..."
-                        elif [ "$THREE" = "kobconnect" ]
+                        elif [ "$three" = "kobconnect" ]
                         then
                                 echo "Starting kobconnect..."
-                        elif [ "$THREE" = "kobregistory" ]
+                        elif [ "$three" = "kobregistory" ]
                         then
                                 echo "Starting kobregistory..."
- 			elif [ "$THREE" = "tobvon" ]
+ 			elif [ "$three" = "tobvon" ]
                         then
                                 echo "Starting tobvon..."
                                 __kobman_check_proxy
@@ -119,12 +125,12 @@ local COMMAND,QUALIFIER,THREE,NAME_SPACE
                                 __kobman_visual_studio_install
                                 __kobman_tobvon_build "$NAME_SPACE"
                                 __kobman_tobvon_start
-                        elif [ "$THREE" = "tob" ]
+                        elif [ "$three" = "tob" ]
                         then
                                echo "Starting tob..."
                                 __kobman_tob_build "$NAME_SPACE"
                                 __kobman_tob_start
-                         elif [ "$THREE" = "greenlight" ]
+                         elif [ "$three" = "greenlight" ]
                          then
                                  echo "Building greenlight ..."
                                  __kobman_greenlight_build "$NAME_SPACE"
@@ -172,7 +178,7 @@ local COMMAND,QUALIFIER,THREE,NAME_SPACE
                                 __kobman_greenlight_start
                 ;;
                 *)
-                        if [ -z $QUALIFIER ]
+                        if [ -z $qualifier ]
                         then
                                 echo "Default Projects are tobvon,tob,greenlight"
                         fi
