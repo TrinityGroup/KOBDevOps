@@ -21,10 +21,10 @@ function __kob_install {
 	figlet $COMMAND
 	figlet $QUALIFIER
 	figlet $THREE
-	figlet $NAME_SPACE 
+	figlet $NAME_SPACE
 	figlet kob install Triggered
    	figlet kob install Local variable created 	
-	local command,qualifier,three,name_space 
+	local command qualifier three name_space 
 
 	command=$COMMAND
 	qualifier=$QUALIFIER
@@ -63,7 +63,7 @@ function __kob_install {
                                 __kobman_docker_install
                                 __kobman_npm_install
                                 __kobman_visual_studio_install
-                                __kobman_tobvon_build "$NAME_SPACE"
+                                __kobman_tobvon_build "$name_space"
  			elif [ "$three" = "tob" ]
                         then
                                 echo "Building tob..."
@@ -81,7 +81,7 @@ function __kob_install {
                                          __kobman_npm_install
                                          __kobman_visual_studio_install
                                 fi
-                                __kobman_tob_build "$NAME_SPACE"
+                                __kobman_tob_build "$name_space"
                         elif [ "$three" = "greenlight" ]
                         then
                                 echo "Building greenlight ..."
@@ -92,7 +92,7 @@ function __kob_install {
                                 __kobman_docker_install
                                 __kobman_npm_install
                                 __kobman_visual_studio_install
-                                __kobman_greenlight_build "$NAME_SPACE"
+                                __kobman_greenlight_build "$name_space"
                         else
                                 echo "verifiy your command and try again"
                         fi
@@ -123,17 +123,17 @@ function __kob_install {
                                 __kobman_docker_install
                                 __kobman_npm_install
                                 __kobman_visual_studio_install
-                                __kobman_tobvon_build "$NAME_SPACE"
+                                __kobman_tobvon_build "$name_space"
                                 __kobman_tobvon_start
                         elif [ "$three" = "tob" ]
                         then
                                echo "Starting tob..."
-                                __kobman_tob_build "$NAME_SPACE"
+                                __kobman_tob_build "$name_space"
                                 __kobman_tob_start
                          elif [ "$three" = "greenlight" ]
                          then
                                  echo "Building greenlight ..."
-                                 __kobman_greenlight_build "$NAME_SPACE"
+                                 __kobman_greenlight_build "$name_space"
                                  __kobman_greenlight_start
                          else
                                  echo "verifiy your command and try again"
