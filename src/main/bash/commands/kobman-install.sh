@@ -63,10 +63,6 @@ function __kob_install {
                                 echo "Building tob..."
                                 if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
 				then
-                                         figlet avoid 
-                                         figlet repetitive 
-                                         figlet Dependancy
-					 figlet git,npm..etc 
                                          __kobman_check_proxy
                                          __kobman_ubuntu_update_upgrade
                                          __kobman_git_install
@@ -79,13 +75,16 @@ function __kob_install {
                         elif [ "$three" = "greenlight" ]
                         then
                                 echo "Building greenlight ..."
-                                __kobman_check_proxy
-                                __kobman_ubuntu_update_upgrade
-                                __kobman_git_install
-                                __kobman_python_install
-                                __kobman_docker_install
-                                __kobman_npm_install
-                                __kobman_visual_studio_install
+                                if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
+				then
+                                         __kobman_check_proxy
+                                         __kobman_ubuntu_update_upgrade
+                                         __kobman_git_install
+                                         __kobman_python_install
+                                         __kobman_docker_install
+                                         __kobman_npm_install
+                                         __kobman_visual_studio_install
+                                fi
                                 __kobman_greenlight_build "$name_space"
                         else
                                 echo "verifiy your command and try again"
@@ -110,23 +109,46 @@ function __kob_install {
  			elif [ "$three" = "tobvon" ]
                         then
                                 echo "Starting tobvon..."
-                                __kobman_check_proxy
-                                __kobman_ubuntu_update_upgrade
-                                __kobman_git_install
-                                __kobman_python_install
-                                __kobman_docker_install
-                                __kobman_npm_install
-                                __kobman_visual_studio_install
+                                if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
+				then
+                                         __kobman_check_proxy
+                                         __kobman_ubuntu_update_upgrade
+                                         __kobman_git_install
+                                         __kobman_python_install
+                                         __kobman_docker_install
+                                         __kobman_npm_install
+                                         __kobman_visual_studio_install
+                                fi
                                 __kobman_tobvon_build "$name_space"
                                 __kobman_tobvon_start
                         elif [ "$three" = "tob" ]
                         then
                                echo "Starting tob..."
+                                if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
+				then
+                                         __kobman_check_proxy
+                                         __kobman_ubuntu_update_upgrade
+                                         __kobman_git_install
+                                         __kobman_python_install
+                                         __kobman_docker_install
+                                         __kobman_npm_install
+                                         __kobman_visual_studio_install
+                                fi
                                 __kobman_tob_build "$name_space"
                                 __kobman_tob_start
                          elif [ "$three" = "greenlight" ]
                          then
                                  echo "Building greenlight ..."
+                                if [ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]
+				then
+                                         __kobman_check_proxy
+                                         __kobman_ubuntu_update_upgrade
+                                         __kobman_git_install
+                                         __kobman_python_install
+                                         __kobman_docker_install
+                                         __kobman_npm_install
+                                         __kobman_visual_studio_install
+                                fi
                                  __kobman_greenlight_build "$name_space"
                                  __kobman_greenlight_start
                          else
