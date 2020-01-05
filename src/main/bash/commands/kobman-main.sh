@@ -21,7 +21,7 @@ function kob {
 	COMMAND="$1"
 	QUALIFIER="$2"
 	THREE="$3"
-	NAME_SPACE=${4:-EtricKombat}
+	NAME_SPACE=${4:-hyperledgerkochi}
 	case "$COMMAND" in
 		l)
 			COMMAND="list";;

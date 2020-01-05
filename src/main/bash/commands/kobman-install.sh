@@ -18,7 +18,6 @@
 
 function __kob_install {
 
-	figlet kob install Triggered
 	local command qualifier three name_space 
 
 	command=$COMMAND
