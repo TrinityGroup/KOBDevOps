@@ -17,11 +17,164 @@
 #
 
 function __kob_install {
-	local candidate version folder
 
-	candidate="$1"
-	version="$2"
-	folder="$3"
+	COMMAND="$1"
+        QUALIFIER="$2"
+        THREE="$3"
+        NAME_SPACE=${4:-EtricKombat}
+if [ "$COMMAND" = "install" ]
+then
+        case $QUALIFIER in
+                --dev)
+                        if [ "$THREE" = "all" ]
+                        then
+                                echo "working all parameter"
+                        elif [ "$THREE" = "kobvon" ]
+                        then
+                                echo "Building kobvon..."
+                        elif [ "$THREE" = "kob" ]
+                        then
+                                echo "Building kob..."
+                        elif [ "$THREE" = "kobdflow" ]
+                        then
+                                echo "Building kobdflow..."
+                        elif [ "$THREE" = "kobconnect" ]
+                        then
+                                echo "Building kobconnect..."
+                        elif [ "$THREE" = "kobregistory" ]
+                        then
+                                echo "Building kobregistory..."
+                        elif [ "$THREE" = "tobvon" ]
+                        then
+                                echo "Building tobvon..."
+                                if [[ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]]; then
+                                         figlet avoid repetitive steps
+                                         __kobman_check_proxy
+                                         __kobman_ubuntu_update_upgrade
+                                         __kobman_git_install
+                                         __kobman_python_install
+                                         __kobman_docker_install
+                                         __kobman_npm_install
+                                         __kobman_visual_studio_install
+                                fi
+                                __kobman_tobvon_build "$NAME_SPACE"
+ 			elif [ "$THREE" = "tob" ]
+                        then
+                                echo "Building tob..."
+                                __kobman_check_proxy
+                                __kobman_ubuntu_update_upgrade
+                                __kobman_git_install
+                                __kobman_python_install
+                                __kobman_docker_install
+                                __kobman_npm_install
+                                __kobman_visual_studio_install
+                                __kobman_tob_build "$NAME_SPACE"
+                        elif [ "$THREE" = "greenlight" ]
+                        then
+                                echo "Building greenlight ..."
+                                __kobman_check_proxy
+                                __kobman_ubuntu_update_upgrade
+                                __kobman_git_install
+                                __kobman_python_install
+                                __kobman_docker_install
+                                __kobman_npm_install
+                                __kobman_visual_studio_install
+                                __kobman_greenlight_build "$NAME_SPACE"
+                        else
+                                echo "verifiy your command and try again"
+                        fi
+                ;;
+                --deploy)
+                        if [ "$THREE" = "kobvon" ]
+                        then
+                                echo "Starting kobvon..."
+                        elif [ "$THREE" = "kob" ]
+                        then
+                                echo "starting kob..."
+                        elif [ "$THREE" = "kobdflow" ]
+                        then
+                                echo "Starting kobdflow..."
+                        elif [ "$THREE" = "kobconnect" ]
+                        then
+                                echo "Starting kobconnect..."
+                        elif [ "$THREE" = "kobregistory" ]
+                        then
+                                echo "Starting kobregistory..."
+ 			elif [ "$THREE" = "tobvon" ]
+                        then
+                                echo "Starting tobvon..."
+                                __kobman_check_proxy
+                                __kobman_ubuntu_update_upgrade
+                                __kobman_git_install
+                                __kobman_python_install
+                                __kobman_docker_install
+                                __kobman_npm_install
+                                __kobman_visual_studio_install
+                                __kobman_tobvon_build "$NAME_SPACE"
+                                __kobman_tobvon_start
+                        elif [ "$THREE" = "tob" ]
+                        then
+                               echo "Starting tob..."
+                                __kobman_tob_build "$NAME_SPACE"
+                                __kobman_tob_start
+                         elif [ "$THREE" = "greenlight" ]
+                         then
+                                 echo "Building greenlight ..."
+                                 __kobman_greenlight_build "$NAME_SPACE"
+                                 __kobman_greenlight_start
+                         else
+                                 echo "verifiy your command and try again"
+                         fi
+                 ;;
+
+                kobvon)
+                                echo "starting kobvon..."
+                ;;
+                kob)
+                                echo "starting kob..."
+                ;;
+
+                kobdflow)
+                                echo "starting kobdflow..."
+                ;;
+                kobconnect)
+                                echo "starting kobconnect..."
+                ;;
+                kobregistory)
+                                echo "starting kobregistory..."
+                ;;
+ tobvon)
+                                echo "starting tobvon..."
+                                __kobman_check_proxy
+                                __kobman_ubuntu_update_upgrade
+                                __kobman_git_install
+                                __kobman_python_install
+                                __kobman_docker_install
+                                __kobman_npm_install
+                                __kobman_tobvon_build
+                                __kobman_tobvon_start
+                ;;
+                tob)
+                                echo "starting tob..."
+                                __kobman_tob_build
+                                __kobman_tob_start
+                ;;
+                greenlight)
+                                echo "starting greenlight ..."
+                                __kobman_greenlight_build
+                                __kobman_greenlight_start
+                ;;
+                *)
+                        if [ -z $QUALIFIER ]
+                        then
+                                echo "Default Projects are tobvon,tob,greenlight"
+                        fi
+                ;;
+
+        esac
+
+elif
+
 
 # 	__kobman_check_candidate_present "$candidate" || return 1
 # 	__kobman_determine_version "$candidate" "$version" "$folder" || return 1

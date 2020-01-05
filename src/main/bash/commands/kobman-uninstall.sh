@@ -17,26 +17,59 @@
 #
 
 function __kob_uninstall {
-	local candidate version current
+	
+local candidate version current
 
-	candidate="$1"
-	version="$2"
-	__kobman_check_candidate_present "$candidate" || return 1
-	__kobman_check_version_present "$version" || return 1
+        COMMAND="$1"
+        QUALIFIER="$2"
+        THREE="$3"
+        NAME_SPACE=${4:-EtricKombat}
 
-	current=$(readlink "${KOBMAN_CANDIDATES_DIR}/${candidate}/current" | sed "s_${KOBMAN_CANDIDATES_DIR}/${candidate}/__g")
-	if [[ -h "${KOBMAN_CANDIDATES_DIR}/${candidate}/current" && "$version" == "$current" ]]; then
-		echo ""
-		__kobman_echo_green "Unselecting ${candidate} ${version}..."
-		unlink "${KOBMAN_CANDIDATES_DIR}/${candidate}/current"
+
+if [ "$COMMAND" = "uninstall" ]
+then
+
+        if [ "$QUALIFIER" = "tobvon" ]
+        then
+                echo "uninstalling tobvon"
+                __kobman_tobvon_uninstall
+        elif [ "$QUALIFIER" = "tob" ]
+        then
+                echo "uninstalling tob"
+                __kobman_tob_uninstall
+        elif [ "$QUALIFIER" = "greenlight" ]
+        then
+                echo "uninstalling greenlight"
+                __kobman_greenlight_uninstall
+        else
+                echo "check uninstall environment"
 	fi
-	echo ""
-	if [ -d "${KOBMAN_CANDIDATES_DIR}/${candidate}/${version}" ]; then
-		__kobman_echo_green "Uninstalling ${candidate} ${version}..."
-		rm -rf "${KOBMAN_CANDIDATES_DIR}/${candidate}/${version}"
-	else
-		__kobman_echo_red "${candidate} ${version} is not installed."
-	fi
+
+else
+        figlet "verifiy your "
+        figlet " uninstall command "
+        figlet "and try again"
+fi
+
+
+
+
+#	__kobman_check_candidate_present "$candidate" || return 1
+#	__kobman_check_version_present "$version" || return 1
+#
+#	current=$(readlink "${KOBMAN_CANDIDATES_DIR}/${candidate}/current" | sed "s_${KOBMAN_CANDIDATES_DIR}/${candidate}/__g")
+#	if [[ -h "${KOBMAN_CANDIDATES_DIR}/${candidate}/current" && "$version" == "$current" ]]; then
+#		echo ""
+#		__kobman_echo_green "Unselecting ${candidate} ${version}..."
+#		unlink "${KOBMAN_CANDIDATES_DIR}/${candidate}/current"
+#	fi
+#	echo ""
+#	if [ -d "${KOBMAN_CANDIDATES_DIR}/${candidate}/${version}" ]; then
+#		__kobman_echo_green "Uninstalling ${candidate} ${version}..."
+#		rm -rf "${KOBMAN_CANDIDATES_DIR}/${candidate}/${version}"
+#	else
+#		__kobman_echo_red "${candidate} ${version} is not installed."
+#	fi
 
 }
 
