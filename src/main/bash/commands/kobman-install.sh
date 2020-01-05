@@ -22,9 +22,10 @@ function __kob_install {
         QUALIFIER="$2"
         THREE="$3"
         NAME_SPACE=${4:-EtricKombat}
-if [ "$COMMAND" = "install" ]
-then
-        case $QUALIFIER in
+	
+	if [ "$COMMAND" = "install" ]
+	then
+        	case $QUALIFIER in
                 --dev)
                         if [ "$THREE" = "all" ]
                         then
@@ -48,7 +49,9 @@ then
                         then
                                 echo "Building tobvon..."
                                 if [[ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]]; then
-                                         figlet avoid repetitive steps
+                                         figlet avoid 
+                                         figlet repetitive 
+                                         figlet steps
                                          __kobman_check_proxy
                                          __kobman_ubuntu_update_upgrade
                                          __kobman_git_install
@@ -173,7 +176,7 @@ then
 
         esac
 
-elif
+fi
 
 
 # 	__kobman_check_candidate_present "$candidate" || return 1
