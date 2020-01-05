@@ -64,7 +64,8 @@ figlet kob install Triggered
 				then
                                          figlet avoid 
                                          figlet repetitive 
-                                         figlet Dependancy(npm,git..etc) 
+                                         figlet Dependancy
+					 figlet git,npm..etc 
                                          __kobman_check_proxy
                                          __kobman_ubuntu_update_upgrade
                                          __kobman_git_install
