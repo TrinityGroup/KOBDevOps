@@ -123,13 +123,16 @@ then
 			elif [ "$THREE" = "tobvon" ]
 			then	
 				echo "Building tobvon..."	
-				__kobman_check_proxy
-				__kobman_ubuntu_update_upgrade
-				__kobman_git_install
-    				__kobman_python_install
- 				__kobman_docker_install
-	     			__kobman_npm_install
-				__kobman_visual_studio_install
+				if [[ ! -d "${KOBMAN_CANDIDATES_DIR}/von-network" ]]; then
+	       				 figlet avoid repetitive steps	
+					 __kobman_check_proxy
+                			 __kobman_ubuntu_update_upgrade
+                			 __kobman_git_install
+               				 __kobman_python_install
+                		         __kobman_docker_install
+                			 __kobman_npm_install
+                		         __kobman_visual_studio_install
+				fi
 				__kobman_tobvon_build "$NAME_SPACE"
 			elif [ "$THREE" = "tob" ]
 			then	
