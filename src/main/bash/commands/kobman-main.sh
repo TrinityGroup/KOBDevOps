@@ -47,6 +47,8 @@ function kob {
 			COMMAND="broadcast";;
 		s)
 			COMMAND="status";;
+		p)
+			COMMAND="proxy";;
 	esac
 
 	#
