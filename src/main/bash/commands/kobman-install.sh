@@ -423,14 +423,16 @@ function __kobman_check_proxy {
 	then
 		proxychk=1
 		sudo dpkg --configure -a
-        	read -s -p "Enter the proxy?[eg: Kochin.dummy.com..etc] :" prox
+        	read -p "Enter the proxy?[eg: Kochin.dummy.com..etc] :" prox
         	sudo echo -e "\n"
-         	read -s -p "Enter the port?[eg :8080,443..etc]          :" port
+         	read -p "Enter the port?[eg :8080,443..etc]          :" port
          	sudo echo -e "\n"
-         	read -s -p "Enter AD ID? [eg :ai318974]                 :" uname
-         	read -s -p "Enter password?[your login password]        : " pword
+         	read -p "Enter AD ID? [eg :ai318974]                 :" uname
+         	sudo echo -e "\n"
+         	read -p "Enter password?[your login password]        : " pword
          	sudo echo -e "\n"
          	read -s -p "Enter email ID?                             :" emil
+         	sudo echo -e "\n"
          	__kobman_proxy_environment
         for proto in http https ftp socks;
         do
