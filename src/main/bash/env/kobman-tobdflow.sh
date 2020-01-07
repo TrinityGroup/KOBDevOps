@@ -11,7 +11,8 @@ function __kobman_greenlight_build
 		sudo figlet TOB-Greenlight -f small
 		sudo figlet Building -f small
 		sudo figlet ${kobman_namespace} -f small  
-                cd ${KOBMAN_CANDIDATES_DIR}
+               	sudo chmod 755 ${KOBMAN_CANDIDATES_DIR} 
+		cd ${KOBMAN_CANDIDATES_DIR}
                 sudo git clone https://github.com/${kobman_namespace}/greenlight.git
                 sudo wget --no-proxy https://github.com/openshift/source-to-image/releases/download/v1.1.14/source-to-image-v1.1.14-874754de-linux-amd64.tar.gz
                 sudo tar -xvzf source-to-image-v1.1.14-874754de-linux-amd64.tar.gz
