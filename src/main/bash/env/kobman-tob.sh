@@ -29,9 +29,7 @@ function __kobman_tob_start
 
 	sudo figlet TOB-TheOrgBook -f small
 	sudo figlet Starting -f small
-	sudo chmod u+xr,go-rwx ${KOBMAN_CANDIDATES_DIR}
-	sudo chmod go+x /
-	sudo chmod go+x /root
+	sudo chmod a+rwx ${KOBMAN_CANDIDATES_DIR}
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo read -p "Do you want to start TOB instance in your system?" reply
         if [ "$reply" = "y" ] || [ "$reply" = "Y" ] || [ "$reply" = "yes" ] || [ "$reply" = "YES" ];
