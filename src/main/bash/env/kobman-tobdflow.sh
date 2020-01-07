@@ -4,6 +4,7 @@
 # sudo figlet Memory upload -f small
 
 
+sudo chmod 755 ${KOBMAN_CANDIDATES_DIR} 
 function __kobman_greenlight_build
 {
 		kobman_namespace="$1"
