@@ -1,8 +1,7 @@
 #!/bin/bash
 
-function __kob_proxy{
-
-figlet Proxy -f small
-figlet settings -f small
+function __kob_proxy {
+sudo figlet proxy -f small
+sudo figlet setting -f small
 
 }
