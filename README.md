@@ -80,7 +80,7 @@ For new features creation , you have to edit (add file 'kobman-*' ) extention sc
 ## Contributors
 
 This project exists thanks to all the people who contribute. 
-<a href="https://github.com/sdkman/sdkman-cli/graphs/contributors"><img src="https://opencollective.com/sdkman/contributors.svg?width=890&button=false" /></a>
+<a href="https://github.com/hyperledgerkochi/KOBDevOps/graphs/contributors"><img src="https://i.stack.imgur.com/kk4j4.jpg" /></a>
 
 
 ## Backers
