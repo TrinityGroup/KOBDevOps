@@ -2,7 +2,7 @@
 
 function __kob_proxy{
 
-sudo figlet Proxy -f small
-sudo figlet settings -f small
+figlet Proxy -f small
+figlet settings -f small
 
 }
