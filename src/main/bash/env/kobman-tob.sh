@@ -31,11 +31,7 @@ function __kobman_tob_start
 	sudo figlet Starting -f small
 	sudo chmod a+rwx ${KOBMAN_CANDIDATES_DIR}
 	cd ${KOBMAN_CANDIDATES_DIR}
-	sudo read -p "Do you want to start TOB instance in your system?" reply
-        if [ "$reply" = "y" ] || [ "$reply" = "Y" ] || [ "$reply" = "yes" ] || [ "$reply" = "YES" ];
-        then
         sudo TheOrgBook/docker/manage start seed=the_org_book_0000000000000000000
-        fi
 }
 
 function __kobman_tob_uninstall

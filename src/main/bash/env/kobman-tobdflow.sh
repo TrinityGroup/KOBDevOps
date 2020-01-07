@@ -3,8 +3,7 @@
 # sudo figlet TOB-Greenlight -f small
 # sudo figlet Memory upload -f small
 
-
-sudo chmod 755 ${KOBMAN_CANDIDATES_DIR} 
+# sudo chmod 755 ${KOBMAN_CANDIDATES_DIR} 
 function __kobman_greenlight_build
 {
 		kobman_namespace="$1"
@@ -30,13 +29,9 @@ function __kobman_greenlight_start
 
 	sudo figlet TOB-Greenlight -f small
 	sudo figlet Starting -f small
-
+	sudo chmod 777 ${KOBMAN_CANDIDATES_DIR}
  	cd ${KOBMAN_CANDIDATES_DIR}
-        sudo read -p "Start KOBDflow instance in your system?" reply
-        if [ "$reply" = "y" ] || [ "$reply" = "Y" ] || [ "$reply" = "yes" ] || [ "$reply" = "YES" ];
-        then
-                sudo greenlight/docker/manage start
-        fi
+        sudo greenlight/docker/manage start
 }
 
 function __kobman_greenlight_uninstall
