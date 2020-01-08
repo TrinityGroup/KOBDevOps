@@ -60,16 +60,18 @@ Deployment commands:
         kob install --deploy kobconnect   [name_space]        
         kob install --deploy kobregistory [name_space]
         
+	Example   :
+            kob install --deploy tob bcgov
 
         
 Other useful commands:        
   
-        kob install      
+             
         kob list
         kob status        
-        kob help         
-        kob uninstall        
-        kob version   
+        kob help     
+        kob version     
+         
 
 ## Adding new features
 
