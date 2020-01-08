@@ -509,9 +509,9 @@ function __kobman_docker_install {
 
 
         sudo figlet Setting up -f small  
+	sudo figlet lsb_release -cs -f small
         sudo figlet Docker-stable -f small  
         sudo figlet Repository -f small 
-	lsb_release -cs
         sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu  $(lsb_release -cs) stable"
 
 	sudo figlet Docker-Engine -f small
