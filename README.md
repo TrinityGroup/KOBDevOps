@@ -1,7 +1,9 @@
 
 
 # KOBMAN! CLI
-### The KochiOrgBook Manager Command Line Interface
+### The KochiOrgBook Manager Command Line Interface<!--Text-->
+
+<!--Text-->
 
 [![Build Status](https://travis-ci.org/sdkman/sdkman-cli.svg?branch=master)](https://travis-ci.org/sdkman/sdkman-cli)
 [![Latest Version](https://api.bintray.com/packages/sdkman/generic/sdkman-cli/images/download.svg) ](https://bintray.com/sdkman/generic/sdkman-cli/_latestVersion)
