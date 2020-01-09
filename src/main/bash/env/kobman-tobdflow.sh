@@ -42,7 +42,7 @@ function __kobman_greenlight_uninstall
 	sudo figlet Removing -f small
  	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo greenlight/docker/manage rm
-	sudo rm -rf greenlight/
-	sudo rm ${KOBMAN_CANDIDATES_DIR}/source-*
-	sudo rm -rf greenlight/ /usr/local/bin/sti /usr/local/bin/s2i source-to-image-v1.1.14-874754de-linux-amd64.tar.gz	
+	sudo rm -rf greenlight/ 2> /dev/null	
+#	sudo rm ${KOBMAN_CANDIDATES_DIR}/source-*
+	sudo rm -rf greenlight/ /usr/local/bin/sti /usr/local/bin/s2i source-to-image-v1.1.14-874754de-linux-amd64.tar.gz 2> /dev/null	
 }

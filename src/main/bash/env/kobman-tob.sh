@@ -42,6 +42,6 @@ function __kobman_tob_uninstall
 	cd ${KOBMAN_CANDIDATES_DIR}
 	sudo TheOrgBook/docker/manage rm
 	sudo rm ${KOBMAN_CANDIDATES_DIR}/source-*
-	sudo rm -rf TheOrgBook/ 	
-	sudo rm -rf /usr/local/bin/s2i /usr/local/bin/sti TheOrgBook/	
+	sudo rm -rf TheOrgBook/ 2> /dev/null 	
+	sudo rm -rf /usr/local/bin/s2i /usr/local/bin/sti TheOrgBook/ 2> /dev/null	
 }	
