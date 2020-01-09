@@ -37,7 +37,7 @@ To install KOBMAN locally running against your local server, run the following c
 
 ### Local Environment Installation
 
-Run the following commands on the terminal to setup respective environments.
+Run the following commands on the terminal to manage respective environments.
 	
 	Development environement setup commands:
        
@@ -66,7 +66,18 @@ Deployment commands:
         
 	Example   :
             kob install --deploy tob bcgov
+Uninstall environement  commands:
+       
+        kob uninstall tobvon             
+        kob uninstall tob         
+        kob uninstall greenlight  
+        kob uninstall kobvon       
+        kob uninstall kob          
+        kob uninstall kobdflow     
+        kob uninstall kobconnect           
+        kob uninstall kobregistory 
 
+                
         
 Other useful commands:        
   
