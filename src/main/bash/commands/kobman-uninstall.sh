@@ -18,17 +18,15 @@
 
 function __kob_uninstall {
 	
-local candidate version current
-
-        COMMAND="$1"
-        QUALIFIER="$2"
-        THREE="$3"
-        NAME_SPACE=${4:-EtricKombat}
-
-
-if [ "$COMMAND" = "uninstall" ]
+local command qualifier three name_space
+     	command=$COMMAND
+       	qualifier=$QUALIFIER
+       	three=$THREE
+       	name_space=$NAME_SPACE
+  
+  
+if [ "$command" = "uninstall" ]
 then
-
         if [ "$QUALIFIER" = "tobvon" ]
         then
                 echo "uninstalling tobvon"

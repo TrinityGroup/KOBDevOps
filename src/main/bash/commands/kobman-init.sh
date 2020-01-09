@@ -29,6 +29,8 @@ if [ -z "$KOBMAN_DIR" ]; then
 	export KOBMAN_DIR="$HOME/.kobman"
 fi
 
+
+
 # infer platform
 KOBMAN_PLATFORM="$(uname)"
 if [[ "$KOBMAN_PLATFORM" == 'Linux' ]]; then
@@ -121,6 +123,9 @@ else
 fi
 
 export KOBMAN_CANDIDATES_DIR="${KOBMAN_DIR}/candidates"
+
+
+sudo chmod 777 ${KOBMAN_CANDIDATES_DIR}
 
 for candidate_name in "${KOBMAN_CANDIDATES[@]}"; do
 	candidate_dir="${KOBMAN_CANDIDATES_DIR}/${candidate_name}/current"
