@@ -1,0 +1,62 @@
+blockchain@blockchain-VirtualBox:~/KOBman$ sudo docker ps --all
+
+CONTAINER ID        IMAGE                 COMMAND                  CREATED             STATUS                           PORTS                              NAMES
+91a842507728        angular-on-nginx      "/usr/libexec/s2i/run"   8 minutes ago       Up 7 minutes                     80/tcp, 0.0.0.0:8085->8080/tcp     tob_tob-web_1
+0a539978df44        django                "/bin/bash -c ' echo…"   8 minutes ago       Exited (1) About a minute ago                                       tob_tob-api_1
+702fb24c63bc        schema-spy            "/sbin/tini /bin/sh …"   8 minutes ago       Exited (1) 7 minutes ago                                            tob_schema-spy_1
+a9a1bc9929cd        solr                  "docker-entrypoint.s…"   8 minutes ago       Up 8 minutes                     0.0.0.0:8983->8983/tcp             tob_tob-solr_1
+1cc256d44ef0        postgresql            "container-entrypoin…"   8 minutes ago       Up 8 minutes                     0.0.0.0:5432->5432/tcp             tob_tob-db_1
+230df3508748        postgresql            "container-entrypoin…"   8 minutes ago       Up 8 minutes                     0.0.0.0:5433->5432/tcp             tob_wallet-db_1
+f87b1697269a        von-network-base      "bash -c './scripts/…"   35 minutes ago      Up 35 minutes                    0.0.0.0:9701-9702->9701-9702/tcp   von_node1_1
+af4a7dd66de3        von-network-base      "bash -c './scripts/…"   35 minutes ago      Up 35 minutes                    0.0.0.0:9707-9708->9707-9708/tcp   von_node4_1
+050194d17276        von-network-base      "bash -c ./scripts/s…"   35 minutes ago      Up 35 minutes                    0.0.0.0:9000->8000/tcp             von_webserver_1
+07cd297fb1bb        von-network-base      "bash -c './scripts/…"   35 minutes ago      Up 35 minutes                    0.0.0.0:9705-9706->9705-9706/tcp   von_node3_1
+33e72f8c5d30        von-network-base      "bash -c './scripts/…"   35 minutes ago      Up 35 minutes                    0.0.0.0:9703-9704->9703-9704/tcp   von_node2_1
+1b13aee0c285        hello-world           "/hello"                 38 minutes ago      Exited (0) 38 minutes ago                                           dreamy_ptolemy
+66eaadbcfb76        nodejs-build:latest   "container-entrypoin…"   2 days ago          Exited (255) About an hour ago   8080/tcp                           s2i_nodejs_build_93a5ec11
+5bbc0848a5b9        891a7aa8d906          "/bin/sh -c 'apk upd…"   2 days ago          Exited (4) 2 days ago                                               focused_benz
+bf26a20e883f        hello-world           "/hello"                 2 days ago          Exited (0) 2 days ago                                               sweet_margulis
+83ba9bee5338        hello-world           "/hello"                 3 days ago          Exited (0) 3 days ago                                               gifted_allen
+183d099e8a18        hello-world           "/hello"                 5 days ago          Exited (0) 5 days ago                                               tender_bartik
+5a3803ba4d01        hello-world           "/hello"                 9 days ago          Exited (0) 9 days ago                                               loving_lalande
+7194712eb711        hello-world           "/hello"                 9 days ago          Exited (0) 9 days ago                                               musing_newton
+ed5439dc7815        hello-world           "/hello"                 11 days ago         Exited (0) 11 days ago                                              exciting_cray
+
+
+blockchain@blockchain-VirtualBox:~/KOBman$ sudo docker run schema-spy
+ERROR - Environment variable DATABASE_HOST is required.
+ERROR - Environment variable DATABASE_USER is required.
+ERROR - Environment variable DATABASE_PASSWORD is required.
+ERROR - Environment variable DATABASE_NAME is required.
+
+
+
+blockchain@blockchain-VirtualBox:~/KOBman$ sudo docker run django
+---> Migrating database ...
+Realtime indexing has been disabled ...
+Traceback (most recent call last):
+  File "./manage.py", line 20, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/django/core/management/__init__.py", line 401, in execute_from_command_line
+    utility.execute()
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/django/core/management/__init__.py", line 377, in execute
+    django.setup()
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/django/__init__.py", line 24, in setup
+    apps.populate(settings.INSTALLED_APPS)
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/django/apps/registry.py", line 91, in populate
+    app_config = AppConfig.create(entry)
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/django/apps/config.py", line 90, in create
+    module = import_module(entry)
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 994, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 971, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 955, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 665, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 678, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/haystack/__init__.py", line 11, in <module>
+    from haystack.utils import loading
+  File "/home/indy/.pyenv/versions/3.6.8/lib/python3.6/site-packages/haystack/utils/__init__.py", line 9, in <module>
+    from django.utils import six
+ImportError: cannot import name 'six'
