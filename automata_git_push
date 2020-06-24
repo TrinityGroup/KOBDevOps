@@ -1,0 +1,124 @@
+#! /bin/bash
+
+function __automata_git
+{
+
+
+while true;
+do
+    read -r -p "Do you want to see the menu / Yes or no? " response   
+    if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]
+    then
+	echo "'kw'-kanban work-in-progress"	
+	echo "'kc'-kanban completed"	
+	echo "'kt'-kanban todo"	
+	echo "'kp'-kanban pending "	
+	echo "'p'-git push "  
+	read -p "Enter your choice :" value 
+	
+	case "${value}" in	
+	kp)
+		__automata_kanban_pending
+	;;	
+	kw)
+		__automata_kanban_workinprogress
+	;;	
+	kt)
+		__automata_kanban_todo
+	;;	
+	kc)
+		__automata_kanban_completed
+	;;	
+	p)
+		__automata_git_push
+	;;	
+	*)
+		echo "wrong choice entered"	
+	;;
+	esac
+
+    else
+        exit 0
+    fi  
+done
+
+
+
+}
+
+
+function __automata_kanban_workinprogress
+{
+	echo Work-in-Progress
+	echo "==============="
+	echo "RF-1.0.1.3.1 - KOBman Install (eric)" 
+	echo "RF-1.0.1.2.1 - KOBman List	   (arun) "
+	echo "RF-1.0.1.1.1 - KOBman Help	   (arun) "
+	echo "RF-1.0.1.5.1 - KOBman Status  (arun) "
+	echo "RF 1.0.4.1  - DevOps & Release Automation for KOBman (arun) "
+}
+
+
+
+function __automata_kanban_pending
+{
+	echo "Pending "
+	echo "======"
+	echo "RF-1.0.0.3.1 	- KOBman Version (eric) "
+	echo "RF-1.0.2.5		- Documentation : GettingStartedGuide.md ? "
+	echo "RF-1.0.1.6.1	- KOBman Version support for environments (eric) "
+	echo "RF 1.0.1.3.2 	- KOBman Install Command Unit Test (eric) "
+	echo "RF 1.0.1.4.2 	- KOBman Uninstall Command Unit Test ? "
+}
+
+
+function __automata_kanban_todo
+{
+	echo TODO
+	echo "======"
+	echo "RF-1.0.0.1.1 KOBman Setup"
+	echo "RF-1.0.0.1.3 KOBman Documentation"
+	echo "RF-1.0.0.2.1 KOBman Upgrade command"
+	echo "Create Docker file inside KOBman to run docker environment"
+	echo "RF 1.0.3.9 Support KOB Environment: KOBman"
+	echo "RF 1.0.3.8 Support KOB Environment: KOBDflow	"
+	echo "RF 1.0.3.7 Support KOB Environment: KOBConnect "
+	echo "RF 1.0.3.6 Support KOB Environment: KOBRegistry"
+	echo "RF 1.0.3.5 Support KOB Environment: KOB "
+	echo "RF 1.0.3.4 Support KOB Environment: KOBVON"
+	echo "RF 1.0.3.3 Support KOB Environment: Greenlight"
+	echo "RF 1.0.3.2 Support KOB Environment : VON"
+	echo "RF 1.0.3.1 Support KOB Environment : TOB"
+	echo "RF 1.0.2.4 KOBman Documentation Contributors Guide.md "
+	echo "RF 1.0.2.2 KOBman Documentation Contributors Guide.md"
+	echo "RF 1.0.2.3 KOBman Documentation Contributors Guide.md"
+	echo "RF 1.0.2.1 KOBman Documentation Contributors Guide.md"
+	echo "RF 1.0.1.7.1 KOBman Update Command"
+	echo "RF 1.0.1.5.1 KOBman Status Command"
+	echo "RF 1.0.1.4.1 KOBman Uninstall Command"
+	echo "RF 1.0.1.3.1 KOBman Install Command"
+	echo "RF 1.0.1.2.1 KOBman List Command	"
+	echo "RF 1.0.1.1.1 KOBman Help Command	"
+}
+
+function __automata_kanban_completed
+{
+	echo "RF 1.0.0.1.2 KOBman Documentation"
+}
+
+
+function __automata_git_push
+{
+	echo "PUSHing to origin ${branch}"
+	echo "========================="
+	cd ~/Documents/KOBman/
+	read -p  "Enter KOBMAN_DIST_BRANCH : " branch
+	git pull origin $branch
+	git add .
+	read -p "Enter your commited message : " msg
+	git commit -m "${msg} commit on: $(date)"
+	git push origin $branch
+}
+
+
+__automata_git

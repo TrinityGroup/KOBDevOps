@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Before..."
+ls -latr ~/Documents/KOBman/dist/kobman-0.0.1.zip
+
+
+cd ~/Documents/KOBman/
+
+zip -rj ~/Documents/KOBman/dist/kobman-0.0.1.zip ~/Documents/KOBman/src/main/bash/envs/kobman-* ~/Documents/KOBman/src/main/bash/commands/kobman-*
+
+echo "....after."
+
+ls -latr ~/Documents/KOBman/dist/kobman-0.0.1.zip

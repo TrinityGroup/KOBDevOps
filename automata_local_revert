@@ -1,0 +1,6 @@
+#! /bin/bash
+
+
+cp -i ~/kobman-install.sh ~/.kobman/src/kobman-install.sh 
+
+
