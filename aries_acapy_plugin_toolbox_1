@@ -1,0 +1,1935 @@
+kob-user@kobuser-VirtualBox:~/aries-acapy-plugin-toolbox$ sudo docker-compose -f docker-compose.yml up --build
+Building agent
+Step 1/21 : FROM bcgovimages/von-image:py36-1.14-0
+py36-1.14-0: Pulling from bcgovimages/von-image
+38e2e6cd5626: Already exists
+705054bc3f5b: Already exists
+c7051e069564: Already exists
+7308e914506c: Already exists
+cb6c447c9d1e: Downloading [====>                                              ] cb6c447c9d1e: Extracting [==================================================>]  cb6c447c9d1e: Extracting [==================================================>]  4.558kB/4.558kBaiting
+cb6c447c9d1e: Pull complete
+d064637cdc97: Pull complete
+b3d66dcc81f0: Pull complete
+8e4f4baa0b02: Pull complete
+155374dc4bc4: Pull complete
+e9611b1e2344: Pull complete
+aaa196d4b39d: Pull complete
+2dadf74c8854: Pull complete
+d02952c8e97f: Pull complete
+467bd2a8b233: Pull complete
+Digest: sha256:00d726e6106abf2275e0ad9f5c0b845effc609ddf3a6a6231450435f5bf59ad6
+Status: Downloaded newer image for bcgovimages/von-image:py36-1.14-0
+ ---> d978ddcbe36d
+Step 2/21 : USER root
+ ---> Running in 71b02360394a
+Removing intermediate container 71b02360394a
+ ---> 472367f115d2
+Step 3/21 : RUN apt-get update
+ ---> Running in ccd27c928cb9
+Get:1 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:5 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [9279 B]
+Get:6 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]
+Get:7 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [870 kB]
+Get:8 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1344 kB]
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [97.8 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [1022 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [13.6 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [111 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [1409 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [1322 kB]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [8286 B]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [8432 B]
+Fetched 18.2 MB in 1min 15s (242 kB/s)
+Reading package lists...
+Removing intermediate container ccd27c928cb9
+ ---> c442becaf1c9
+Step 4/21 : RUN apt-get install -y wget gcc openssl pkg-config libssl-dev
+ ---> Running in 99ce5230e9e6
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential cpp cpp-7
+  dirmngr dpkg-dev fakeroot g++ g++-7 gcc-7 gcc-7-base gcc-8-base gnupg
+  gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf
+  gpgsm libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libasan4 libassuan0 libatomic1 libbinutils
+  libc-dev-bin libc6 libc6-dev libcc1-0 libcilkrts5 libdpkg-perl libfakeroot
+  libfile-fcntllock-perl libgcc-7-dev libgcc1 libglib2.0-0 libglib2.0-data
+  libgomp1 libicu60 libisl19 libitm1 libksba8 liblocale-gettext-perl liblsan0
+  libmpc3 libmpfr6 libmpx2 libnpth0 libquadmath0 libssl1.1 libstdc++-7-dev
+  libstdc++6 libtsan0 libubsan0 libxml2 linux-libc-dev make manpages
+  manpages-dev patch pinentry-curses shared-mime-info xdg-user-dirs xz-utils
+Suggested packages:
+  binutils-doc cpp-doc gcc-7-locales dbus-user-session libpam-systemd
+  pinentry-gnome3 tor debian-keyring g++-multilib g++-7-multilib gcc-7-doc
+  libstdc++6-7-dbg gcc-multilib autoconf automake libtool flex bison gdb
+  gcc-doc gcc-7-multilib libgcc1-dbg libgomp1-dbg libitm1-dbg libatomic1-dbg
+  libasan4-dbg liblsan0-dbg libtsan0-dbg libubsan0-dbg libcilkrts5-dbg
+  libmpx2-dbg libquadmath0-dbg parcimonie xloadimage scdaemon glibc-doc
+  locales bzr libssl-doc libstdc++-7-doc make-doc man-browser ed diffutils-doc
+  pinentry-doc
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu build-essential cpp cpp-7
+  dirmngr dpkg-dev fakeroot g++ g++-7 gcc gcc-7 gcc-7-base gnupg gnupg-l10n
+  gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm
+  libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl
+  libasan4 libassuan0 libatomic1 libbinutils libc-dev-bin libc6-dev libcc1-0
+  libcilkrts5 libdpkg-perl libfakeroot libfile-fcntllock-perl libgcc-7-dev
+  libglib2.0-0 libglib2.0-data libgomp1 libicu60 libisl19 libitm1 libksba8
+  liblocale-gettext-perl liblsan0 libmpc3 libmpfr6 libmpx2 libnpth0
+  libquadmath0 libssl-dev libstdc++-7-dev libtsan0 libubsan0 libxml2
+  linux-libc-dev make manpages manpages-dev patch pinentry-curses pkg-config
+  shared-mime-info wget xdg-user-dirs xz-utils
+The following packages will be upgraded:
+  gcc-8-base libc6 libgcc1 libssl1.1 libstdc++6 openssl
+6 upgraded, 68 newly installed, 0 to remove and 53 not upgraded.
+Need to get 64.3 MB of archives.
+After this operation, 224 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gcc-8-base amd64 8.4.0-1ubuntu1~18.04 [18.7 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgcc1 amd64 1:8.4.0-1ubuntu1~18.04 [40.6 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libstdc++6 amd64 8.4.0-1ubuntu1~18.04 [400 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libc6 amd64 2.27-3ubuntu1.2 [2827 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic/main amd64 liblocale-gettext-perl amd64 1.07-3build2 [16.6 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-0 amd64 2.56.4-0ubuntu0.18.04.6 [1171 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libglib2.0-data all 2.56.4-0ubuntu0.18.04.6 [4540 B]
+Get:8 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libicu60 amd64 60.2-3ubuntu3.1 [8054 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libssl1.1 amd64 1.1.1-1ubuntu2.1~18.04.6 [1301 kB]
+Get:10 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libxml2 amd64 2.9.4+dfsg1-6.1ubuntu1.3 [663 kB]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 openssl amd64 1.1.1-1ubuntu2.1~18.04.6 [614 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic/main amd64 shared-mime-info amd64 1.9-2 [426 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic/main amd64 xdg-user-dirs amd64 0.17-1ubuntu1 [48.0 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic/main amd64 xz-utils amd64 5.2.2-1.3 [83.8 kB]
+Get:15 http://archive.ubuntu.com/ubuntu bionic/main amd64 manpages all 4.15-1 [1234 kB]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 wget amd64 1.19.4-1ubuntu2.2 [316 kB]
+Get:17 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 binutils-common amd64 2.30-21ubuntu1~18.04.3 [196 kB]
+Get:18 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libbinutils amd64 2.30-21ubuntu1~18.04.3 [488 kB]
+Get:19 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.30-21ubuntu1~18.04.3 [1839 kB]
+Get:20 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 binutils amd64 2.30-21ubuntu1~18.04.3 [3388 B]
+Get:21 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libc-dev-bin amd64 2.27-3ubuntu1.2 [71.8 kB]
+Get:22 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 linux-libc-dev amd64 4.15.0-112.113 [982 kB]
+Get:23 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libc6-dev amd64 2.27-3ubuntu1.2 [2585 kB]
+Get:24 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gcc-7-base amd64 7.5.0-3ubuntu1~18.04 [18.3 kB]
+Get:25 http://archive.ubuntu.com/ubuntu bionic/main amd64 libisl19 amd64 0.19-1 [551 kB]
+Get:26 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmpfr6 amd64 4.0.1-1 [243 kB]
+Get:27 http://archive.ubuntu.com/ubuntu bionic/main amd64 libmpc3 amd64 1.1.0-1 [40.8 kB]
+Get:28 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 cpp-7 amd64 7.5.0-3ubuntu1~18.04 [8591 kB]
+Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 cpp amd64 4:7.4.0-1ubuntu2.3 [27.7 kB]
+Get:29 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 cpp amd64 4:7.4.0-1ubuntu2.3 [27.7 kB]
+Get:30 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcc1-0 amd64 8.4.0-1ubuntu1~18.04 [39.4 kB]
+Get:31 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgomp1 amd64 8.4.0-1ubuntu1~18.04 [76.5 kB]
+Get:32 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libitm1 amd64 8.4.0-1ubuntu1~18.04 [27.9 kB]
+Get:33 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libatomic1 amd64 8.4.0-1ubuntu1~18.04 [9192 B]
+Get:34 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libasan4 amd64 7.5.0-3ubuntu1~18.04 [358 kB]
+Get:35 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 liblsan0 amd64 8.4.0-1ubuntu1~18.04 [133 kB]
+Get:36 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libtsan0 amd64 8.4.0-1ubuntu1~18.04 [288 kB]
+Get:37 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libubsan0 amd64 7.5.0-3ubuntu1~18.04 [126 kB]
+Get:38 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libcilkrts5 amd64 7.5.0-3ubuntu1~18.04 [42.5 kB]
+Get:39 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libmpx2 amd64 8.4.0-1ubuntu1~18.04 [11.6 kB]
+Get:40 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libquadmath0 amd64 8.4.0-1ubuntu1~18.04 [134 kB]
+Get:41 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libgcc-7-dev amd64 7.5.0-3ubuntu1~18.04 [2378 kB]
+Get:42 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gcc-7 amd64 7.5.0-3ubuntu1~18.04 [9381 kB]
+Get:43 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gcc amd64 4:7.4.0-1ubuntu2.3 [5184 B]
+Get:44 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libstdc++-7-dev amd64 7.5.0-3ubuntu1~18.04 [1471 kB]
+Get:45 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 g++-7 amd64 7.5.0-3ubuntu1~18.04 [9697 kB]
+Get:46 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 g++ amd64 4:7.4.0-1ubuntu2.3 [1568 B]
+Get:47 http://archive.ubuntu.com/ubuntu bionic/main amd64 make amd64 4.1-9.1ubuntu1 [154 kB]
+Get:48 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libdpkg-perl all 1.19.0.5ubuntu2.3 [211 kB]
+Get:49 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 patch amd64 2.7.6-2ubuntu1.1 [102 kB]
+Get:50 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 dpkg-dev all 1.19.0.5ubuntu2.3 [607 kB]
+Get:51 http://archive.ubuntu.com/ubuntu bionic/main amd64 build-essential amd64 12.4ubuntu1 [4758 B]
+Get:52 http://archive.ubuntu.com/ubuntu bionic/main amd64 libassuan0 amd64 2.5.1-2 [35.0 kB]
+Get:53 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpgconf amd64 2.2.4-1ubuntu1.2 [123 kB]
+Get:54 http://archive.ubuntu.com/ubuntu bionic/main amd64 libksba8 amd64 1.3.5-2 [92.6 kB]
+Get:55 http://archive.ubuntu.com/ubuntu bionic/main amd64 libnpth0 amd64 1.5-3 [7668 B]
+Get:56 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 dirmngr amd64 2.2.4-1ubuntu1.2 [316 kB]
+Get:57 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfakeroot amd64 1.22-2ubuntu1 [25.9 kB]
+Get:58 http://archive.ubuntu.com/ubuntu bionic/main amd64 fakeroot amd64 1.22-2ubuntu1 [62.3 kB]
+Get:59 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg-l10n all 2.2.4-1ubuntu1.2 [49.6 kB]
+Get:60 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg-utils amd64 2.2.4-1ubuntu1.2 [127 kB]
+Get:61 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg amd64 2.2.4-1ubuntu1.2 [467 kB]
+Get:62 http://archive.ubuntu.com/ubuntu bionic/main amd64 pinentry-curses amd64 1.1.0-1 [35.8 kB]
+Get:63 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-agent amd64 2.2.4-1ubuntu1.2 [227 kB]
+Get:64 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-wks-client amd64 2.2.4-1ubuntu1.2 [91.9 kB]
+Get:65 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpg-wks-server amd64 2.2.4-1ubuntu1.2 [84.9 kB]
+Get:66 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gpgsm amd64 2.2.4-1ubuntu1.2 [215 kB]
+Get:67 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 gnupg amd64 2.2.4-1ubuntu1.2 [249 kB]
+Get:68 http://archive.ubuntu.com/ubuntu bionic/main amd64 libalgorithm-diff-perl all 1.19.03-1 [47.6 kB]
+Get:69 http://archive.ubuntu.com/ubuntu bionic/main amd64 libalgorithm-diff-xs-perl amd64 0.04-5 [11.1 kB]
+Get:70 http://archive.ubuntu.com/ubuntu bionic/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:71 http://archive.ubuntu.com/ubuntu bionic/main amd64 libfile-fcntllock-perl amd64 0.22-3build2 [33.2 kB]
+Get:72 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 libssl-dev amd64 1.1.1-1ubuntu2.1~18.04.6 [1566 kB]
+Get:73 http://archive.ubuntu.com/ubuntu bionic/main amd64 manpages-dev all 4.15-1 [2217 kB]
+Get:74 http://archive.ubuntu.com/ubuntu bionic/main amd64 pkg-config amd64 0.29.1-0ubuntu2 [45.0 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 64.2 MB in 4min 32s (236 kB/s)
+(Reading database ... 7568 files and directories currently installed.)
+Preparing to unpack .../gcc-8-base_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking gcc-8-base:amd64 (8.4.0-1ubuntu1~18.04) over (8.2.0-1ubuntu2~18.04) ...
+Setting up gcc-8-base:amd64 (8.4.0-1ubuntu1~18.04) ...
+(Reading database ... 7568 files and directories currently installed.)
+Preparing to unpack .../libgcc1_1%3a8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libgcc1:amd64 (1:8.4.0-1ubuntu1~18.04) over (1:8.2.0-1ubuntu2~18.04) ...
+Setting up libgcc1:amd64 (1:8.4.0-1ubuntu1~18.04) ...
+(Reading database ... 7568 files and directories currently installed.)
+Preparing to unpack .../libstdc++6_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libstdc++6:amd64 (8.4.0-1ubuntu1~18.04) over (8.2.0-1ubuntu2~18.04) ...
+Setting up libstdc++6:amd64 (8.4.0-1ubuntu1~18.04) ...
+(Reading database ... 7568 files and directories currently installed.)
+Preparing to unpack .../libc6_2.27-3ubuntu1.2_amd64.deb ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Unpacking libc6:amd64 (2.27-3ubuntu1.2) over (2.27-3ubuntu1) ...
+Setting up libc6:amd64 (2.27-3ubuntu1.2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package liblocale-gettext-perl.
+(Reading database ... 7568 files and directories currently installed.)
+Preparing to unpack .../00-liblocale-gettext-perl_1.07-3build2_amd64.deb ...
+Unpacking liblocale-gettext-perl (1.07-3build2) ...
+Selecting previously unselected package libglib2.0-0:amd64.
+Preparing to unpack .../01-libglib2.0-0_2.56.4-0ubuntu0.18.04.6_amd64.deb ...
+Unpacking libglib2.0-0:amd64 (2.56.4-0ubuntu0.18.04.6) ...
+Selecting previously unselected package libglib2.0-data.
+Preparing to unpack .../02-libglib2.0-data_2.56.4-0ubuntu0.18.04.6_all.deb ...
+Unpacking libglib2.0-data (2.56.4-0ubuntu0.18.04.6) ...
+Selecting previously unselected package libicu60:amd64.
+Preparing to unpack .../03-libicu60_60.2-3ubuntu3.1_amd64.deb ...
+Unpacking libicu60:amd64 (60.2-3ubuntu3.1) ...
+Preparing to unpack .../04-libssl1.1_1.1.1-1ubuntu2.1~18.04.6_amd64.deb ...
+Unpacking libssl1.1:amd64 (1.1.1-1ubuntu2.1~18.04.6) over (1.1.1-1ubuntu2.1~18.04.5) ...
+Selecting previously unselected package libxml2:amd64.
+Preparing to unpack .../05-libxml2_2.9.4+dfsg1-6.1ubuntu1.3_amd64.deb ...
+Unpacking libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.3) ...
+Preparing to unpack .../06-openssl_1.1.1-1ubuntu2.1~18.04.6_amd64.deb ...
+Unpacking openssl (1.1.1-1ubuntu2.1~18.04.6) over (1.1.1-1ubuntu2.1~18.04.5) ...
+Selecting previously unselected package shared-mime-info.
+Preparing to unpack .../07-shared-mime-info_1.9-2_amd64.deb ...
+Unpacking shared-mime-info (1.9-2) ...
+Selecting previously unselected package xdg-user-dirs.
+Preparing to unpack .../08-xdg-user-dirs_0.17-1ubuntu1_amd64.deb ...
+Unpacking xdg-user-dirs (0.17-1ubuntu1) ...
+Selecting previously unselected package xz-utils.
+Preparing to unpack .../09-xz-utils_5.2.2-1.3_amd64.deb ...
+Unpacking xz-utils (5.2.2-1.3) ...
+Selecting previously unselected package manpages.
+Preparing to unpack .../10-manpages_4.15-1_all.deb ...
+Unpacking manpages (4.15-1) ...
+Selecting previously unselected package wget.
+Preparing to unpack .../11-wget_1.19.4-1ubuntu2.2_amd64.deb ...
+Unpacking wget (1.19.4-1ubuntu2.2) ...
+Selecting previously unselected package binutils-common:amd64.
+Preparing to unpack .../12-binutils-common_2.30-21ubuntu1~18.04.3_amd64.deb ...
+Unpacking binutils-common:amd64 (2.30-21ubuntu1~18.04.3) ...
+Selecting previously unselected package libbinutils:amd64.
+Preparing to unpack .../13-libbinutils_2.30-21ubuntu1~18.04.3_amd64.deb ...
+Unpacking libbinutils:amd64 (2.30-21ubuntu1~18.04.3) ...
+Selecting previously unselected package binutils-x86-64-linux-gnu.
+Preparing to unpack .../14-binutils-x86-64-linux-gnu_2.30-21ubuntu1~18.04.3_amd64.deb ...
+Unpacking binutils-x86-64-linux-gnu (2.30-21ubuntu1~18.04.3) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../15-binutils_2.30-21ubuntu1~18.04.3_amd64.deb ...
+Unpacking binutils (2.30-21ubuntu1~18.04.3) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../16-libc-dev-bin_2.27-3ubuntu1.2_amd64.deb ...
+Unpacking libc-dev-bin (2.27-3ubuntu1.2) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../17-linux-libc-dev_4.15.0-112.113_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (4.15.0-112.113) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../18-libc6-dev_2.27-3ubuntu1.2_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.27-3ubuntu1.2) ...
+Selecting previously unselected package gcc-7-base:amd64.
+Preparing to unpack .../19-gcc-7-base_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking gcc-7-base:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package libisl19:amd64.
+Preparing to unpack .../20-libisl19_0.19-1_amd64.deb ...
+Unpacking libisl19:amd64 (0.19-1) ...
+Selecting previously unselected package libmpfr6:amd64.
+Preparing to unpack .../21-libmpfr6_4.0.1-1_amd64.deb ...
+Unpacking libmpfr6:amd64 (4.0.1-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../22-libmpc3_1.1.0-1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.1.0-1) ...
+Selecting previously unselected package cpp-7.
+Preparing to unpack .../23-cpp-7_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking cpp-7 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../24-cpp_4%3a7.4.0-1ubuntu2.3_amd64.deb ...
+Unpacking cpp (4:7.4.0-1ubuntu2.3) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../25-libcc1-0_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libcc1-0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../26-libgomp1_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libgomp1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../27-libitm1_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libitm1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../28-libatomic1_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libatomic1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libasan4:amd64.
+Preparing to unpack .../29-libasan4_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking libasan4:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../30-liblsan0_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking liblsan0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../31-libtsan0_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libtsan0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libubsan0:amd64.
+Preparing to unpack .../32-libubsan0_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking libubsan0:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package libcilkrts5:amd64.
+Preparing to unpack .../33-libcilkrts5_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking libcilkrts5:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package libmpx2:amd64.
+Preparing to unpack .../34-libmpx2_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libmpx2:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../35-libquadmath0_8.4.0-1ubuntu1~18.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Selecting previously unselected package libgcc-7-dev:amd64.
+Preparing to unpack .../36-libgcc-7-dev_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking libgcc-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package gcc-7.
+Preparing to unpack .../37-gcc-7_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking gcc-7 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../38-gcc_4%3a7.4.0-1ubuntu2.3_amd64.deb ...
+Unpacking gcc (4:7.4.0-1ubuntu2.3) ...
+Selecting previously unselected package libstdc++-7-dev:amd64.
+Preparing to unpack .../39-libstdc++-7-dev_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking libstdc++-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package g++-7.
+Preparing to unpack .../40-g++-7_7.5.0-3ubuntu1~18.04_amd64.deb ...
+Unpacking g++-7 (7.5.0-3ubuntu1~18.04) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../41-g++_4%3a7.4.0-1ubuntu2.3_amd64.deb ...
+Unpacking g++ (4:7.4.0-1ubuntu2.3) ...
+Selecting previously unselected package make.
+Preparing to unpack .../42-make_4.1-9.1ubuntu1_amd64.deb ...
+Unpacking make (4.1-9.1ubuntu1) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../43-libdpkg-perl_1.19.0.5ubuntu2.3_all.deb ...
+Unpacking libdpkg-perl (1.19.0.5ubuntu2.3) ...
+Selecting previously unselected package patch.
+Preparing to unpack .../44-patch_2.7.6-2ubuntu1.1_amd64.deb ...
+Unpacking patch (2.7.6-2ubuntu1.1) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../45-dpkg-dev_1.19.0.5ubuntu2.3_all.deb ...
+Unpacking dpkg-dev (1.19.0.5ubuntu2.3) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../46-build-essential_12.4ubuntu1_amd64.deb ...
+Unpacking build-essential (12.4ubuntu1) ...
+Selecting previously unselected package libassuan0:amd64.
+Preparing to unpack .../47-libassuan0_2.5.1-2_amd64.deb ...
+Unpacking libassuan0:amd64 (2.5.1-2) ...
+Selecting previously unselected package gpgconf.
+Preparing to unpack .../48-gpgconf_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpgconf (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package libksba8:amd64.
+Preparing to unpack .../49-libksba8_1.3.5-2_amd64.deb ...
+Unpacking libksba8:amd64 (1.3.5-2) ...
+Selecting previously unselected package libnpth0:amd64.
+Preparing to unpack .../50-libnpth0_1.5-3_amd64.deb ...
+Unpacking libnpth0:amd64 (1.5-3) ...
+Selecting previously unselected package dirmngr.
+Preparing to unpack .../51-dirmngr_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking dirmngr (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../52-libfakeroot_1.22-2ubuntu1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.22-2ubuntu1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../53-fakeroot_1.22-2ubuntu1_amd64.deb ...
+Unpacking fakeroot (1.22-2ubuntu1) ...
+Selecting previously unselected package gnupg-l10n.
+Preparing to unpack .../54-gnupg-l10n_2.2.4-1ubuntu1.2_all.deb ...
+Unpacking gnupg-l10n (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gnupg-utils.
+Preparing to unpack .../55-gnupg-utils_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gnupg-utils (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gpg.
+Preparing to unpack .../56-gpg_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpg (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package pinentry-curses.
+Preparing to unpack .../57-pinentry-curses_1.1.0-1_amd64.deb ...
+Unpacking pinentry-curses (1.1.0-1) ...
+Selecting previously unselected package gpg-agent.
+Preparing to unpack .../58-gpg-agent_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpg-agent (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gpg-wks-client.
+Preparing to unpack .../59-gpg-wks-client_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpg-wks-client (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gpg-wks-server.
+Preparing to unpack .../60-gpg-wks-server_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpg-wks-server (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gpgsm.
+Preparing to unpack .../61-gpgsm_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gpgsm (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package gnupg.
+Preparing to unpack .../62-gnupg_2.2.4-1ubuntu1.2_amd64.deb ...
+Unpacking gnupg (2.2.4-1ubuntu1.2) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../63-libalgorithm-diff-perl_1.19.03-1_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.03-1) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../64-libalgorithm-diff-xs-perl_0.04-5_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-5) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../65-libalgorithm-merge-perl_0.08-3_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-3) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../66-libfile-fcntllock-perl_0.22-3build2_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-3build2) ...
+Selecting previously unselected package libssl-dev:amd64.
+Preparing to unpack .../67-libssl-dev_1.1.1-1ubuntu2.1~18.04.6_amd64.deb ...
+Unpacking libssl-dev:amd64 (1.1.1-1ubuntu2.1~18.04.6) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../68-manpages-dev_4.15-1_all.deb ...
+Unpacking manpages-dev (4.15-1) ...
+Selecting previously unselected package pkg-config.
+Preparing to unpack .../69-pkg-config_0.29.1-0ubuntu2_amd64.deb ...
+Unpacking pkg-config (0.29.1-0ubuntu2) ...
+Setting up libquadmath0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up libnpth0:amd64 (1.5-3) ...
+Setting up libgomp1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up libatomic1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up manpages (4.15-1) ...
+Setting up libicu60:amd64 (60.2-3ubuntu3.1) ...
+Setting up libcc1-0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up make (4.1-9.1ubuntu1) ...
+Setting up libtsan0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up libglib2.0-0:amd64 (2.56.4-0ubuntu0.18.04.6) ...
+No schema files found: doing nothing.
+Setting up linux-libc-dev:amd64 (4.15.0-112.113) ...
+Setting up libmpfr6:amd64 (4.0.1-1) ...
+Setting up libdpkg-perl (1.19.0.5ubuntu2.3) ...
+Setting up libksba8:amd64 (1.3.5-2) ...
+Setting up libxml2:amd64 (2.9.4+dfsg1-6.1ubuntu1.3) ...
+Setting up gnupg-l10n (2.2.4-1ubuntu1.2) ...
+Setting up liblsan0:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up gcc-7-base:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up binutils-common:amd64 (2.30-21ubuntu1~18.04.3) ...
+Setting up libfile-fcntllock-perl (0.22-3build2) ...
+Setting up libmpx2:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up patch (2.7.6-2ubuntu1.1) ...
+Setting up libglib2.0-data (2.56.4-0ubuntu0.18.04.6) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Setting up libssl1.1:amd64 (1.1.1-1ubuntu2.1~18.04.6) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+Setting up xz-utils (5.2.2-1.3) ...
+update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzma.1.gz because associated file /usr/share/man/man1/xz.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/unlzma.1.gz because associated file /usr/share/man/man1/unxz.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzcat.1.gz because associated file /usr/share/man/man1/xzcat.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzmore.1.gz because associated file /usr/share/man/man1/xzmore.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzless.1.gz because associated file /usr/share/man/man1/xzless.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzdiff.1.gz because associated file /usr/share/man/man1/xzdiff.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzcmp.1.gz because associated file /usr/share/man/man1/xzcmp.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzgrep.1.gz because associated file /usr/share/man/man1/xzgrep.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzegrep.1.gz because associated file /usr/share/man/man1/xzegrep.1.gz (of link group lzma) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/lzfgrep.1.gz because associated file /usr/share/man/man1/xzfgrep.1.gz (of link group lzma) doesn't exist
+Setting up libfakeroot:amd64 (1.22-2ubuntu1) ...
+Setting up openssl (1.1.1-1ubuntu2.1~18.04.6) ...
+Setting up wget (1.19.4-1ubuntu2.2) ...
+Setting up libalgorithm-diff-perl (1.19.03-1) ...
+Setting up liblocale-gettext-perl (1.07-3build2) ...
+Setting up shared-mime-info (1.9-2) ...
+Setting up libmpc3:amd64 (1.1.0-1) ...
+Setting up libc-dev-bin (2.27-3ubuntu1.2) ...
+Setting up manpages-dev (4.15-1) ...
+Setting up libc6-dev:amd64 (2.27-3ubuntu1.2) ...
+Setting up libassuan0:amd64 (2.5.1-2) ...
+Setting up xdg-user-dirs (0.17-1ubuntu1) ...
+Setting up libitm1:amd64 (8.4.0-1ubuntu1~18.04) ...
+Setting up libisl19:amd64 (0.19-1) ...
+Setting up libasan4:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up libbinutils:amd64 (2.30-21ubuntu1~18.04.3) ...
+Setting up libcilkrts5:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up libubsan0:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up gpgconf (2.2.4-1ubuntu1.2) ...
+Setting up libssl-dev:amd64 (1.1.1-1ubuntu2.1~18.04.6) ...
+Setting up fakeroot (1.22-2ubuntu1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/fakeroot.1.gz because associated file /usr/share/man/man1/fakeroot-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/man1/faked.1.gz because associated file /usr/share/man/man1/faked-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/es/man1/fakeroot.1.gz because associated file /usr/share/man/es/man1/fakeroot-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/es/man1/faked.1.gz because associated file /usr/share/man/es/man1/faked-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/fakeroot.1.gz because associated file /usr/share/man/fr/man1/fakeroot-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/fr/man1/faked.1.gz because associated file /usr/share/man/fr/man1/faked-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/sv/man1/fakeroot.1.gz because associated file /usr/share/man/sv/man1/fakeroot-sysv.1.gz (of link group fakeroot) doesn't exist
+update-alternatives: warning: skip creation of /usr/share/man/sv/man1/faked.1.gz because associated file /usr/share/man/sv/man1/faked-sysv.1.gz (of link group fakeroot) doesn't exist
+Setting up libgcc-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up cpp-7 (7.5.0-3ubuntu1~18.04) ...
+Setting up libstdc++-7-dev:amd64 (7.5.0-3ubuntu1~18.04) ...
+Setting up libalgorithm-merge-perl (0.08-3) ...
+Setting up libalgorithm-diff-xs-perl (0.04-5) ...
+Setting up gpgsm (2.2.4-1ubuntu1.2) ...
+Setting up gnupg-utils (2.2.4-1ubuntu1.2) ...
+Setting up pinentry-curses (1.1.0-1) ...
+Setting up dirmngr (2.2.4-1ubuntu1.2) ...
+Setting up gpg (2.2.4-1ubuntu1.2) ...
+Setting up binutils-x86-64-linux-gnu (2.30-21ubuntu1~18.04.3) ...
+Setting up cpp (4:7.4.0-1ubuntu2.3) ...
+Setting up gpg-agent (2.2.4-1ubuntu1.2) ...
+Setting up gpg-wks-server (2.2.4-1ubuntu1.2) ...
+Setting up gpg-wks-client (2.2.4-1ubuntu1.2) ...
+Setting up binutils (2.30-21ubuntu1~18.04.3) ...
+Setting up gcc-7 (7.5.0-3ubuntu1~18.04) ...
+Setting up g++-7 (7.5.0-3ubuntu1~18.04) ...
+Setting up gnupg (2.2.4-1ubuntu1.2) ...
+Setting up gcc (4:7.4.0-1ubuntu2.3) ...
+Setting up dpkg-dev (1.19.0.5ubuntu2.3) ...
+Setting up g++ (4:7.4.0-1ubuntu2.3) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/c++.1.gz because associated file /usr/share/man/man1/g++.1.gz (of link group c++) doesn't exist
+Setting up build-essential (12.4ubuntu1) ...
+Setting up pkg-config (0.29.1-0ubuntu2) ...
+Processing triggers for libc-bin (2.27-3ubuntu1) ...
+Removing intermediate container 99ce5230e9e6
+ ---> 7e05a8a319ac
+Step 5/21 : ENV RUSTUP_HOME=/usr/local/rustup     CARGO_HOME=/usr/local/cargo     PATH=/usr/local/cargo/bin:$PATH     RUST_VERSION=1.41.1
+ ---> Running in d6b042a92cd6
+Removing intermediate container d6b042a92cd6
+ ---> f7cfdde91664
+Step 6/21 : RUN set -eux;     dpkgArch="$(dpkg --print-architecture)";     case "${dpkgArch##*-}" in         amd64) rustArch='x86_64-unknown-linux-gnu'; rustupSha256='ad1f8b5199b3b9e231472ed7aa08d2e5d1d539198a15c5b1e53c746aad81d27b' ;;         armhf) rustArch='armv7-unknown-linux-gnueabihf'; rustupSha256='6c6c3789dabf12171c7f500e06d21d8004b5318a5083df8b0b02c0e5ef1d017b' ;;         arm64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='26942c80234bac34b3c1352abbd9187d3e23b43dae3cf56a9f9c1ea8ee53076d' ;;         i386) rustArch='i686-unknown-linux-gnu'; rustupSha256='27ae12bc294a34e566579deba3e066245d09b8871dc021ef45fc715dced05297' ;;         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;;     esac;     url="https://static.rust-lang.org/rustup/archive/1.21.1/${rustArch}/rustup-init";     wget "$url";     echo "${rustupSha256} *rustup-init" | sha256sum -c -;     chmod +x rustup-init;     ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION;     rm rustup-init;     chmod -R a+w $RUSTUP_HOME $CARGO_HOME;     rustup --version;     cargo --version;     rustc --version;
+ ---> Running in bd535c8972ac
++ dpkg --print-architecture
++ dpkgArch=amd64
++ rustArch=x86_64-unknown-linux-gnu
++ rustupSha256=ad1f8b5199b3b9e231472ed7aa08d2e5d1d539198a15c5b1e53c746aad81d27b
++ url=https://static.rust-lang.org/rustup/archive/1.21.1/x86_64-unknown-linux-gnu/rustup-init
++ wget https://static.rust-lang.org/rustup/archive/1.21.1/x86_64-unknown-linux-gnu/rustup-init
+--2020-07-23 18:34:34--  https://static.rust-lang.org/rustup/archive/1.21.1/x86_64-unknown-linux-gnu/rustup-init
+Resolving static.rust-lang.org (static.rust-lang.org)... 13.33.144.34, 13.33.144.18, 13.33.144.13, ...
+Connecting to static.rust-lang.org (static.rust-lang.org)|13.33.144.34|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12245112 (12M) [binary/octet-stream]
+Saving to: ‘rustup-init’
+
+     0K .......... .......... .......... .......... ..........  0%  230K 52s
+    50K .......... .......... .......... .......... ..........  0%  160K 63s
+   100K .......... .......... .......... .......... ..........  1%  264K 57s
+   150K .......... .......... .......... .......... ..........  1% 2.32M 43s
+   200K .......... .......... .......... .......... ..........  2% 2.40M 36s
+   250K .......... .......... .......... .......... ..........  2%  306K 36s
+   300K .......... .......... .......... .......... ..........  2% 3.89M 31s
+   350K .......... .......... .......... .......... ..........  3% 3.93M 27s
+   400K .......... .......... .......... .......... ..........  3% 6.78M 24s
+   450K .......... .......... .......... .......... ..........  4% 4.56M 22s
+   500K .......... .......... .......... .......... ..........  4% 6.44M 20s
+   550K .......... .......... .......... .......... ..........  5%  324K 21s
+   600K .......... .......... .......... .......... ..........  5%  624K 21s
+   650K .......... .......... .......... .......... ..........  5% 1.70M 20s
+   700K .......... .......... .......... .......... ..........  6% 1.27M 19s
+   750K .......... .......... .......... .......... ..........  6% 91.0M 18s
+   800K .......... .......... .......... .......... ..........  7%  133M 17s
+   850K .......... .......... .......... .......... ..........  7%  132M 16s
+   900K .......... .......... .......... .......... ..........  7%  524K 16s
+   950K .......... .......... .......... .......... ..........  8%  142M 15s
+  1000K .......... .......... .......... .......... ..........  8%  147M 14s
+  1050K .......... .......... .......... .......... ..........  9%  151M 14s
+  1100K .......... .......... .......... .......... ..........  9%  779K 14s
+  1150K .......... .......... .......... .......... .......... 10% 19.1M 13s
+  1200K .......... .......... .......... .......... .......... 10% 1.58M 13s
+  1250K .......... .......... .......... .......... .......... 10%  185K 14s
+  1300K .......... .......... .......... .......... .......... 11% 2.47M 14s
+  1350K .......... .......... .......... .......... .......... 11%  472K 14s
+  1400K .......... .......... .......... .......... .......... 12% 3.92M 14s
+  1450K .......... .......... .......... .......... .......... 12%  132K 16s
+  1500K .......... .......... .......... .......... .......... 12%  323K 16s
+  1550K .......... .......... .......... .......... .......... 13%  255K 17s
+  1600K .......... .......... .......... .......... .......... 13%  205K 18s
+  1650K .......... .......... .......... .......... .......... 14%  250K 18s
+  1700K .......... .......... .......... .......... .......... 14%  225K 19s
+  1750K .......... .......... .......... .......... .......... 15%  308K 19s
+  1800K .......... .......... .......... .......... .......... 15%  281K 20s
+  1850K .......... .......... .......... .......... .......... 15%  269K 20s
+  1900K .......... .......... .......... .......... .......... 16%  197K 21s
+  1950K .......... .......... .......... .......... .......... 16%  163K 22s
+  2000K .......... .......... .......... .......... .......... 17%  374K 22s
+  2050K .......... .......... .......... .......... .......... 17%  284K 22s
+  2100K .......... .......... .......... .......... .......... 17%  233K 22s
+  2150K .......... .......... .......... .......... .......... 18%  148K 23s
+  2200K .......... .......... .......... .......... .......... 18%  211K 24s
+  2250K .......... .......... .......... .......... .......... 19%  348K 24s
+  2300K .......... .......... .......... .......... .......... 19%  258K 24s
+  2350K .......... .......... .......... .......... .......... 20%  240K 24s
+  2400K .......... .......... .......... .......... .......... 20%  257K 24s
+  2450K .......... .......... .......... .......... .......... 20%  266K 24s
+  2500K .......... .......... .......... .......... .......... 21%  231K 24s
+  2550K .......... .......... .......... .......... .......... 21%  240K 25s
+  2600K .......... .......... .......... .......... .......... 22%  179K 25s
+  2650K .......... .......... .......... .......... .......... 22%  243K 25s
+  2700K .......... .......... .......... .......... .......... 22%  243K 25s
+  2750K .......... .......... .......... .......... .......... 23%  228K 25s
+  2800K .......... .......... .......... .......... .......... 23%  256K 25s
+  2850K .......... .......... .......... .......... .......... 24%  227K 25s
+  2900K .......... .......... .......... .......... .......... 24%  248K 25s
+  2950K .......... .......... .......... .......... .......... 25%  246K 26s
+  3000K .......... .......... .......... .......... .......... 25%  158K 26s
+  3050K .......... .......... .......... .......... .......... 25%  272K 26s
+  3100K .......... .......... .......... .......... .......... 26%  300K 26s
+  3150K .......... .......... .......... .......... .......... 26%  228K 26s
+  3200K .......... .......... .......... .......... .......... 27%  215K 26s
+  3250K .......... .......... .......... .......... .......... 27%  227K 26s
+  3300K .......... .......... .......... .......... .......... 28%  225K 26s
+  3350K .......... .......... .......... .......... .......... 28%  217K 26s
+  3400K .......... .......... .......... .......... .......... 28%  184K 26s
+  3450K .......... .......... .......... .......... .......... 29%  227K 26s
+  3500K .......... .......... .......... .......... .......... 29%  221K 26s
+  3550K .......... .......... .......... .......... .......... 30%  188K 26s
+  3600K .......... .......... .......... .......... .......... 30%  253K 26s
+  3650K .......... .......... .......... .......... .......... 30%  224K 26s
+  3700K .......... .......... .......... .......... .......... 31%  218K 26s
+  3750K .......... .......... .......... .......... .......... 31%  290K 26s
+  3800K .......... .......... .......... .......... .......... 32%  369K 26s
+  3850K .......... .......... .......... .......... .......... 32%  161K 26s
+  3900K .......... .......... .......... .......... .......... 33%  350K 26s
+  3950K .......... .......... .......... .......... .......... 33%  221K 26s
+  4000K .......... .......... .......... .......... .......... 33%  296K 26s
+  4050K .......... .......... .......... .......... .......... 34%  207K 26s
+  4100K .......... .......... .......... .......... .......... 34%  478K 25s
+  4150K .......... .......... .......... .......... .......... 35%  249K 25s
+  4200K .......... .......... .......... .......... .......... 35%  174K 25s
+  4250K .......... .......... .......... .......... .......... 35%  194K 25s
+  4300K .......... .......... .......... .......... .......... 36%  356K 25s
+  4350K .......... .......... .......... .......... .......... 36%  235K 25s
+  4400K .......... .......... .......... .......... .......... 37%  222K 25s
+  4450K .......... .......... .......... .......... .......... 37%  272K 25s
+  4500K .......... .......... .......... .......... .......... 38%  188K 25s
+  4550K .......... .......... .......... .......... .......... 38%  332K 25s
+  4600K .......... .......... .......... .......... .......... 38%  142K 25s
+  4650K .......... .......... .......... .......... .......... 39%  244K 25s
+  4700K .......... .......... .......... .......... .......... 39%  315K 24s
+  4750K .......... .......... .......... .......... .......... 40%  232K 24s
+  4800K .......... .......... .......... .......... .......... 40%  283K 24s
+  4850K .......... .......... .......... .......... .......... 40%  247K 24s
+  4900K .......... .......... .......... .......... .......... 41%  235K 24s
+  4950K .......... .......... .......... .......... .......... 41%  252K 24s
+  5000K .......... .......... .......... .......... .......... 42%  182K 24s
+  5050K .......... .......... .......... .......... .......... 42%  228K 24s
+  5100K .......... .......... .......... .......... .......... 43%  216K 24s
+  5150K .......... .......... .......... .......... .......... 43%  281K 23s
+  5200K .......... .......... .......... .......... .......... 43%  264K 23s
+  5250K .......... .......... .......... .......... .......... 44%  198K 23s
+  5300K .......... .......... .......... .......... .......... 44%  231K 23s
+  5350K .......... .......... .......... .......... .......... 45%  287K 23s
+  5400K .......... .......... .......... .......... .......... 45%  187K 23s
+  5450K .......... .......... .......... .......... .......... 45%  237K 23s
+  5500K .......... .......... .......... .......... .......... 46%  214K 23s
+  5550K .......... .......... .......... .......... .......... 46%  251K 22s
+  5600K .......... .......... .......... .......... .......... 47%  288K 22s
+  5650K .......... .......... .......... .......... .......... 47%  243K 22s
+  5700K .......... .......... .......... .......... .......... 48%  230K 22s
+  5750K .......... .......... .......... .......... .......... 48%  225K 22s
+  5800K .......... .......... .......... .......... .......... 48%  182K 22s
+  5850K .......... .......... .......... .......... .......... 49%  236K 22s
+  5900K .......... .......... .......... .......... .......... 49%  214K 22s
+  5950K .......... .......... .......... .......... .......... 50%  196K 21s
+  6000K .......... .......... .......... .......... .......... 50%  265K 21s
+  6050K .......... .......... .......... .......... .......... 51%  223K 21s
+  6100K .......... .......... .......... .......... .......... 51%  237K 21s
+  6150K .......... .......... .......... .......... .......... 51%  223K 21s
+  6200K .......... .......... .......... .......... .......... 52%  188K 21s
+  6250K .......... .......... .......... .......... .......... 52%  305K 21s
+  6300K .......... .......... .......... .......... .......... 53%  287K 20s
+  6350K .......... .......... .......... .......... .......... 53%  199K 20s
+  6400K .......... .......... .......... .......... .......... 53%  227K 20s
+  6450K .......... .......... .......... .......... .......... 54%  277K 20s
+  6500K .......... .......... .......... .......... .......... 54%  299K 20s
+  6550K .......... .......... .......... .......... .......... 55%  269K 19s
+  6600K .......... .......... .......... .......... .......... 55%  155K 19s
+  6650K .......... .......... .......... .......... .......... 56%  337K 19s
+  6700K .......... .......... .......... .......... .......... 56%  223K 19s
+  6750K .......... .......... .......... .......... .......... 56%  229K 19s
+  6800K .......... .......... .......... .......... .......... 57%  237K 19s
+  6850K .......... .......... .......... .......... .......... 57%  238K 19s
+  6900K .......... .......... .......... .......... .......... 58%  224K 18s
+  6950K .......... .......... .......... .......... .......... 58%  272K 18s
+  7000K .......... .......... .......... .......... .......... 58%  176K 18s
+  7050K .......... .......... .......... .......... .......... 59%  237K 18s
+  7100K .......... .......... .......... .......... .......... 59%  247K 18s
+  7150K .......... .......... .......... .......... .......... 60%  322K 18s
+  7200K .......... .......... .......... .......... .......... 60%  172K 17s
+  7250K .......... .......... .......... .......... .......... 61%  265K 17s
+  7300K .......... .......... .......... .......... .......... 61%  280K 17s
+  7350K .......... .......... .......... .......... .......... 61%  171K 17s
+  7400K .......... .......... .......... .......... .......... 62%  319K 17s
+  7450K .......... .......... .......... .......... .......... 62%  237K 17s
+  7500K .......... .......... .......... .......... .......... 63%  264K 16s
+  7550K .......... .......... .......... .......... .......... 63%  243K 16s
+  7600K .......... .......... .......... .......... .......... 63%  244K 16s
+  7650K .......... .......... .......... .......... .......... 64%  229K 16s
+  7700K .......... .......... .......... .......... .......... 64%  246K 16s
+  7750K .......... .......... .......... .......... .......... 65%  242K 16s
+  7800K .......... .......... .......... .......... .......... 65%  175K 15s
+  7850K .......... .......... .......... .......... .......... 66%  259K 15s
+  7900K .......... .......... .......... .......... .......... 66%  259K 15s
+  7950K .......... .......... .......... .......... .......... 66%  134K 15s
+  8000K .......... .......... .......... .......... .......... 67% 1.10M 15s
+  8050K .......... .......... .......... .......... .......... 67%  199K 15s
+  8100K .......... .......... .......... .......... .......... 68%  334K 14s
+  8150K .......... .......... .......... .......... .......... 68%  244K 14s
+  8200K .......... .......... .......... .......... .......... 68%  178K 14s
+  8250K .......... .......... .......... .......... .......... 69%  248K 14s
+  8300K .......... .......... .......... .......... .......... 69%  230K 14s
+  8350K .......... .......... .......... .......... .......... 70%  219K 13s
+  8400K .......... .......... .......... .......... .......... 70%  242K 13s
+  8450K .......... .......... .......... .......... .......... 71%  231K 13s
+  8500K .......... .......... .......... .......... .......... 71%  243K 13s
+  8550K .......... .......... .......... .......... .......... 71%  258K 13s
+  8600K .......... .......... .......... .......... .......... 72%  179K 13s
+  8650K .......... .......... .......... .......... .......... 72%  232K 12s
+  8700K .......... .......... .......... .......... .......... 73%  268K 12s
+  8750K .......... .......... .......... .......... .......... 73%  207K 12s
+  8800K .......... .......... .......... .......... .......... 74%  262K 12s
+  8850K .......... .......... .......... .......... .......... 74%  282K 12s
+  8900K .......... .......... .......... .......... .......... 74%  245K 11s
+  8950K .......... .......... .......... .......... .......... 75% 72.4K 11s
+  9000K .......... .......... .......... .......... .......... 75%  273K 11s
+  9050K .......... .......... .......... .......... .......... 76%  222K 11s
+  9100K .......... .......... .......... .......... .......... 76%  237K 11s
+  9150K .......... .......... .......... .......... .......... 76%  236K 11s
+  9200K .......... .......... .......... .......... .......... 77%  223K 10s
+  9250K .......... .......... .......... .......... .......... 77%  236K 10s
+  9300K .......... .......... .......... .......... .......... 78%  268K 10s
+  9350K .......... .......... .......... .......... .......... 78%  222K 10s
+  9400K .......... .......... .......... .......... .......... 79%  168K 10s
+  9450K .......... .......... .......... .......... .......... 79%  250K 10s
+  9500K .......... .......... .......... .......... .......... 79%  266K 9s
+  9550K .......... .......... .......... .......... .......... 80%  321K 9s
+  9600K .......... .......... .......... .......... .......... 80%  297K 9s
+  9650K .......... .......... .......... .......... .......... 81%  355K 9s
+  9700K .......... .......... .......... .......... .......... 81%  403K 9s
+  9750K .......... .......... .......... .......... .......... 81%  458K 8s
+  9800K .......... .......... .......... .......... .......... 82%  125K 8s
+  9850K .......... .......... .......... .......... .......... 82%  251K 8s
+  9900K .......... .......... .......... .......... .......... 83%  266K 8s
+  9950K .......... .......... .......... .......... .......... 83%  212K 8s
+ 10000K .......... .......... .......... .......... .......... 84%  490K 7s
+ 10050K .......... .......... .......... .......... .......... 84%  245K 7s
+ 10100K .......... .......... .......... .......... .......... 84%  228K 7s
+ 10150K .......... .......... .......... .......... .......... 85%  223K 7s
+ 10200K .......... .......... .......... .......... .......... 85%  177K 7s
+ 10250K .......... .......... .......... .......... .......... 86%  232K 6s
+ 10300K .......... .......... .......... .......... .......... 86%  247K 6s
+ 10350K .......... .......... .......... .......... .......... 86%  232K 6s
+ 10400K .......... .......... .......... .......... .......... 87%  232K 6s
+ 10450K .......... .......... .......... .......... .......... 87%  219K 6s
+ 10500K .......... .......... .......... .......... .......... 88%  232K 5s
+ 10550K .......... .......... .......... .......... .......... 88%  246K 5s
+ 10600K .......... .......... .......... .......... .......... 89%  188K 5s
+ 10650K .......... .......... .......... .......... .......... 89%  282K 5s
+ 10700K .......... .......... .......... .......... .......... 89%  230K 5s
+ 10750K .......... .......... .......... .......... .......... 90%  465K 5s
+ 10800K .......... .......... .......... .......... .......... 90%  187K 4s
+ 10850K .......... .......... .......... .......... .......... 91%  334K 4s
+ 10900K .......... .......... .......... .......... .......... 91%  253K 4s
+ 10950K .......... .......... .......... .......... .......... 91%  259K 4s
+ 11000K .......... .......... .......... .......... .......... 92%  161K 4s
+ 11050K .......... .......... .......... .......... .......... 92%  276K 3s
+ 11100K .......... .......... .......... .......... .......... 93%  229K 3s
+ 11150K .......... .......... .......... .......... .......... 93%  240K 3s
+ 11200K .......... .......... .......... .......... .......... 94%  240K 3s
+ 11250K .......... .......... .......... .......... .......... 94%  228K 3s
+ 11300K .......... .......... .......... .......... .......... 94%  232K 2s
+ 11350K .......... .......... .......... .......... .......... 95%  245K 2s
+ 11400K .......... .......... .......... .......... .......... 95%  183K 2s
+ 11450K .......... .......... .......... .......... .......... 96%  256K 2s
+ 11500K .......... .......... .......... .......... .......... 96%  166K 2s
+ 11550K .......... .......... .......... .......... .......... 97%  611K 1s
+ 11600K .......... .......... .......... .......... .......... 97%  232K 1s
+ 11650K .......... .......... .......... .......... .......... 97%  234K 1s
+ 11700K .......... .......... .......... .......... .......... 98%  180K 1s
+ 11750K .......... .......... .......... .......... .......... 98%  452K 1s
+ 11800K .......... .......... .......... .......... .......... 99%  192K 0s
+ 11850K .......... .......... .......... .......... .......... 99%  235K 0s
+ 11900K .......... .......... .......... .......... .......... 99%  249K 0s
+ 11950K ........                                              100% 27.5M=47s
+
+2020-07-23 18:35:25 (254 KB/s) - ‘rustup-init’ saved [12245112/12245112]
+
++ echo ad1f8b5199b3b9e231472ed7aa08d2e5d1d539198a15c5b1e53c746aad81d27b *rustup-init
++ sha256sum -c -
+rustup-init: OK
++ chmod +x rustup-init
++ ./rustup-init -y --no-modify-path --profile minimal --default-toolchain 1.41.1
+warning: $HOME differs from euid-obtained home directory: you may be using sudo
+warning: $HOME directory: "/home/indy"
+warning: euid-obtained home directory: /root
+info: profile set to 'minimal'
+info: default host triple is x86_64-unknown-linux-gnu
+info: syncing channel updates for '1.41.1-x86_64-unknown-linux-gnu'
+info: latest update on 2020-02-27, rust version 1.41.1 (f3e1a954d 2020-02-24)
+info: downloading component 'cargo'
+info: downloading component 'rust-std'
+info: downloading component 'rustc'
+info: installing component 'cargo'
+info: installing component 'rust-std'
+info: installing component 'rustc'
+info: default toolchain set to '1.41.1'
+
+  1.41.1 installed - rustc 1.41.1 (f3e1a954d 2020-02-24)
+
+
+Rust is installed now. Great!
+
+To get started you need Cargo's bin directory (/usr/local/cargo/bin) in your 
+PATH
+environment variable.
+
+To configure your current shell run source /usr/local/cargo/env
++ rm rustup-init
++ chmod -R a+w /usr/local/rustup /usr/local/cargo
++ rustup --version
+rustup 1.21.1 (7832b2ebe 2019-12-20)
++ cargo --version
+cargo 1.41.0 (626f0f40e 2019-12-03)
++ rustc --version
+rustc 1.41.1 (f3e1a954d 2020-02-24)
+Removing intermediate container bd535c8972ac
+ ---> 07e580875039
+Step 7/21 : ADD https://github.com/sovrin-foundation/libsovtoken/archive/v1.0.1.tar.gz libsovtoken.tar.gz
+
+ ---> 9e38b1bbfa94
+Step 8/21 : ENV LIBINDY_DIR=/home/indy/.local/lib
+ ---> Running in 5965354e7e6a
+Removing intermediate container 5965354e7e6a
+ ---> 75fc66a00d96
+Step 9/21 : ENV LD_LIBRARY_PATH=/home/indy/.local/lib
+ ---> Running in 4433a537eb11
+Removing intermediate container 4433a537eb11
+ ---> ae700d00c176
+Step 10/21 : RUN tar xzvf libsovtoken.tar.gz;         cd libsovtoken-1.0.1/libsovtoken;         cargo build
+ ---> Running in 3677f09f7b5d
+libsovtoken-1.0.1/
+libsovtoken-1.0.1/.gitignore
+libsovtoken-1.0.1/CHANGELOG.md
+libsovtoken-1.0.1/LICENSE
+libsovtoken-1.0.1/README.md
+libsovtoken-1.0.1/devops/
+libsovtoken-1.0.1/devops/Makefile
+libsovtoken-1.0.1/devops/Makefile.android.in
+libsovtoken-1.0.1/devops/README.md
+libsovtoken-1.0.1/devops/android_upload.sh
+libsovtoken-1.0.1/devops/aws-codebuild/
+libsovtoken-1.0.1/devops/aws-codebuild/Jenkinsfile.cd
+libsovtoken-1.0.1/devops/aws-codebuild/Jenkinsfile.ci
+libsovtoken-1.0.1/devops/aws-codebuild/buildspec.cd.yml
+libsovtoken-1.0.1/devops/aws-codebuild/buildspec.ci.yml
+libsovtoken-1.0.1/devops/docker/
+libsovtoken-1.0.1/devops/docker/.env
+libsovtoken-1.0.1/devops/docker/android_build/
+libsovtoken-1.0.1/devops/docker/android_build/xenial/
+libsovtoken-1.0.1/devops/docker/android_build/xenial/Dockerfile
+libsovtoken-1.0.1/devops/docker/android_ndk/
+libsovtoken-1.0.1/devops/docker/android_ndk/xenial/
+libsovtoken-1.0.1/devops/docker/android_ndk/xenial/Dockerfile
+libsovtoken-1.0.1/devops/docker/android_ndk/xenial/android-ndk-install
+libsovtoken-1.0.1/devops/docker/base/
+libsovtoken-1.0.1/devops/docker/base/centos7/
+libsovtoken-1.0.1/devops/docker/base/centos7/Dockerfile
+libsovtoken-1.0.1/devops/docker/base/xenial/
+libsovtoken-1.0.1/devops/docker/base/xenial/Dockerfile
+libsovtoken-1.0.1/devops/docker/ci/
+libsovtoken-1.0.1/devops/docker/ci/centos7/
+libsovtoken-1.0.1/devops/docker/ci/centos7/Dockerfile
+libsovtoken-1.0.1/devops/docker/ci/xenial/
+libsovtoken-1.0.1/devops/docker/ci/xenial/Dockerfile
+libsovtoken-1.0.1/devops/docker/ci/xenial/libsovtoken-ci-entrypoint.sh
+libsovtoken-1.0.1/devops/docker/ci/xenial/repo.corp.evenym.com-sig.key
+libsovtoken-1.0.1/devops/docker/ci/xenial/supervisord.conf
+libsovtoken-1.0.1/devops/docker/docker-compose.yml
+libsovtoken-1.0.1/devops/ext/
+libsovtoken-1.0.1/devops/ext/.gitrepo
+libsovtoken-1.0.1/devops/ext/Makefile
+libsovtoken-1.0.1/devops/ext/README.md
+libsovtoken-1.0.1/devops/ext/docker/
+libsovtoken-1.0.1/devops/ext/docker/.env
+libsovtoken-1.0.1/devops/ext/docker/android_ndk/
+libsovtoken-1.0.1/devops/ext/docker/android_ndk/xenial/
+libsovtoken-1.0.1/devops/ext/docker/android_ndk/xenial/Dockerfile.0.1.0
+libsovtoken-1.0.1/devops/ext/docker/android_ndk/xenial/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/android_ndk/xenial/android-ndk-install
+libsovtoken-1.0.1/devops/ext/docker/base/
+libsovtoken-1.0.1/devops/ext/docker/base/centos7/
+libsovtoken-1.0.1/devops/ext/docker/base/centos7/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/base/centos7/Dockerfile.0.3.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.1.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.3.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.4.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.5.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.6.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.7.0
+libsovtoken-1.0.1/devops/ext/docker/base/xenial/Dockerfile.0.8.0
+libsovtoken-1.0.1/devops/ext/docker/docker-compose.yml
+libsovtoken-1.0.1/devops/ext/docker/python3/
+libsovtoken-1.0.1/devops/ext/docker/python3/centos7/
+libsovtoken-1.0.1/devops/ext/docker/python3/centos7/.gitignore
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/Dockerfile.0.1.0
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/Dockerfile.0.3.0
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/Dockerfile.0.4.0
+libsovtoken-1.0.1/devops/ext/docker/python3/xenial/Dockerfile.0.5.0
+libsovtoken-1.0.1/devops/ext/docker/rust/
+libsovtoken-1.0.1/devops/ext/docker/rust/centos7/
+libsovtoken-1.0.1/devops/ext/docker/rust/centos7/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/rust/centos7/Dockerfile.0.3.0
+libsovtoken-1.0.1/devops/ext/docker/rust/centos7/Dockerfile.0.4.0
+libsovtoken-1.0.1/devops/ext/docker/rust/centos7/Dockerfile.0.5.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.1.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.10.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.11.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.12.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.2.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.3.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.4.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.5.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.6.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.7.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.8.0
+libsovtoken-1.0.1/devops/ext/docker/rust/xenial/Dockerfile.0.9.0
+libsovtoken-1.0.1/devops/ext/fpm.mk
+libsovtoken-1.0.1/devops/indy-pool/
+libsovtoken-1.0.1/devops/indy-pool/Dockerfile
+libsovtoken-1.0.1/devops/setup.android.env.sh
+libsovtoken-1.0.1/devops/windows/
+libsovtoken-1.0.1/devops/windows/win-zip-and-upload.sh
+libsovtoken-1.0.1/doc/
+libsovtoken-1.0.1/doc/async_calls.md
+libsovtoken-1.0.1/doc/build-guides/
+libsovtoken-1.0.1/doc/build-guides/windows-build.md
+libsovtoken-1.0.1/doc/data_structures.md
+libsovtoken-1.0.1/doc/fees.md
+libsovtoken-1.0.1/doc/pull-request.md
+libsovtoken-1.0.1/doc/technical concerns.md
+libsovtoken-1.0.1/libsovtoken/
+libsovtoken-1.0.1/libsovtoken/Cargo.toml
+libsovtoken-1.0.1/libsovtoken/build.rs
+libsovtoken-1.0.1/libsovtoken/build_scripts/
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/README.md
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/android_settings.txt
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/indy/
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/indy/Dockerfile
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/indy/build.nondocker.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/indy/build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libindy.dependencies.txt
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/Dockerfile
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/build.nondocker.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/libsovtoken.dependencies.txt
+libsovtoken-1.0.1/libsovtoken/build_scripts/android/libsovtoken/pack.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/README.md
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/cargo.toml.add.debug.txt
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.01.env.setup.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.02.libindy.env.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.03.libindy.build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.08.libssl.libcrypto.build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.09.libzmq.libsodium.build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.10.libminiz.libsqlite3.combine.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.14.libsovtoken.build.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/mac.strip.debug.symbols.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/ios/mac/shared.functions.sh
+libsovtoken-1.0.1/libsovtoken/build_scripts/libindy.commit.sha1.hash.txt
+libsovtoken-1.0.1/libsovtoken/dev/
+libsovtoken-1.0.1/libsovtoken/dev/ubuntu/
+libsovtoken-1.0.1/libsovtoken/dev/ubuntu/Dockerfile
+libsovtoken-1.0.1/libsovtoken/dev/ubuntu/README.md
+libsovtoken-1.0.1/libsovtoken/dev/ubuntu/build_docker.sh
+libsovtoken-1.0.1/libsovtoken/docker-compose.yml
+libsovtoken-1.0.1/libsovtoken/src/
+libsovtoken-1.0.1/libsovtoken/src/api/
+libsovtoken-1.0.1/libsovtoken/src/api/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/lib.rs
+libsovtoken-1.0.1/libsovtoken/src/libraries/
+libsovtoken-1.0.1/libsovtoken/src/libraries/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/
+libsovtoken-1.0.1/libsovtoken/src/logic/address.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/api_internals/
+libsovtoken-1.0.1/libsovtoken/src/logic/api_internals/add_request_fees.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/api_internals/create_address.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/api_internals/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/build_payment.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/
+libsovtoken-1.0.1/libsovtoken/src/logic/config/get_fees_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/get_utxo_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/output_mint_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/payment_address_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/payment_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/config/set_fees_config.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/did.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/hash.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/crypto.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/crypto_api.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/ledger.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/logger.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/indy_sdk_api/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/input.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/minting.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/output.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/common.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/error_code_parser.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/parse_get_txn_fees.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/parse_get_utxo_response.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/parse_payment_response.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/parse_response_with_fees_handler.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/parsers/parse_verify.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/payments.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/request.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/set_fees.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/type_aliases.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/verify.rs
+libsovtoken-1.0.1/libsovtoken/src/logic/xfer_payload.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/
+libsovtoken-1.0.1/libsovtoken/src/utils/base58.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/callbacks.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/constants/
+libsovtoken-1.0.1/libsovtoken/src/utils/constants/general.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/constants/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/constants/txn_fields.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/constants/txn_types.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/conversions.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/ffi_support.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/general.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/json_conversion.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/logger.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/macros.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/random.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/results.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/sequence.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/test/
+libsovtoken-1.0.1/libsovtoken/src/utils/test/callbacks.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/test/default.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/test/mod.rs
+libsovtoken-1.0.1/libsovtoken/src/utils/txn_author_agreement.rs
+libsovtoken-1.0.1/libsovtoken/tests/
+libsovtoken-1.0.1/libsovtoken/tests/add_fees_for_attrib_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/add_fees_for_cred_def_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/add_fees_for_nym.rs
+libsovtoken-1.0.1/libsovtoken/tests/add_fees_for_revoke_reg_def.rs
+libsovtoken-1.0.1/libsovtoken/tests/add_fees_for_schema_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/add_request_fees_handler_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/api_tests.rs
+libsovtoken-1.0.1/libsovtoken/tests/build_fees_txn_handler_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/build_get_utxo_request_handler_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/build_mint_txn_handler_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/build_payment_req_handler_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/build_verify_req_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/create_payment_addres_handler_tests.rs
+libsovtoken-1.0.1/libsovtoken/tests/create_payment_tests.rs
+libsovtoken-1.0.1/libsovtoken/tests/payment_chaos_tests.rs
+libsovtoken-1.0.1/libsovtoken/tests/sign_with_address_test.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/
+libsovtoken-1.0.1/libsovtoken/tests/utils/anoncreds.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/callbacks.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/did.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/environment.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/ledger.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/mint.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/mod.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/parse_mint_response.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/payment/
+libsovtoken-1.0.1/libsovtoken/tests/utils/payment/address.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/payment/fees.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/payment/get_utxo.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/payment/mod.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/pool.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/setup.rs
+libsovtoken-1.0.1/libsovtoken/tests/utils/wallet.rs
+libsovtoken-1.0.1/samples/
+libsovtoken-1.0.1/samples/README.md
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded rand v0.3.23
+  Downloaded base64 v0.10.1
+  Downloaded sha2 v0.8.2
+  Downloaded serde_derive v1.0.114
+  Downloaded log v0.4.11
+  Downloaded serde v1.0.114
+  Downloaded serde_json v1.0.56
+  Downloaded time v0.1.42
+  Downloaded hex v0.2.0
+  Downloaded openssl v0.10.30
+  Downloaded lazy_static v1.4.0
+  Downloaded indy-sys v1.11.0
+  Downloaded bs58 v0.2.5
+  Downloaded indy v1.11.0
+  Downloaded opaque-debug v0.2.3
+  Downloaded syn v1.0.35
+  Downloaded rand v0.4.6
+  Downloaded libc v0.2.60
+  Downloaded pkg-config v0.3.18
+  Downloaded block-buffer v0.7.3
+  Downloaded sha3 v0.8.2
+  Downloaded ryu v1.0.5
+  Downloaded itoa v0.4.6
+  Downloaded bitflags v1.2.1
+  Downloaded openssl-sys v0.9.58
+  Downloaded proc-macro2 v1.0.19
+  Downloaded digest v0.8.1
+  Downloaded quote v1.0.7
+  Downloaded regex v1.3.9
+  Downloaded fake-simd v0.1.2
+  Downloaded foreign-types v0.3.2
+  Downloaded byteorder v1.3.4
+  Downloaded cfg-if v0.1.10
+  Downloaded num-derive v0.2.5
+  Downloaded memchr v2.3.3
+  Downloaded unicode-xid v0.2.1
+  Downloaded block-padding v0.1.5
+  Downloaded byte-tools v0.3.1
+  Downloaded autocfg v1.0.0
+  Downloaded generic-array v0.12.3
+  Downloaded lazy_static v0.2.11
+  Downloaded num-traits v0.2.12
+  Downloaded futures v0.1.29
+  Downloaded thread_local v1.0.1
+  Downloaded failure v0.1.8
+  Downloaded cc v1.0.58
+  Downloaded aho-corasick v0.7.13
+  Downloaded regex-syntax v0.6.18
+  Downloaded keccak v0.1.0
+  Downloaded typenum v1.12.0
+  Downloaded proc-macro2 v0.4.30
+  Downloaded foreign-types-shared v0.1.1
+  Downloaded quote v0.6.13
+  Downloaded failure_derive v0.1.8
+  Downloaded backtrace v0.3.50
+  Downloaded syn v0.15.44
+  Downloaded unicode-xid v0.1.0
+  Downloaded synstructure v0.12.4
+  Downloaded addr2line v0.13.0
+  Downloaded rustc-demangle v0.1.16
+  Downloaded object v0.20.0
+  Downloaded miniz_oxide v0.4.0
+  Downloaded gimli v0.22.0
+  Downloaded adler v0.2.3
+   Compiling libc v0.2.60
+   Compiling pkg-config v0.3.18
+   Compiling proc-macro2 v1.0.19
+   Compiling memchr v2.3.3
+   Compiling autocfg v1.0.0
+   Compiling lazy_static v1.4.0
+   Compiling unicode-xid v0.2.1
+   Compiling typenum v1.12.0
+   Compiling byteorder v1.3.4
+   Compiling syn v1.0.35
+   Compiling regex-syntax v0.6.18
+   Compiling proc-macro2 v0.4.30
+   Compiling cc v1.0.58
+   Compiling unicode-xid v0.1.0
+   Compiling byte-tools v0.3.1
+   Compiling cfg-if v0.1.10
+   Compiling ryu v1.0.5
+   Compiling failure_derive v0.1.8
+   Compiling gimli v0.22.0
+   Compiling serde v1.0.114
+   Compiling syn v0.15.44
+   Compiling adler v0.2.3
+   Compiling rustc-demangle v0.1.16
+   Compiling opaque-debug v0.2.3
+   Compiling bitflags v1.2.1
+   Compiling num-derive v0.2.5
+   Compiling serde_json v1.0.56
+   Compiling serde_derive v1.0.114
+   Compiling object v0.20.0
+   Compiling log v0.4.11
+   Compiling fake-simd v0.1.2
+   Compiling openssl v0.10.30
+   Compiling foreign-types-shared v0.1.1
+   Compiling itoa v0.4.6
+   Compiling futures v0.1.29
+   Compiling keccak v0.1.0
+   Compiling lazy_static v0.2.11
+   Compiling libsovtoken v1.0.1 (/home/indy/libsovtoken-1.0.1/libsovtoken)
+   Compiling hex v0.2.0
+   Compiling thread_local v1.0.1
+   Compiling num-traits v0.2.12
+   Compiling openssl-sys v0.9.58
+   Compiling block-padding v0.1.5
+   Compiling miniz_oxide v0.4.0
+   Compiling addr2line v0.13.0
+   Compiling foreign-types v0.3.2
+   Compiling quote v1.0.7
+   Compiling backtrace v0.3.50
+   Compiling rand v0.4.6
+   Compiling time v0.1.42
+   Compiling aho-corasick v0.7.13
+   Compiling base64 v0.10.1
+   Compiling generic-array v0.12.3
+   Compiling quote v0.6.13
+   Compiling rand v0.3.23
+   Compiling regex v1.3.9
+   Compiling block-buffer v0.7.3
+   Compiling digest v0.8.1
+   Compiling synstructure v0.12.4
+   Compiling indy-sys v1.11.0
+   Compiling sha2 v0.8.2
+   Compiling sha3 v0.8.2
+   Compiling bs58 v0.2.5
+   Compiling failure v0.1.8
+   Compiling indy v1.11.0
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:37:39
+   |
+37 |     pub fn convert_cb_ec(closure: Box<FnMut(ErrorCode) + Send>) -> (IndyHandle, Option<ResponseEmptyCB>) {
+   |                                       ^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode) + Send`
+   |
+   = note: `#[warn(bare_trait_objects)]` on by default
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:39:58
+   |
+39 |             static ref CALLBACKS: Mutex<HashMap<i32, Box<FnMut(ErrorCode) + Send>>> = Default::default();
+   |                                                          ^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode) + Send`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:66:46
+   |
+66 |     pub fn convert_cb_ec_string(closure: Box<FnMut(ErrorCode, String) + Send>) -> (IndyHandle, Option<ResponseStringCB>) {
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode, String) + Send`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:68:58
+   |
+68 |             static ref CALLBACKS: Mutex<HashMap<i32, Box<FnMut(ErrorCode, String) + Send>>> = Default::default();
+   |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode, String) + Send`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:97:45
+   |
+97 |     pub fn convert_cb_ec_slice(closure: Box<FnMut(ErrorCode, Vec<u8>) + Send>) -> (IndyHandle, Option<ResponseSliceCB>) {
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode, Vec<u8>) + Send`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/callbacks.rs:99:58
+   |
+99 |             static ref CALLBACKS: Mutex<HashMap<i32, Box<FnMut(ErrorCode, Vec<u8>) + Send>>> = Default::default();
+   |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(ErrorCode, Vec<u8>) + Send`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/test/callbacks.rs:23:45
+   |
+23 |             static ref CALLBACKS: Callbacks<FnMut(i32, $($ntype),*) + Send> = Default::default();
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(i32, $($ntype),*) + Send`
+...
+54 |     let (command_handle, callback) = closure_cb!(closure, char_value: *const c_char);
+   |                                      ----------------------------------------------- in this macro invocation
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/utils/test/callbacks.rs:23:45
+   |
+23 |             static ref CALLBACKS: Callbacks<FnMut(i32, $($ntype),*) + Send> = Default::default();
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn FnMut(i32, $($ntype),*) + Send`
+...
+70 |     let (command_handle, callback) = closure_cb!(closure, char_value: *const c_char, num: i64);
+   |                                      --------------------------------------------------------- in this macro invocation
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/logic/api_internals/add_request_fees.rs:98:13
+   |
+98 |     cb: Box<Fn(Result<String, ErrorCode>) + Send + Sync>
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<String, ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+   --> src/logic/api_internals/add_request_fees.rs:132:137
+    |
+132 | fn add_fees(wallet_handle: i32, inputs: Inputs, outputs: Outputs, extra: Option<serde_json::Value>, request_json_map: SerdeMap, cb: Box<Fn(Result<SerdeMap, ErrorCode>) + Send + Sync>) -> Result<(), ErrorCode> {
+    |                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<SerdeMap, ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+   --> src/logic/api_internals/add_request_fees.rs:163:129
+    |
+163 | fn signed_fees(wallet_handle: i32, inputs: Inputs, outputs: Outputs, extra: Option<Extra>, txn_digest: &Option<String>, cb: Box<Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync>) -> Result<(), ErrorCode> {
+    |                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync`
+
+warning: unnecessary parentheses around type
+  --> src/logic/config/output_mint_config.rs:23:18
+   |
+23 |     outputs: Vec<(Output)>,
+   |                  ^^^^^^^^ help: remove these parentheses
+   |
+   = note: `#[warn(unused_parens)]` on by default
+
+warning: unnecessary parentheses around type
+  --> src/logic/config/output_mint_config.rs:23:18
+   |
+23 |     outputs: Vec<(Output)>,
+   |                  ^^^^^^^^ help: remove these parentheses
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/logic/xfer_payload.rs:81:130
+   |
+81 |     pub fn sign_fees<A: CryptoAPI>(self, crypto_api: &'static A, wallet_handle: IndyHandle, txn_digest: &Option<String>, cb: Box<Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync>) -> Result<(), ErrorCode> {
+   |                                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+  --> src/logic/xfer_payload.rs:99:105
+   |
+99 |     pub fn sign_transfer<A: CryptoAPI>(self, crypto_api: &'static A, wallet_handle: IndyHandle, cb: Box<Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync>) -> Result<(), ErrorCode> {
+   |                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+   --> src/logic/xfer_payload.rs:107:125
+    |
+107 |     fn sign<A: CryptoAPI>(mut self, crypto_api: &'static A, wallet_handle: IndyHandle, txn_digest: &Option<String>, cb: Box<Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync>) -> Result<(), ErrorCode> {
+    |                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<(XferPayload, Option<TaaAcceptance>), ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+   --> src/logic/xfer_payload.rs:159:207
+    |
+159 |     fn sign_inputs(crypto_api: &'static A, wallet_handle: IndyHandle, inputs: &Inputs, outputs: &Outputs, txn_digest: &Option<String>, extra: &Option<Extra>, taa_acceptance: &Option<TaaAcceptance>, cb: Box<Fn(Result<HashMap<String, String>, ErrorCode>) + Send + Sync>)
+    |                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<HashMap<String, String>, ErrorCode>) + Send + Sync`
+
+warning: trait objects without an explicit `dyn` are deprecated
+   --> src/logic/xfer_payload.rs:206:21
+    |
+206 |         cb: Box<Arc<Fn(Result<String, ErrorCode>, String) + Send + Sync>>,
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ help: use `dyn`: `dyn Fn(Result<String, ErrorCode>, String) + Send + Sync`
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+ --> src/utils/base58.rs:6:5
+  |
+6 | use bs58::decode::DecodeError;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/utils/base58.rs:31:46
+   |
+31 |     fn from_base58(&self) -> Result<Vec<u8>, DecodeError>;
+   |                                              ^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/utils/base58.rs:32:52
+   |
+32 |     fn from_base58_check(&self) -> Result<Vec<u8>, DecodeError>;
+   |                                                    ^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/utils/base58.rs:37:46
+   |
+37 |     fn from_base58(&self) -> Result<Vec<u8>, DecodeError> {
+   |                                              ^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/utils/base58.rs:41:52
+   |
+41 |     fn from_base58_check(&self) -> Result<Vec<u8>, DecodeError> {
+   |                                                    ^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+ --> src/logic/did.rs:8:5
+  |
+8 | use bs58::decode::DecodeError;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/logic/did.rs:73:17
+   |
+73 |             Err(DecodeError::InvalidCharacter {character: b, index: _}) => Err(DidError::InvalidChar(b as char)),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated item 'bs58::decode::DecodeError': Use `bs58::decode::Error` instead
+  --> src/logic/did.rs:74:17
+   |
+74 |             Err(DecodeError::NonAsciiCharacter {index: _}) => Err(DidError::InvalidChar(0 as char)),
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    Finished dev [unoptimized + debuginfo] target(s) in 8m 29s
+Removing intermediate container 3677f09f7b5d
+ ---> 5823b7fad4dc
+Step 11/21 : ENV LIBSOVTOKEN=/home/indy/libsovtoken-1.0.1/libsovtoken/target/debug/libsovtoken.so
+ ---> Running in 5de5a989eb2b
+Removing intermediate container 5de5a989eb2b
+ ---> ed6fec6ec588
+Step 12/21 : ADD . .
+ ---> e2fe52b0ffe1
+Step 13/21 : RUN pip3 install --no-cache-dir -e .
+ ---> Running in 7c26927ab128
+Obtaining file:///home/indy
+Collecting aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23
+  Cloning https://github.com/sovrin-foundation/aries-cloudagent-python (to revision 8ba3f23) to /tmp/pip-install-c7oc8o31/aries-cloudagent
+  Running command git clone -q https://github.com/sovrin-foundation/aries-cloudagent-python /tmp/pip-install-c7oc8o31/aries-cloudagent
+  WARNING: Did not find branch or tag '8ba3f23', assuming revision or ref.
+  Running command git checkout -q 8ba3f23
+Collecting marshmallow
+  Downloading https://files.pythonhosted.org/packages/a6/11/f824483fcfc4164d733c0a242cc01f7e3b153561500a6a69bba217c9f0f6/marshmallow-3.7.1-py2.py3-none-any.whl (45kB)
+Collecting flake8
+  Downloading https://files.pythonhosted.org/packages/6c/20/6326a9a0c6f0527612bae748c4c03df5cd69cf06dfb2cf59d85c6e165a6a/flake8-3.8.3-py2.py3-none-any.whl (72kB)
+Collecting python-dateutil
+  Downloading https://files.pythonhosted.org/packages/d4/70/d60450c3dd48ef87586924207ae8907090de0b306af2bce5d134d78615cb/python_dateutil-2.8.1-py2.py3-none-any.whl (227kB)
+Collecting aiohttp==3.5.4
+  Downloading https://files.pythonhosted.org/packages/0d/5c/f87987f4dc8b2cfcf37c83a814ea4b2aff4d285cbffc0ab08b2b4fa3f584/aiohttp-3.5.4-cp36-cp36m-manylinux1_x86_64.whl (1.2MB)
+Collecting aiohttp-apispec==1.1.2
+  Downloading https://files.pythonhosted.org/packages/8e/b1/592284bf8c1384c3bbb57f2d057e681c6cf0c426f21bd55201bf3d877866/aiohttp-apispec-1.1.2.tar.gz (2.3MB)
+Collecting aiohttp-cors~=0.7.0
+  Downloading https://files.pythonhosted.org/packages/13/e7/e436a0c0eb5127d8b491a9b83ecd2391c6ff7dcd5548dfaec2080a2340fd/aiohttp_cors-0.7.0-py3-none-any.whl
+Collecting apispec==2.0.2
+  Downloading https://files.pythonhosted.org/packages/4d/2e/ff4a412e2c78e8033bd7131b1065de8d85cf38d5bde0e7a9262756f10b72/apispec-2.0.2-py2.py3-none-any.whl
+Requirement already satisfied: async-timeout~=3.0.1 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (3.0.1)
+Requirement already satisfied: base58~=1.0.3 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (1.0.3)
+Collecting Markdown~=3.1.1
+  Downloading https://files.pythonhosted.org/packages/c0/4e/fd492e91abdc2d2fcb70ef453064d980688762079397f779758e055f6575/Markdown-3.1.1-py2.py3-none-any.whl (87kB)
+Collecting msgpack~=0.6.1
+  Downloading https://files.pythonhosted.org/packages/3d/a8/e01fea81691749044a7bfd44536483a296d9c0a7ed4ec8810a229435547c/msgpack-0.6.2-cp36-cp36m-manylinux1_x86_64.whl (249kB)
+Collecting prompt_toolkit~=2.0.9
+  Downloading https://files.pythonhosted.org/packages/87/61/2dfea88583d5454e3a64f9308a686071d58d59a55db638268a6413e1eb6d/prompt_toolkit-2.0.10-py3-none-any.whl (340kB)
+Collecting pynacl~=1.3.0
+  Downloading https://files.pythonhosted.org/packages/27/15/2cd0a203f318c2240b42cd9dd13c931ddd61067809fee3479f44f086103e/PyNaCl-1.3.0-cp34-abi3-manylinux1_x86_64.whl (759kB)
+Requirement already satisfied: python3-indy>=1.11.1<2 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (1.14.1)
+Collecting importlib-metadata; python_version < "3.8"
+  Downloading https://files.pythonhosted.org/packages/8e/58/cdea07eb51fc2b906db0968a94700866fc46249bdc75cac23f9d13168929/importlib_metadata-1.7.0-py2.py3-none-any.whl
+Collecting pycodestyle<2.7.0,>=2.6.0a1
+  Downloading https://files.pythonhosted.org/packages/10/5b/88879fb861ab79aef45c7e199cae3ef7af487b5603dcb363517a50602dd7/pycodestyle-2.6.0-py2.py3-none-any.whl (41kB)
+Collecting mccabe<0.7.0,>=0.6.0
+  Downloading https://files.pythonhosted.org/packages/87/89/479dc97e18549e21354893e4ee4ef36db1d237534982482c3681ee6e7b57/mccabe-0.6.1-py2.py3-none-any.whl
+Collecting pyflakes<2.3.0,>=2.2.0
+  Downloading https://files.pythonhosted.org/packages/69/5b/fd01b0c696f2f9a6d2c839883b642493b431f28fa32b29abc465ef675473/pyflakes-2.2.0-py2.py3-none-any.whl (66kB)
+Collecting six>=1.5
+  Downloading https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl
+Requirement already satisfied: chardet<4.0,>=2.0 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (3.0.4)
+Requirement already satisfied: yarl<2.0,>=1.0 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (1.4.2)
+Requirement already satisfied: multidict<5.0,>=4.0 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (4.7.4)
+Requirement already satisfied: idna-ssl>=1.0; python_version < "3.7" in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (1.1.0)
+Requirement already satisfied: attrs>=17.3.0 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (19.3.0)
+Collecting typing-extensions>=3.6.5; python_version < "3.7"
+  Downloading https://files.pythonhosted.org/packages/0c/0e/3f026d0645d699e7320b59952146d56ad7c374e9cd72cd16e7c74e657a0f/typing_extensions-3.7.4.2-py3-none-any.whl
+Collecting webargs
+  Downloading https://files.pythonhosted.org/packages/e9/05/ee88a1bff113a806bee4cc817e0906367d401594606b8d42baf7c174d7c0/webargs-6.1.0-py2.py3-none-any.whl
+Collecting jinja2
+  Downloading https://files.pythonhosted.org/packages/30/9e/f663a2aa66a09d838042ae1a2c5659828bb9b41ea3a6efa20a20fd92b121/Jinja2-2.11.2-py2.py3-none-any.whl (125kB)
+Requirement already satisfied: setuptools>=36 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from Markdown~=3.1.1->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (40.6.2)
+Collecting wcwidth
+  Downloading https://files.pythonhosted.org/packages/59/7c/e39aca596badaf1b78e8f547c807b04dae603a433d3e7a7e04d67f2ef3e5/wcwidth-0.2.5-py2.py3-none-any.whl
+Requirement already satisfied: cffi>=1.4.1 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from pynacl~=1.3.0->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (1.13.2)
+Collecting zipp>=0.5
+  Downloading https://files.pythonhosted.org/packages/b2/34/bfcb43cc0ba81f527bc4f40ef41ba2ff4080e047acb0586b56b3d017ace4/zipp-3.1.0-py3-none-any.whl
+Requirement already satisfied: idna>=2.0 in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from yarl<2.0,>=1.0->aiohttp==3.5.4->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (2.8)
+Collecting MarkupSafe>=0.23
+  Downloading https://files.pythonhosted.org/packages/b2/5f/23e0023be6bb885d00ffbefad2942bc51a620328ee910f64abe5a8d18dd1/MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl
+Requirement already satisfied: pycparser in ./.pyenv/versions/3.6.9/lib/python3.6/site-packages (from cffi>=1.4.1->pynacl~=1.3.0->aries-cloudagent[indy]@ git+https://github.com/sovrin-foundation/aries-cloudagent-python@8ba3f23->aries-acapy-plugin-toolbox==0.1.0) (2.19)
+ERROR: aries-cloudagent 0.4.2 has requirement marshmallow==3.0.0, but you'll have marshmallow 3.7.1 which is incompatible.
+Installing collected packages: typing-extensions, aiohttp, apispec, marshmallow, webargs, MarkupSafe, jinja2, aiohttp-apispec, aiohttp-cors, Markdown, msgpack, wcwidth, six, prompt-toolkit, pynacl, aries-cloudagent, zipp, importlib-metadata, pycodestyle, mccabe, pyflakes, flake8, python-dateutil, aries-acapy-plugin-toolbox
+  Found existing installation: aiohttp 3.3.2
+    Uninstalling aiohttp-3.3.2:
+      Successfully uninstalled aiohttp-3.3.2
+    Running setup.py install for aiohttp-apispec: started
+    Running setup.py install for aiohttp-apispec: finished with status 'done'
+    Running setup.py install for aries-cloudagent: started
+    Running setup.py install for aries-cloudagent: finished with status 'done'
+  Running setup.py develop for aries-acapy-plugin-toolbox
+Successfully installed Markdown-3.1.1 MarkupSafe-1.1.1 aiohttp-3.5.4 aiohttp-apispec-1.1.2 aiohttp-cors-0.7.0 apispec-2.0.2 aries-acapy-plugin-toolbox aries-cloudagent-0.4.2 flake8-3.8.3 importlib-metadata-1.7.0 jinja2-2.11.2 marshmallow-3.7.1 mccabe-0.6.1 msgpack-0.6.2 prompt-toolkit-2.0.10 pycodestyle-2.6.0 pyflakes-2.2.0 pynacl-1.3.0 python-dateutil-2.8.1 six-1.15.0 typing-extensions-3.7.4.2 wcwidth-0.2.5 webargs-6.1.0 zipp-3.1.0
+WARNING: You are using pip version 19.3.1; however, version 20.1.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Removing intermediate container 7c26927ab128
+ ---> a4a782108f27
+Step 14/21 : ADD https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 ./jq
+
+ ---> ad382cc40896
+Step 15/21 : RUN chmod +x ./jq
+ ---> Running in 6e092c6caa14
+Removing intermediate container 6e092c6caa14
+ ---> 545d827085f9
+Step 16/21 : COPY startup.sh startup.sh
+ ---> f9ba2a5fd1f9
+Step 17/21 : RUN chmod +x ./startup.sh
+ ---> Running in 335e712bf245
+Removing intermediate container 335e712bf245
+ ---> 335d949c08f2
+Step 18/21 : COPY ngrok-wait.sh wait.sh
+ ---> cb478cb490ed
+Step 19/21 : RUN chmod +x ./wait.sh
+ ---> Running in 98cc610bd75e
+Removing intermediate container 98cc610bd75e
+ ---> 14ddca70c8e1
+Step 20/21 : USER $user
+ ---> Running in 44b2cda8d497
+Removing intermediate container 44b2cda8d497
+ ---> 8f106b7572d6
+Step 21/21 : CMD ./wait.sh ./startup.sh
+ ---> Running in cbf15ebe2f5d
+Removing intermediate container cbf15ebe2f5d
+ ---> e7249f414376
+Successfully built e7249f414376
+Successfully tagged aries-acapy-plugin-toolbox_agent:latest
+Creating aries-acapy-plugin-toolbox_ngrok_1 ... done
+Creating aries-acapy-plugin-toolbox_agent_1 ... done
+Attaching to aries-acapy-plugin-toolbox_agent_1, aries-acapy-plugin-toolbox_ngrok_1
+agent_1  | ngrok end point [ngrok]
+agent_1  | Fetching end point from ngrok service
+agent_1  | ngrok not ready, sleeping 5 seconds....
+ngrok_1  | t=2020-07-23T18:53:48+0000 lvl=info msg="no configuration paths supplied"
+ngrok_1  | t=2020-07-23T18:53:48+0000 lvl=info msg="using configuration at default config path" path=/home/ngrok/.ngrok2/ngrok.yml
+ngrok_1  | t=2020-07-23T18:53:48+0000 lvl=info msg="open config file" path=/home/ngrok/.ngrok2/ngrok.yml err=nil
+ngrok_1  | t=2020-07-23T18:53:48+0000 lvl=info msg="starting web service" obj=web addr=0.0.0.0:4040
+ngrok_1  | t=2020-07-23T18:53:50+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+ngrok_1  | t=2020-07-23T18:53:50+0000 lvl=info msg="client session established" obj=csess id=be8685d6fd90
+agent_1  | Fetching end point from ngrok service
+ngrok_1  | t=2020-07-23T18:53:51+0000 lvl=info msg=start pg=/api/tunnels id=111d83a7ce9ad61c
+ngrok_1  | t=2020-07-23T18:53:51+0000 lvl=info msg=end pg=/api/tunnels id=111d83a7ce9ad61c status=200 dur=1.003403ms
+agent_1  | fetched end point [https://654c6c6fe302.ngrok.io]
+ngrok_1  | t=2020-07-23T18:53:51+0000 lvl=info msg="started tunnel" obj=tunnels name="command_line (http)" addr=http://agent:3000 url=http://654c6c6fe302.ngrok.io
+ngrok_1  | t=2020-07-23T18:53:51+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://agent:3000 url=https://654c6c6fe302.ngrok.io
+ngrok_1  | t=2020-07-23T18:53:53+0000 lvl=warn msg="failed to check for update" obj=updater err="Post https://update.equinox.io/check: context deadline exceeded"
+agent_1  | 2020-07-23 18:53:58,777 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,778 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,778 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,778 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,779 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,780 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,780 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,781 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,781 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,781 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,782 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,783 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,784 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,784 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,784 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,785 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,785 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,785 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,786 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,787 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,788 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,788 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,789 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,789 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:53:58,790 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,015 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,016 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,017 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,019 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,021 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,025 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,026 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,026 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,028 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,030 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,031 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,033 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,037 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,039 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,061 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,064 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,065 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,076 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,077 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,078 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,079 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,080 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,081 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,081 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:00,082 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,382 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,383 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,384 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,385 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,387 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,389 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,391 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,392 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,394 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,394 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,394 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,394 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,395 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,395 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,400 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,402 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,403 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,404 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,405 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,406 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,407 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,407 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,409 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,410 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,410 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,410 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,411 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,411 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,414 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,416 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 2020-07-23 18:54:40,416 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent_1  | 
+agent_1  | Node is not a validator
+agent_1  | 
+agent_1  | Invalid library state }
+agent_1  | 
+agent_1  | ::::::::::::::::::::::::::::::::::::::::::::::
+agent_1  | :: MyAgent                                  ::
+agent_1  | ::                                          ::
+agent_1  | ::                                          ::
+agent_1  | :: Inbound Transports:                      ::
+agent_1  | ::                                          ::
+agent_1  | ::   - http+ws://0.0.0.0:3000               ::
+agent_1  | ::                                          ::
+agent_1  | :: Outbound Transports:                     ::
+agent_1  | ::                                          ::
+agent_1  | ::   - http                                 ::
+agent_1  | ::   - https                                ::
+agent_1  | ::                                          ::
+agent_1  | :: Administration API:                      ::
+agent_1  | ::                                          ::
+agent_1  | ::   - not enabled                          ::
+agent_1  | ::                                          ::
+agent_1  | ::                               ver: 0.4.2 ::
+agent_1  | ::::::::::::::::::::::::::::::::::::::::::::::
+agent_1  | 
+agent_1  | Listening...
+agent_1  | 
+agent_1  | Created new invitation
+agent_1  |     connection: {'updated_at': '2020-07-23 18:54:42.143169Z', 'invitation_mode': 'once', 'accept': 'auto', 'connection_id': 'ddad5ee2-b5bb-4326-9155-388f950d048d', 'their_role': 'admin', 'state': 'invitation', 'initiator': 'self', 'routing_state': 'none', 'invitation_key': 'EPkJi2rrkTMuZXdvokfGS5JMCdPYKbnmngWRZHC2A2pt', 'created_at': '2020-07-23 18:54:42.143169Z'}
+agent_1  | 
+agent_1  | Invitation URL:
+agent_1  | https://654c6c6fe302.ngrok.io?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiYzgxMWJiODMtNjAzMC00ZjNmLWEwZjktOTljZjU5NDc2OWZlIiwgInNlcnZpY2VFbmRwb2ludCI6ICJodHRwczovLzY1NGM2YzZmZTMwMi5uZ3Jvay5pbyIsICJsYWJlbCI6ICJNeUFnZW50IChhZG1pbikiLCAicmVjaXBpZW50S2V5cyI6IFsiRVBrSmkycnJrVE11Wlhkdm9rZkdTNUpNQ2RQWUtibm1uZ1dSWkhDMkEycHQiXX0=
+agent_1  | The above invitation may be copied and given to another agentto establish a connection with this agent.
