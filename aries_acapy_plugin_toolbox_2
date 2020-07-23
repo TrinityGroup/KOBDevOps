@@ -1,0 +1,1051 @@
+kob-user@kobuser-VirtualBox:~/aries-acapy-plugin-toolbox$ sudo docker-compose -f docker-compose_alice_bob.yml up --build
+[sudo] password for kob-user: 
+WARNING: Found orphan containers (aries-acapy-plugin-toolbox_agent_1, aries-acapy-plugin-toolbox_ngrok_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Building agent-alice
+Step 1/21 : FROM bcgovimages/von-image:py36-1.14-0
+ ---> d978ddcbe36d
+Step 2/21 : USER root
+ ---> Using cache
+ ---> 472367f115d2
+Step 3/21 : RUN apt-get update
+ ---> Using cache
+ ---> c442becaf1c9
+Step 4/21 : RUN apt-get install -y wget gcc openssl pkg-config libssl-dev
+ ---> Using cache
+ ---> 7e05a8a319ac
+Step 5/21 : ENV RUSTUP_HOME=/usr/local/rustup     CARGO_HOME=/usr/local/cargo     PATH=/usr/local/cargo/bin:$PATH     RUST_VERSION=1.41.1
+ ---> Using cache
+ ---> f7cfdde91664
+Step 6/21 : RUN set -eux;     dpkgArch="$(dpkg --print-architecture)";     case "${dpkgArch##*-}" in         amd64) rustArch='x86_64-unknown-linux-gnu'; rustupSha256='ad1f8b5199b3b9e231472ed7aa08d2e5d1d539198a15c5b1e53c746aad81d27b' ;;         armhf) rustArch='armv7-unknown-linux-gnueabihf'; rustupSha256='6c6c3789dabf12171c7f500e06d21d8004b5318a5083df8b0b02c0e5ef1d017b' ;;         arm64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='26942c80234bac34b3c1352abbd9187d3e23b43dae3cf56a9f9c1ea8ee53076d' ;;         i386) rustArch='i686-unknown-linux-gnu'; rustupSha256='27ae12bc294a34e566579deba3e066245d09b8871dc021ef45fc715dced05297' ;;         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;;     esac;     url="https://static.rust-lang.org/rustup/archive/1.21.1/${rustArch}/rustup-init";     wget "$url";     echo "${rustupSha256} *rustup-init" | sha256sum -c -;     chmod +x rustup-init;     ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION;     rm rustup-init;     chmod -R a+w $RUSTUP_HOME $CARGO_HOME;     rustup --version;     cargo --version;     rustc --version;
+ ---> Using cache
+ ---> 07e580875039
+Step 7/21 : ADD https://github.com/sovrin-foundation/libsovtoken/archive/v1.0.1.tar.gz libsovtoken.tar.gz
+
+ ---> Using cache
+ ---> 9e38b1bbfa94
+Step 8/21 : ENV LIBINDY_DIR=/home/indy/.local/lib
+ ---> Using cache
+ ---> 75fc66a00d96
+Step 9/21 : ENV LD_LIBRARY_PATH=/home/indy/.local/lib
+ ---> Using cache
+ ---> ae700d00c176
+Step 10/21 : RUN tar xzvf libsovtoken.tar.gz;         cd libsovtoken-1.0.1/libsovtoken;         cargo build
+ ---> Using cache
+ ---> 5823b7fad4dc
+Step 11/21 : ENV LIBSOVTOKEN=/home/indy/libsovtoken-1.0.1/libsovtoken/target/debug/libsovtoken.so
+ ---> Using cache
+ ---> ed6fec6ec588
+Step 12/21 : ADD . .
+ ---> Using cache
+ ---> e2fe52b0ffe1
+Step 13/21 : RUN pip3 install --no-cache-dir -e .
+ ---> Using cache
+ ---> a4a782108f27
+Step 14/21 : ADD https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 ./jq
+
+ ---> Using cache
+ ---> ad382cc40896
+Step 15/21 : RUN chmod +x ./jq
+ ---> Using cache
+ ---> 545d827085f9
+Step 16/21 : COPY startup.sh startup.sh
+ ---> Using cache
+ ---> f9ba2a5fd1f9
+Step 17/21 : RUN chmod +x ./startup.sh
+ ---> Using cache
+ ---> 335d949c08f2
+Step 18/21 : COPY ngrok-wait.sh wait.sh
+ ---> Using cache
+ ---> cb478cb490ed
+Step 19/21 : RUN chmod +x ./wait.sh
+ ---> Using cache
+ ---> 14ddca70c8e1
+Step 20/21 : USER $user
+ ---> Running in 379e3b65fa03
+Removing intermediate container 379e3b65fa03
+ ---> 9930b54ea1fb
+Step 21/21 : CMD ./wait.sh ./startup.sh
+ ---> Running in ad04641f1147
+Removing intermediate container ad04641f1147
+ ---> 2acc180167a9
+Successfully built 2acc180167a9
+Successfully tagged aries-acapy-plugin-toolbox_agent-alice:latest
+Building agent-bob
+Step 1/21 : FROM bcgovimages/von-image:py36-1.14-0
+ ---> d978ddcbe36d
+Step 2/21 : USER root
+ ---> Using cache
+ ---> 472367f115d2
+Step 3/21 : RUN apt-get update
+ ---> Using cache
+ ---> c442becaf1c9
+Step 4/21 : RUN apt-get install -y wget gcc openssl pkg-config libssl-dev
+ ---> Using cache
+ ---> 7e05a8a319ac
+Step 5/21 : ENV RUSTUP_HOME=/usr/local/rustup     CARGO_HOME=/usr/local/cargo     PATH=/usr/local/cargo/bin:$PATH     RUST_VERSION=1.41.1
+ ---> Using cache
+ ---> f7cfdde91664
+Step 6/21 : RUN set -eux;     dpkgArch="$(dpkg --print-architecture)";     case "${dpkgArch##*-}" in         amd64) rustArch='x86_64-unknown-linux-gnu'; rustupSha256='ad1f8b5199b3b9e231472ed7aa08d2e5d1d539198a15c5b1e53c746aad81d27b' ;;         armhf) rustArch='armv7-unknown-linux-gnueabihf'; rustupSha256='6c6c3789dabf12171c7f500e06d21d8004b5318a5083df8b0b02c0e5ef1d017b' ;;         arm64) rustArch='aarch64-unknown-linux-gnu'; rustupSha256='26942c80234bac34b3c1352abbd9187d3e23b43dae3cf56a9f9c1ea8ee53076d' ;;         i386) rustArch='i686-unknown-linux-gnu'; rustupSha256='27ae12bc294a34e566579deba3e066245d09b8871dc021ef45fc715dced05297' ;;         *) echo >&2 "unsupported architecture: ${dpkgArch}"; exit 1 ;;     esac;     url="https://static.rust-lang.org/rustup/archive/1.21.1/${rustArch}/rustup-init";     wget "$url";     echo "${rustupSha256} *rustup-init" | sha256sum -c -;     chmod +x rustup-init;     ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION;     rm rustup-init;     chmod -R a+w $RUSTUP_HOME $CARGO_HOME;     rustup --version;     cargo --version;     rustc --version;
+ ---> Using cache
+ ---> 07e580875039
+Step 7/21 : ADD https://github.com/sovrin-foundation/libsovtoken/archive/v1.0.1.tar.gz libsovtoken.tar.gz
+
+ ---> Using cache
+ ---> 9e38b1bbfa94
+Step 8/21 : ENV LIBINDY_DIR=/home/indy/.local/lib
+ ---> Using cache
+ ---> 75fc66a00d96
+Step 9/21 : ENV LD_LIBRARY_PATH=/home/indy/.local/lib
+ ---> Using cache
+ ---> ae700d00c176
+Step 10/21 : RUN tar xzvf libsovtoken.tar.gz;         cd libsovtoken-1.0.1/libsovtoken;         cargo build
+ ---> Using cache
+ ---> 5823b7fad4dc
+Step 11/21 : ENV LIBSOVTOKEN=/home/indy/libsovtoken-1.0.1/libsovtoken/target/debug/libsovtoken.so
+ ---> Using cache
+ ---> ed6fec6ec588
+Step 12/21 : ADD . .
+ ---> Using cache
+ ---> e2fe52b0ffe1
+Step 13/21 : RUN pip3 install --no-cache-dir -e .
+ ---> Using cache
+ ---> a4a782108f27
+Step 14/21 : ADD https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 ./jq
+
+ ---> Using cache
+ ---> ad382cc40896
+Step 15/21 : RUN chmod +x ./jq
+ ---> Using cache
+ ---> 545d827085f9
+Step 16/21 : COPY startup.sh startup.sh
+ ---> Using cache
+ ---> f9ba2a5fd1f9
+Step 17/21 : RUN chmod +x ./startup.sh
+ ---> Using cache
+ ---> 335d949c08f2
+Step 18/21 : COPY ngrok-wait.sh wait.sh
+ ---> Using cache
+ ---> cb478cb490ed
+Step 19/21 : RUN chmod +x ./wait.sh
+ ---> Using cache
+ ---> 14ddca70c8e1
+Step 20/21 : USER $user
+ ---> Running in 0fcd0ceb09ed
+Removing intermediate container 0fcd0ceb09ed
+ ---> 9411d364bf4a
+Step 21/21 : CMD ./wait.sh ./startup.sh
+ ---> Running in b3a686d841e6
+Removing intermediate container b3a686d841e6
+ ---> 422599908d23
+Successfully built 422599908d23
+Successfully tagged aries-acapy-plugin-toolbox_agent-bob:latest
+Creating aries-acapy-plugin-toolbox_ngrok-bob_1   ... done
+Creating aries-acapy-plugin-toolbox_agent-alice_1 ... done
+Creating aries-acapy-plugin-toolbox_ngrok-alice_1 ... done
+Creating aries-acapy-plugin-toolbox_agent-bob_1   ... done
+Attaching to aries-acapy-plugin-toolbox_ngrok-alice_1, aries-acapy-plugin-toolbox_agent-bob_1, aries-acapy-plugin-toolbox_agent-alice_1, aries-acapy-plugin-toolbox_ngrok-bob_1
+agent-alice_1  | ngrok end point [ngrok-alice]
+agent-alice_1  | Fetching end point from ngrok service
+agent-alice_1  | ngrok not ready, sleeping 5 seconds....
+agent-bob_1    | ngrok end point [ngrok-bob]
+agent-bob_1    | Fetching end point from ngrok service
+ngrok-alice_1  | t=2020-07-23T19:02:42+0000 lvl=info msg="no configuration paths supplied"
+ngrok-alice_1  | t=2020-07-23T19:02:42+0000 lvl=info msg="using configuration at default config path" path=/home/ngrok/.ngrok2/ngrok.yml
+ngrok-alice_1  | t=2020-07-23T19:02:42+0000 lvl=info msg="open config file" path=/home/ngrok/.ngrok2/ngrok.yml err=nil
+ngrok-alice_1  | t=2020-07-23T19:02:42+0000 lvl=info msg="starting web service" obj=web addr=0.0.0.0:4040
+ngrok-alice_1  | t=2020-07-23T19:02:43+0000 lvl=info msg=start pg=/api/tunnels id=9b9c06e525e8a80b
+ngrok-alice_1  | t=2020-07-23T19:02:43+0000 lvl=info msg=end pg=/api/tunnels id=9b9c06e525e8a80b status=200 dur=355.928µs
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg="no configuration paths supplied"
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg="using configuration at default config path" path=/home/ngrok/.ngrok2/ngrok.yml
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg="open config file" path=/home/ngrok/.ngrok2/ngrok.yml err=nil
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg="starting web service" obj=web addr=0.0.0.0:4040
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg=start pg=/api/tunnels id=c658128caf748636
+ngrok-bob_1    | t=2020-07-23T19:02:43+0000 lvl=info msg=end pg=/api/tunnels id=c658128caf748636 status=200 dur=366.548µs
+agent-bob_1    | ngrok not ready, sleeping 5 seconds....
+ngrok-alice_1  | t=2020-07-23T19:02:44+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+ngrok-alice_1  | t=2020-07-23T19:02:44+0000 lvl=info msg="client session established" obj=csess id=5e183290934b
+ngrok-alice_1  | t=2020-07-23T19:02:44+0000 lvl=info msg="started tunnel" obj=tunnels name="command_line (http)" addr=http://agent-alice:3000 url=http://427cea1d0173.ngrok.io
+ngrok-alice_1  | t=2020-07-23T19:02:44+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://agent-alice:3000 url=https://427cea1d0173.ngrok.io
+ngrok-alice_1  | t=2020-07-23T19:02:44+0000 lvl=info msg="update available" obj=updater
+ngrok-bob_1    | t=2020-07-23T19:02:45+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+ngrok-bob_1    | t=2020-07-23T19:02:45+0000 lvl=info msg="client session established" obj=csess id=6258a61d42a0
+ngrok-bob_1    | t=2020-07-23T19:02:45+0000 lvl=info msg="update available" obj=updater
+ngrok-bob_1    | t=2020-07-23T19:02:45+0000 lvl=info msg="started tunnel" obj=tunnels name="command_line (http)" addr=http://agent-bob:3000 url=http://ce7058a85140.ngrok.io
+ngrok-bob_1    | t=2020-07-23T19:02:45+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://agent-bob:3000 url=https://ce7058a85140.ngrok.io
+agent-alice_1  | Fetching end point from ngrok service
+ngrok-alice_1  | t=2020-07-23T19:02:48+0000 lvl=info msg=start pg=/api/tunnels id=1a7421e92b61dbe6
+ngrok-alice_1  | t=2020-07-23T19:02:48+0000 lvl=info msg=end pg=/api/tunnels id=1a7421e92b61dbe6 status=200 dur=571.595µs
+agent-alice_1  | fetched end point [http://427cea1d0173.ngrok.io]
+agent-bob_1    | Fetching end point from ngrok service
+ngrok-bob_1    | t=2020-07-23T19:02:48+0000 lvl=info msg=start pg=/api/tunnels id=cfbd3401db648833
+ngrok-bob_1    | t=2020-07-23T19:02:48+0000 lvl=info msg=end pg=/api/tunnels id=cfbd3401db648833 status=200 dur=371.453µs
+agent-bob_1    | fetched end point [https://ce7058a85140.ngrok.io]
+agent-alice_1  | 2020-07-23 19:02:55,910 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,910 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,910 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,911 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,911 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,911 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,912 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,913 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,914 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,915 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,916 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,918 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,919 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,919 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,919 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,920 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,920 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,922 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,926 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,928 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,928 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,929 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,929 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,929 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:55,929 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,658 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,660 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,661 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,662 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,662 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,663 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,664 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,664 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,665 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,665 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,666 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,666 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,668 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,668 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,669 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,670 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,670 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,670 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,671 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,671 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,672 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,673 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,674 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,675 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:56,677 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,032 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,035 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,036 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,038 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,038 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,040 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,040 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,046 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,056 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,057 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,059 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,061 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,063 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,063 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,065 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,066 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,074 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,081 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,082 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,083 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,084 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,085 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,086 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,087 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,088 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,328 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,333 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,339 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,344 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,346 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,347 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,358 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,363 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,364 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,367 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,378 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,380 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,382 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,389 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,390 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,391 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,392 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,393 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,394 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,395 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,396 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,398 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,400 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,401 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,402 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,403 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,404 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,405 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,406 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,407 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-alice_1  | 2020-07-23 19:02:57,407 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-alice_1  | 
+agent-alice_1  | Node is not a validator
+agent-alice_1  | 
+agent-alice_1  | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,753 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,757 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,775 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,776 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,781 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,782 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,786 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,789 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,794 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,796 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,797 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,798 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,799 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,801 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,803 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,805 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,805 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,808 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,810 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,810 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,811 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,812 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,813 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,814 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:57,815 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,028 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,030 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,030 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,031 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,032 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,034 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,034 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,036 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,037 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,038 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,039 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,041 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,042 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,042 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,043 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,052 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,053 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,055 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,056 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,057 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,058 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,059 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,064 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,065 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,066 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,068 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,072 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,073 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,075 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,077 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-bob_1    | 2020-07-23 19:02:58,078 indy.libindy.native.indy.services.pool.pool ERROR 	src/services/pool/pool.rs:701 | Error during retrieving nodes: IndyError { inner: 
+agent-bob_1    | 
+agent-bob_1    | Node is not a validator
+agent-bob_1    | 
+agent-bob_1    | Invalid library state }
+agent-alice_1  | 
+agent-alice_1  | ::::::::::::::::::::::::::::::::::::::::::::::
+agent-alice_1  | :: Alice                                    ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | :: Inbound Transports:                      ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | ::   - http+ws://0.0.0.0:3000               ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | :: Outbound Transports:                     ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | ::   - http                                 ::
+agent-alice_1  | ::   - https                                ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | :: Administration API:                      ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | ::   - not enabled                          ::
+agent-alice_1  | ::                                          ::
+agent-alice_1  | ::                               ver: 0.4.2 ::
+agent-alice_1  | ::::::::::::::::::::::::::::::::::::::::::::::
+agent-alice_1  | 
+agent-alice_1  | Listening...
+agent-alice_1  | 
+agent-alice_1  | Created new invitation
+agent-alice_1  |     connection: {'invitation_key': '486Fer6SFEbBDxVmTEM9eyY8McW7J6Jh753Nu9NrKp49', 'updated_at': '2020-07-23 19:02:58.950308Z', 'invitation_mode': 'once', 'created_at': '2020-07-23 19:02:58.950308Z', 'their_role': 'admin', 'routing_state': 'none', 'connection_id': 'b7dfc677-5ab9-45ed-a4ea-d77c38d80165', 'initiator': 'self', 'state': 'invitation', 'accept': 'auto'}
+agent-alice_1  | 
+agent-alice_1  | Invitation URL:
+agent-alice_1  | http://427cea1d0173.ngrok.io?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiNGYzMTY5NTktYTI3My00M2E2LWExYmYtYTExNDQ4OWNiNDlmIiwgInNlcnZpY2VFbmRwb2ludCI6ICJodHRwOi8vNDI3Y2VhMWQwMTczLm5ncm9rLmlvIiwgImxhYmVsIjogIkFsaWNlIChhZG1pbikiLCAicmVjaXBpZW50S2V5cyI6IFsiNDg2RmVyNlNGRWJCRHhWbVRFTTlleVk4TWNXN0o2Smg3NTNOdTlOcktwNDkiXX0=
+agent-alice_1  | The above invitation may be copied and given to another agentto establish a connection with this agent.
+agent-bob_1    | 
+agent-bob_1    | ::::::::::::::::::::::::::::::::::::::::::::::
+agent-bob_1    | :: Bob                                      ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | :: Inbound Transports:                      ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | ::   - http+ws://0.0.0.0:3000               ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | :: Outbound Transports:                     ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | ::   - http                                 ::
+agent-bob_1    | ::   - https                                ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | :: Administration API:                      ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | ::   - not enabled                          ::
+agent-bob_1    | ::                                          ::
+agent-bob_1    | ::                               ver: 0.4.2 ::
+agent-bob_1    | ::::::::::::::::::::::::::::::::::::::::::::::
+agent-bob_1    | 
+agent-bob_1    | Listening...
+agent-bob_1    | 
+agent-bob_1    | Created new invitation
+agent-bob_1    |     connection: {'invitation_mode': 'once', 'invitation_key': 'BDX61W6RcpCj9ArKMfBrEi35QNELRBF6Ykq62daobqoB', 'their_role': 'admin', 'connection_id': 'bac750eb-ad0e-424d-ab3f-0898500e699c', 'updated_at': '2020-07-23 19:02:59.762314Z', 'accept': 'auto', 'routing_state': 'none', 'initiator': 'self', 'state': 'invitation', 'created_at': '2020-07-23 19:02:59.762314Z'}
+agent-bob_1    | 
+agent-bob_1    | Invitation URL:
+agent-bob_1    | https://ce7058a85140.ngrok.io?c_i=eyJAdHlwZSI6ICJkaWQ6c292OkJ6Q2JzTlloTXJqSGlxWkRUVUFTSGc7c3BlYy9jb25uZWN0aW9ucy8xLjAvaW52aXRhdGlvbiIsICJAaWQiOiAiOGVjNDU2ZGUtMjk2Zi00YjJmLWE0MjktZGJiNDY2OGQyYzA5IiwgImxhYmVsIjogIkJvYiAoYWRtaW4pIiwgInNlcnZpY2VFbmRwb2ludCI6ICJodHRwczovL2NlNzA1OGE4NTE0MC5uZ3Jvay5pbyIsICJyZWNpcGllbnRLZXlzIjogWyJCRFg2MVc2UmNwQ2o5QXJLTWZCckVpMzVRTkVMUkJGNllrcTYyZGFvYnFvQiJdfQ==
+agent-bob_1    | The above invitation may be copied and given to another agentto establish a connection with this agent.
+
