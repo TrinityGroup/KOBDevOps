@@ -17,7 +17,7 @@ echo "Step 3 — Adjusting the Firewall Rules"
           sudo figlet Step 2 — Installing GitLab
           cd /tmp
           curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
-          less /tmp/script.deb.sh
+          # less /tmp/script.deb.sh
           sudo sh /tmp/script.deb.sh
           sudo apt install gitlab-ce
     
