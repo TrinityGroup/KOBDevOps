@@ -18,7 +18,7 @@ echo "Step 3 — Adjusting the Firewall Rules"
           cd /tmp
           curl -LO https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh
           less /tmp/script.deb.sh
-          sudo bash /tmp/script.deb.sh
+          sudo sh /tmp/script.deb.sh
           sudo apt install gitlab-ce
     
 
